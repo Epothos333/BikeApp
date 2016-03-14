@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
+var watch = require('gulp-watch');
 
 gulp.task('stylus', function(){
 	return gulp.src('./styles/style.styl')
@@ -14,4 +15,9 @@ gulp.task('javascripts', function(){
 		.pipe(gulp.dest('./'))
 });	
 
-gulp.task
+gulp.task('stream', function () {
+    gulp.watch('./styles/*.styl', ['stylus']);
+    gulp.watch('./javascripts/*.js', ['javascripts']);    
+});
+
+
