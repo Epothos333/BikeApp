@@ -1,21 +1,12 @@
-var app = angular.module('bikeApp', ['ngRoute'])
-	.config(function($routeProvider) {
-		$routeProvider.when("/",
-		{
-			templateUrl:"../gettingStared.html",
-			controller: "gettingStared"
-		});
+var app = angular.module('bikeApp', ['ngRoute']);
+	
 
-		
-		$routeProvider.when("/bikeRoutes",
-		{
-			templateUrl:"../bikeRoutes.html",
-			controller: "bikeRoutes"
-		});
-		$routeProvider.when("/bikeMap",
-		{
-			templateUrl:"../bikeMap.html",
-			controller: "BikeMap"
-		});
-
-	});
+app.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.when('/bikeRoutes', {
+        templateUrl: '/bikeRoutes.html'
+        });
+    $routeProvider.when('/bikeMap', {
+        templateUrl: '/bikeMap.html'
+        });
+  }]);
