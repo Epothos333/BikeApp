@@ -1,5 +1,25 @@
+var app = angular.module('bikeApp', ['ngRoute'])
+	.config(function($routeProvider) {
+		$routeProvider.when("/",
+		{
+			templateUrl:"gettingStared.html",
+			controller: "gettingStared"
+		});
 
-var app = angular.module('bikeApp', []);
+		
+		$routeProvider.when("/bikeRoutes",
+		{
+			templateUrl:"bikeRoutes.html",
+			controller: "bikeRoutes"
+		});
+		$routeProvider.when("/bikeMap",
+		{
+			templateUrl:"bikeMap.html",
+			controller: "BikeMap"
+		});
+
+	});
+
 
 app.controller('bikeRoutes', ['$http', 'weatherService', function($http, weatherService){
 	var vm = this;
