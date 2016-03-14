@@ -2,40 +2,23 @@ var app = angular.module('bikeApp', ['ngRoute'])
 	.config(function($routeProvider) {
 		$routeProvider.when("/",
 		{
-			templateUrl:"gettingStared.html",
+			templateUrl:"../gettingStared.html",
 			controller: "gettingStared"
 		});
 
 		
 		$routeProvider.when("/bikeRoutes",
 		{
-			templateUrl:"bikeRoutes.html",
+			templateUrl:"../bikeRoutes.html",
 			controller: "bikeRoutes"
 		});
 		$routeProvider.when("/bikeMap",
 		{
-			templateUrl:"bikeMap.html",
+			templateUrl:"../bikeMap.html",
 			controller: "BikeMap"
 		});
 
 	});
-
-
-app.controller('bikeRoutes', ['$http', 'weatherService', function($http, weatherService){
-	var vm = this;
-	weatherService.then(function success(response){
-		vm.posts = response.weatherdata.location.name;
-	});
-}]);
-angular.module('bikeApp')
-	.factory('weatherService', ['$http', function($http){
-		return $http({
-			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/forecast?q=Detroit,us&mode=xml&appid=b1b15e88fa797225412429c1c50c122a',
-		})
-
-	}]);
-
 
 var map;
 
@@ -47,17 +30,17 @@ function initMap() {
 }
 var app = angular.module('bikeApp', []);
 
-app.controller('bikeRoutes', ['$http', 'weatherService', function($http, weatherService){
-	var vm = this;
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
-		vm.posts = response.weatherdata.location.name;
+		$scope.posts = city.name;
+		console.log("hi");
 	});
 }]);
 angular.module('bikeApp')
 	.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/forecast?q=Detroit,us&mode=xml&appid=b1b15e88fa797225412429c1c50c122a',
+			url: 'http://api.openweathermap.org/data/2.5/forecast/city?id=4990729&APPID=c4e648130458b76564cd4aa311c5a3d3'
 		})
 
 	}]);
