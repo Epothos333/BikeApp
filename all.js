@@ -11,6 +11,8 @@ app.config(['$routeProvider',
         });
   }]);
 
+app.factory('mapData', function(){
+
 var map;
 
 function initMap() {
@@ -22,6 +24,10 @@ function initMap() {
 		zoom: 11
 	});
 }
+
+return initMap();
+
+})
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = response.city.name;
