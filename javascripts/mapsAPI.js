@@ -10,8 +10,9 @@ function initMap() {
 		},
 		zoom: 11
 	});
+
 }
 
-return initMap();
+return initMap;
 
 })
