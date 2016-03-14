@@ -10,4 +10,3 @@ app.config(['$routeProvider',
         templateUrl: '/bikeMap.html'
         });
   }]);
-

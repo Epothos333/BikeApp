@@ -11,7 +11,6 @@ app.config(['$routeProvider',
         });
   }]);
 
-
 var map;
 
 function initMap() {
@@ -23,18 +22,19 @@ function initMap() {
 		zoom: 11
 	});
 }
+var app = angular.module('bikeApp', []);
 
-app.controller('bikeRoutes', ['$http', 'weatherService', function($http, weatherService){
-	var vm = this;
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
-		vm.posts = response.weatherdata.location.name;
+		$scope.posts = response.city.name;
+		console.log($scope.posts);
 	});
 }]);
 angular.module('bikeApp')
 	.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/forecast?q=Detroit,us&mode=xml&appid=b1b15e88fa797225412429c1c50c122a',
+			url: 'http://api.openweathermap.org/data/2.5/forecast/city?id=4990729&APPID=c4e648130458b76564cd4aa311c5a3d3'
 		})
 
 	}]);
