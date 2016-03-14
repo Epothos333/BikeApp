@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 var map;
 
@@ -44,3 +45,5 @@ angular.module('bikeApp')
 		})
 
 	}]);
+=======
+>>>>>>> 0f95910472b907e511025c80bd7683853c0da8c6
