@@ -4,26 +4,37 @@ var app = angular.module('bikeApp', ['ngRoute']);
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/bikeRoutes', {
-        templateUrl: '/bikeRoutes.html',
+        templateUrl: '/Views/bikeRoutes.html',
         controller:'bikeRoutes'
         });
     $routeProvider.when('/bikeMap', {
-        templateUrl: '/bikeMap.html',
+        templateUrl: '/Views/bikeMap.html',
         controller: 'mapController'
+        });
+    $routeProvider.when('/', {
+        templateUrl: '/Views/gettingStarted.html'
         });
   }]);
 
 app.factory('mapData', function(){
 
-var map;
 
 function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
+
+	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
 		zoom: 11
+	});
+		var marker = new google.maps.Marker({
+		position: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		map: map,
+		title: 'Ayyyyyyye'
 	});
 
 }
@@ -32,7 +43,6 @@ return initMap;
 
 })
 app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
-	console.log("i am working");
 	return mapData();
 
 
