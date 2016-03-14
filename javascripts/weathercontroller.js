@@ -1,8 +1,8 @@
 var app = angular.module('bikeApp', []);
 
-app.controller('bikeRoutes', ['$http', 'weatherService', function($http, weatherService){
-	var vm = this;
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
-		vm.posts = response.weatherdata.location.name;
+		$scope.posts = response.city.name;
+		console.log($scope.posts);
 	});
 }]);
