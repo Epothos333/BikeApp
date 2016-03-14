@@ -15,7 +15,7 @@ gulp.task('javascripts', function(){
 		.pipe(gulp.dest('./'))
 });	
 
-gulp.task('stream', function () {
+gulp.task('default', function () {
     gulp.watch('./styles/*.styl', ['stylus']);
     gulp.watch('./javascripts/*.js', ['javascripts']);    
 });
