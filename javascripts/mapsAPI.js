@@ -17,7 +17,7 @@ function initMap() {
 		},
 		map: map,
 		title: 'Ayyyyyyye'
-	})
+	});
 
 }
 
