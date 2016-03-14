@@ -8,6 +8,7 @@ app.config(['$routeProvider',
         controller:'bikeRoutes'
         });
     $routeProvider.when('/bikeMap', {
-        templateUrl: '/bikeMap.html'
+        templateUrl: '/bikeMap.html',
+        controller: 'mapController'
         });
   }]);

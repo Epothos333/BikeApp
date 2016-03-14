@@ -8,7 +8,8 @@ app.config(['$routeProvider',
         controller:'bikeRoutes'
         });
     $routeProvider.when('/bikeMap', {
-        templateUrl: '/bikeMap.html'
+        templateUrl: '/bikeMap.html',
+        controller: 'mapController'
         });
   }]);
 
@@ -24,17 +25,24 @@ function initMap() {
 		},
 		zoom: 11
 	});
+
 }
 
-return initMap();
+return initMap;
 
 })
+app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
+	console.log("i am working");
+	return mapData();
+
+
+}]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = response.data.city.name;
 	});
 }]);
-	app.factory('weatherService', ['$http', function($http){
+app.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
 			url: 'http://api.openweathermap.org/data/2.5/forecast/city?id=4990729&APPID=c4e648130458b76564cd4aa311c5a3d3'
