@@ -1,3 +1,5 @@
+app.factory('mapData', function(){
+
 var map;
 
 function initMap() {
@@ -9,3 +11,7 @@ function initMap() {
 		zoom: 11
 	});
 }
+
+return initMap();
+
+})

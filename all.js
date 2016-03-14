@@ -5,11 +5,15 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/bikeRoutes.html'
+        controller:'bikeRoutes'
         });
     $routeProvider.when('/bikeMap', {
         templateUrl: '/bikeMap.html'
+        controller:'bikeMap'
         });
   }]);
+
+app.factory('mapData', function(){
 
 var map;
 
@@ -22,6 +26,10 @@ function initMap() {
 		zoom: 11
 	});
 }
+
+return initMap();
+
+})
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = city.name;
