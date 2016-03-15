@@ -26,6 +26,23 @@ app.config(['$routeProvider',
         });
   }]);
 
+var modal = document.getElementById('myModal');
+var btn = document.getElementById('myBtn');
+var span = document.getElementsByClassName('close')[0];
+
+btn.onclick = function() {
+    modal.style.display = 'block';
+}
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
 app.controller('getStartCont', function($scope, $location) {
 	return '';
 });
@@ -46,22 +63,14 @@ function initMap() {
 
 
 	});
-		var marker = new google.maps.Marker({
-		position: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
-		},
-		map: map,
-		title: 'Ayyyyyyye'
-	});
-		var marker = new google.maps.Marker({
-		position: {
-			lat: 42.330543, 
-			lng: -83.032071
-		},
-			map: map,
-			title: 'Detroit Wheel House'
-	});
+	// 	var marker = new google.maps.Marker({
+	// 	position: {
+	// 		lat: 42.330543, 
+	// 		lng: -83.032071
+	// 	},
+	// 		map: map,
+	// 		title: 'Detroit Wheel House'
+	// });
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);
@@ -69,7 +78,7 @@ function initMap() {
 
 	
 		  var line = new google.maps.Polyline({
-		    path: [{lat: 42.34, lng: -83.05}, {lat: 42.33, lng: -83.03}],
+		    path: [{lat: 42.32900, lng: -83.050639},{lat: 42.369977, lng: -83.075277},{lat: 42.371626, lng: -83.071844},{lat: 42.340800, lng: -83.050214},{lat: 42.338136, lng: -83.057252}],
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
@@ -88,7 +97,7 @@ function initMap() {
 
 app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
 	return mapData();
-
+	
 
 }]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
@@ -98,7 +107,7 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 			var sunset = list.sys.sunset;
 			var sunrise = list.sys.sunrise;
 			var sunsetdate = new Date(sunset * 1000).toLocaleTimeString();			
-			var sunrisedate = new Date(sunset * 1000).toLocaleTimeString();						
+			var sunrisedate = new Date(sunrise * 1000).toLocaleTimeString();						
 			var temps= list.main.temp.toFixed(1);
 			var weather= list.weather[0].description;
 			var icon = list.weather[0].icon;
