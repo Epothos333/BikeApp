@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
- var browserSync = require('browser-sync');
- var reload = browserSync.reload;
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 var watch = require('gulp-watch');
 
 gulp.task('stylus', function(){
@@ -18,9 +18,11 @@ gulp.task('javascripts', function(){
 });	
 
  gulp.task('browser-sync', function(){
+
 	browserSync({
 		server: {
 			baseDir: "."
+
  		}
  	});
  });
