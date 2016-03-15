@@ -26,6 +26,23 @@ app.config(['$routeProvider',
         });
   }]);
 
+var modal = document.getElementById('myModal');
+var btn = document.getElementById('myBtn');
+var span = document.getElementsByClassName('close')[0];
+
+btn.onclick = function() {
+    modal.style.display = 'block';
+}
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
 app.controller('getStartCont', function($scope, $location) {
 	return '';
 });
@@ -46,22 +63,14 @@ function initMap() {
 
 
 	});
-		var marker = new google.maps.Marker({
-		position: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
-		},
-		map: map,
-		title: 'Ayyyyyyye'
-	});
-		var marker = new google.maps.Marker({
-		position: {
-			lat: 42.330543, 
-			lng: -83.032071
-		},
-			map: map,
-			title: 'Detroit Wheel House'
-	});
+	// 	var marker = new google.maps.Marker({
+	// 	position: {
+	// 		lat: 42.330543, 
+	// 		lng: -83.032071
+	// 	},
+	// 		map: map,
+	// 		title: 'Detroit Wheel House'
+	// });
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);
@@ -88,7 +97,7 @@ function initMap() {
 
 app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
 	return mapData();
-
+	
 
 }]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
