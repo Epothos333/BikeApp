@@ -5,7 +5,7 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 			var sunset = list.sys.sunset;
 			var sunrise = list.sys.sunrise;
 			var sunsetdate = new Date(sunset * 1000).toLocaleTimeString();			
-			var sunrisedate = new Date(sunset * 1000).toLocaleTimeString();						
+			var sunrisedate = new Date(sunrise * 1000).toLocaleTimeString();						
 			var temps= list.main.temp.toFixed(1);
 			var weather= list.weather[0].description;
 			var icon = list.weather[0].icon;
