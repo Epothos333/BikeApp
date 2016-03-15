@@ -12,10 +12,23 @@ app.config(['$routeProvider',
         controller: 'mapController'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
+        });
+    $routeProvider.when('/beginner_Routes', {
+        templateUrl: '/Views/easyRoute.html'
+        });
+    $routeProvider.when('/intermediate_Routes', {
+        templateUrl: '/Views/intRoutes.html'
+        });
+    $routeProvider.when('/advanced_Routes', {
+        templateUrl: '/Views/advRoutes.html'
         });
   }]);
 
+app.controller('getStartCont', function($scope, $location) {
+	return '';
+});
 app.factory('mapData', function(){
 
 
@@ -76,7 +89,7 @@ app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) 
 
 
 }]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
 			var list = response.data.list[0];
@@ -84,6 +97,10 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($htt
 			$scope.temps= list.main.temp;
 			$scope.weather= list.weather[0].description;
 			$scope.icon = list.weather[0].icon;
+
+		$scope.changeView = function(view) {
+			$location.path(view);
+			}
 
 			return {
 				temp: $scope.temps,
