@@ -15,4 +15,13 @@ app.config(['$routeProvider',
         templateUrl: '/Views/gettingStarted.html',
         controller: 'getStartCont'
         });
+    $routeProvider.when('/beginner_Routes', {
+        templateUrl: '/Views/easyRoute.html'
+        });
+    $routeProvider.when('/intermediate_Routes', {
+        templateUrl: '/Views/intRoutes.html'
+        });
+    $routeProvider.when('/advanced_Routes', {
+        templateUrl: '/Views/advRoutes.html'
+        });
   }]);
