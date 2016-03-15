@@ -50,6 +50,7 @@ app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) 
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = response.data.city.name;
+		$scope.temps = response.data.list[main];		
 	});
 }]);
 app.factory('weatherService', ['$http', function($http){
