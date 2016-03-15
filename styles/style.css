@@ -1,3 +1,10 @@
+html, body, div, span, a, em, img, strong, header, nav, section, aside, footer {
+background:  transparent;
+border: 0;
+margin:0 auto;
+padding:0;
+}
+
 #map {
   height: 300px;
   width: 300px;
@@ -15,8 +22,17 @@ body {
   padding: 0;
 }
 .directive {
-  background-color: #028090;
+  background-color: #00a896;
   text-align: center;
+  color: #fff;
+  font-family: Arial;
+}
+#routediff {
+  text-align: center;
+  background-color: #028090;
+}
+#rentbike {
+  background-color: #02c39a;
 }
 #navBar {
   position: relative;
