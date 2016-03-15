@@ -1,0 +1,8 @@
+/* Css Reset*/
+
+html, body, div, span, a, em, img, strong, header, nav, section, aside, footer {
+background:  transparent;
+border: 0;
+margin:0 auto;
+padding:0;
+}

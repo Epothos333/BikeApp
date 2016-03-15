@@ -7,8 +7,12 @@ function initMap() {
 		center: {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
+
 		},
 		zoom: 11
+		
+
+
 	});
 		var marker = new google.maps.Marker({
 		position: {
@@ -31,9 +35,20 @@ function initMap() {
   		bikeLayer.setMap(map);
 	};
 
-	return initMap;
+	
+		  var line = new google.maps.Polyline({
+		    path: [{lat: 42.34, lng: -83.05}, {lat: 42.33, lng: -83.03}],
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		    map: map
 
-})
+		    return initMap
+  });
+
 
 
 
