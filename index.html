@@ -4,10 +4,14 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body ng-app="bikeApp">
-	{{1+1}}
-	<a href="#/gettingStarted">Getting Started</a>
-	<a href="#/bikeRoutes">Routes</a>
-	<a href="#/bikeMap">Maps</a>
+	<div id='banner'>
+		<h1>Detroit Bike City 2.0</h1>
+		<div id='navBar'>
+			<a href="#/gettingStarted">Home</a>
+			<a href="#/bikeRoutes">Routes</a>
+			<a href="#/bikeMap">Maps</a>
+		</div>
+	</div>
 		<div ng-view=''></div>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoqMBTB6hWPjQJTZrJn2lOuc7-2tDtW3E&callback=initMap" async defer></script>
