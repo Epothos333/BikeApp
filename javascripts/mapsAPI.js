@@ -18,9 +18,22 @@ function initMap() {
 		map: map,
 		title: 'Ayyyyyyye'
 	});
+		var marker = new google.maps.Marker({
+		position: {
+			lat: 42.330543, 
+			lng: -83.032071
+		},
+		map: map,
+		title: 'Detroit Wheel House'
+	});
 
-}
+		var bikeLayer = new google.maps.BicyclingLayer();
+  		bikeLayer.setMap(map);
+	};
 
-return initMap;
+	return initMap;
 
 })
+
+
+
