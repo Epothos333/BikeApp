@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
-// var browserSync = require('browser-sync');
-// var reload = browserSync.reload;
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 var watch = require('gulp-watch');
 
 gulp.task('stylus', function(){
@@ -17,19 +17,21 @@ gulp.task('javascripts', function(){
 		.pipe(gulp.dest('./'))
 });	
 
-// gulp.task('browser-sync', function(){
-// 	browserSync({
-// 		server: {
-// 			baseDir: "."
-// 		}
-// 	});
-// });
+ gulp.task('browser-sync', function(){
+
+	browserSync({
+		server: {
+			baseDir: "."
+
+ 		}
+ 	});
+ });
 
 gulp.task('watch', function () {
     gulp.watch('./styles/*.styl', ['stylus']);
     gulp.watch('./javascripts/*.js', ['javascripts']);   
 });
 
-// gulp.task('default', ['javascripts', 'stylus', 'browser-sync', 'watch']);
+ gulp.task('default', ['javascripts', 'stylus', 'browser-sync', 'watch']);
 
 
