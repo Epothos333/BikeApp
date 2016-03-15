@@ -40,8 +40,9 @@ function initMap() {
 			lng: -83.05515061325411
 
 		},
-		zoom: 11
-		
+		zoom: 11,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+
 
 
 	});
@@ -58,13 +59,13 @@ function initMap() {
 			lat: 42.330543, 
 			lng: -83.032071
 		},
-		map: map,
-		title: 'Detroit Wheel House'
+			map: map,
+			title: 'Detroit Wheel House'
 	});
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);
-	};
+	
 
 	
 		  var line = new google.maps.Polyline({
@@ -75,11 +76,12 @@ function initMap() {
 		    strokeWeight: 2
    
      });
-		    map: map
+		    
+		    line.setMap(map);
+	}
 
 		    return initMap
   });
-
 
 
 

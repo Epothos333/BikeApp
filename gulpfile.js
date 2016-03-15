@@ -18,9 +18,11 @@ gulp.task('javascripts', function(){
 });	
 
  gulp.task('browser-sync', function(){
- 	browserSync({
- 		server: {
- 			baseDir: "."
+
+	browserSync({
+		server: {
+			baseDir: "."
+
  		}
  	});
  });
