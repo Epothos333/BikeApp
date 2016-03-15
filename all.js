@@ -50,13 +50,22 @@ app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) 
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = response.data.city.name;
-		$scope.temps = response.data.list[main];		
+		$scope.temps = response.data.list[0].main.temp;
+		$scope.weather = response.data.list[0].weather[0].description;		
 	});
 }]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		template: "<h1>{{posts}}</h1>"
+	};
+});
 app.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/forecast/city?id=4990729&APPID=c4e648130458b76564cd4aa311c5a3d3'
+			url: 'http://api.openweathermap.org/data/2.5/forecast/city?id=4990729&units=imperial&APPID=c4e648130458b76564cd4aa311c5a3d3'
 		})
 
 	}]);
