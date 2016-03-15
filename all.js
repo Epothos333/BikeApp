@@ -86,7 +86,7 @@ function initMap() {
 
 	
 		  var line = new google.maps.Polyline({
-		    path: [{lat: 42.34, lng: -83.05}, {lat: 42.33, lng: -83.03}],
+		    path: [{lat: 42.32900, lng: -83.050639},{lat: 42.369977, lng: -83.075277},{lat: 42.371626, lng: -83.071844},{lat: 42.340800, lng: -83.050214},{lat: 42.338136, lng: -83.057252}],
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
