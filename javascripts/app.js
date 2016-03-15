@@ -11,7 +11,7 @@ app.config(['$routeProvider',
         templateUrl: '/Views/bikeMap.html',
         controller: 'mapController'
         });
-    $routeProvider.when('/', {
+    $routeProvider.when('/home', {
         templateUrl: '/Views/gettingStarted.html'
         });
   }]);
