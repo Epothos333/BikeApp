@@ -1,11 +1,10 @@
 #map {
-  height: 500px;
-  width: 750px;
-  background-color: #00f;
-  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  background-color: #05668d;
 }
 #banner {
-  background-color: #c1fbff;
+  background-color: #05668d;
   text-align: center;
   height: 150px;
   margin: 0;
@@ -14,6 +13,10 @@
 body {
   margin: 0;
   padding: 0;
+}
+.directive {
+  background-color: #028090;
+  text-align: center;
 }
 #navBar {
   position: relative;
