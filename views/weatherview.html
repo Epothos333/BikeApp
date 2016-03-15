@@ -1,5 +1,9 @@
-<h1>{{printWeather().temp + '&#8457'}}</h1>
-<img src='../images/{{printWeather().icon}}.png'/>
-<h2>{{printWeather().weather}}</h2>
-<h3>Sunrise: {{printWeather().sunset}}</h3>
-<h3>Sunset: {{printWeather().sunset}}</h3>
+<div id="weatherview">
+	<h1>{{printWeather().temp + '&#8457'}}</h1>
+	<img src='../images/{{printWeather().icon}}.png'/>
+	<h2>{{printWeather().weather}}</h2>
+	<div id="sun">
+		<h3>Sunrise: {{printWeather().sunrise}}</h3>
+		<h3>Sunset: {{printWeather().sunset}}</h3>
+	</div>
+</div>

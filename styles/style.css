@@ -55,10 +55,12 @@ body {
 #navBar a {
   text-decoration: none;
   margin: 0 30px;
-  color: Red;
+  color: #fff;
+  text-transform: uppercase;
   font-weight: bold;
   font-size: 20px;
 }
 #gettingStartedDiv {
   text-align: center;
 }
+/* Pop out window CSS */
