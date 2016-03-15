@@ -12,6 +12,7 @@ app.config(['$routeProvider',
         controller: 'mapController'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
         });
   }]);

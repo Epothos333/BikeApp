@@ -12,10 +12,17 @@ app.config(['$routeProvider',
         controller: 'mapController'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
         });
   }]);
 
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view) {
+		$location.path(view);
+		console.log(view);
+	}
+});
 app.factory('mapData', function(){
 
 
@@ -36,12 +43,26 @@ function initMap() {
 		map: map,
 		title: 'Ayyyyyyye'
 	});
+		var marker = new google.maps.Marker({
+		position: {
+			lat: 42.330543, 
+			lng: -83.032071
+		},
+		map: map,
+		title: 'Detroit Wheel House'
+	});
 
-}
+		var bikeLayer = new google.maps.BicyclingLayer();
+  		bikeLayer.setMap(map);
+	};
 
-return initMap;
+	return initMap;
 
 })
+
+
+
+
 app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
 	return mapData();
 
@@ -50,13 +71,8 @@ app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) 
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', function($http, weatherService, $scope){
 	weatherService.then(function success(response){
 		$scope.posts = response.data.city.name;
-		function() {
-			for (var i = 0; i <=5, i++) {
-				$scope.temps = response.data.list[i].main.temp;
-				$scope.weather = response.data.list[i].weather[0].description;			
-			}
-		}
-		
+		$scope.temps = response.data.list[0].main.temp;
+		$scope.weather = response.data.list[0].weather[0].description;		
 	});
 }]);
 
