@@ -14,10 +14,20 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: Arial;
 }
 .directive {
-  background-color: #028090;
+  background-color: #00a896;
   text-align: center;
+  color: #fff;
+  font-family: Arial;
+}
+#routediff {
+  text-align: center;
+  background-color: #028090;
+}
+#rentbike {
+  background-color: #02c39a;
 }
 #navBar {
   position: relative;
