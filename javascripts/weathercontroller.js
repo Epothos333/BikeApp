@@ -22,11 +22,4 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 	});
 }]);
 
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/weatherview.html"
-	};
-});
 
