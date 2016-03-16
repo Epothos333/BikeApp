@@ -26,7 +26,8 @@ app.config(['$routeProvider',
         templateUrl: '/Views/intRoutes.html'
         });
     $routeProvider.when('/advanced_Routes', {
-        templateUrl: '/Views/advRoutes.html'
+        templateUrl: '/Views/advRoutes.html',
+        controller: 'mapControllerTwo'
         });
   }]);
 

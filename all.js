@@ -26,7 +26,8 @@ app.config(['$routeProvider',
         templateUrl: '/Views/intRoutes.html'
         });
     $routeProvider.when('/advanced_Routes', {
-        templateUrl: '/Views/advRoutes.html'
+        templateUrl: '/Views/advRoutes.html',
+        controller: 'mapControllerTwo'
         });
   }]);
 
@@ -47,77 +48,6 @@ window.onclick = function(event) {
 }
 
 
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData();
-
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
-
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.factory('mapData', function(){
 
 		var goldStar = {
@@ -128,15 +58,19 @@ app.factory('mapData', function(){
 	    strokeColor: 'gold',
 	    strokeWeight: 2
 	    };
-
-function initMap() {
+function map2() {
 	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
 		center: {
-			lat: 41.3404308730309, 
+			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRIAN
 	});
+}
+
+function map1() {
+
 
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {
@@ -168,6 +102,7 @@ function initMap() {
 	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown'),
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
+
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
@@ -290,7 +225,10 @@ function initMap() {
 		    
 		    lineThree.setMap(map); 
 		}
-		    return initMap
+		    return {
+		    	firstMap: map1,
+		    	secondMap: map2
+		    }
   });
 
 
@@ -309,3 +247,91 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('googleMap', function() {
+	return {
+		restrict: 'E',
+		replace: 'false',
+		controller: function(mapData, $scope) {
+			return mapData();
+		},
+		transclude: true,
+		templateUrl: 'Views/templates/mapTemplate.html'
+	}
+})
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('mapControllerTwo', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.secondMap();
+
+
+}]);
+app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.firstMap();
+
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
