@@ -1,3 +1,5 @@
 app.controller('getStartCont', function($scope, $location) {
-	return '';
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
 });
