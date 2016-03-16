@@ -49,6 +49,7 @@ function initMap() {
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
 
+
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
 		  var line = new google.maps.Polyline({
