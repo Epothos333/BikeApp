@@ -10,7 +10,7 @@ gulp.task('stylus', function(){
 });
 
 gulp.task('javascripts', function(){
-	return gulp.src('./javascripts/*.js')
+	return gulp.src(['./javascripts/*.js','./javascripts/**/*.js'])
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('./'))
 });	
