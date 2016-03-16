@@ -9,6 +9,19 @@ function initMap() {
 		zoom: 11,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
+		//Class for creating markers
+		var CreateMark = function(latit, lngit, title) {
+			var vm = this;
+			vm.marker = new google.maps.Marker({
+				position: {
+					lat: latit,
+					lng: lngit
+				},
+				icon: goldStar,
+				map: map,
+				title: title
+			});
+		};
 
 		var goldStar = {
 	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
@@ -19,16 +32,7 @@ function initMap() {
 	    strokeWeight: 2
 	    };
 
-		var marker = new google.maps.Marker({
-	 	position: {
-	 		lat: 42.330543, 
-	 		lng: -83.032071
-	 	},
-	 		icon:goldStar,
-	 		map: map,
-	 		title: 'Detroit Wheel House'
-	 });
-
+	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House');
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
