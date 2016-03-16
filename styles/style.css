@@ -63,9 +63,6 @@ body {
 #gettingStartedDiv {
   text-align: center;
 }
-/* Pop out window CSS */
-<<<<<<< HEAD
-=======
 .modal {
   display: none;
   position: fixed;
@@ -97,4 +94,3 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
->>>>>>> 79cc8f118736b2e01f1e52fa3c68c91f890ddd37
