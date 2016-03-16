@@ -11,7 +11,7 @@ app.directive('diffBtn', function(){
 	return {
 		restrict: 'E',
 		replace: false,
-		templateUrl: "Views/difficultyTemplate.html",
+		templateUrl: "Views/templates/difficultyTemplate.html",
 		scope: {
 			bgcolor: '=',
 			route: '='
