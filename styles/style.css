@@ -27,7 +27,8 @@
 #routediff div:hover {
   border: 4px inset White;
 }
-#map {
+#map,
+#themap {
   height: 500px;
   width: 750px;
   background-color: #05668d;
@@ -108,7 +109,7 @@ body {
   font-size: 20px;
 }
 #gettingStartedDiv {
-  background: url("../images/background1.jpg") no-repeat fixed;
+  background: url("../images/bikebackground.jpg") no-repeat fixed;
   height: 550px;
   box-shadow: 1px 1px 2px #000;
   background-size: cover;
