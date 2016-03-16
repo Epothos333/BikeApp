@@ -1,9 +1,12 @@
-
 var app = angular.module('bikeApp', ['ngRoute']);
 	
 
 app.config(['$routeProvider',
   function($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
+        });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
         controller:'bikeRoutes'
@@ -44,9 +47,10 @@ window.onclick = function(event) {
 }
 
 
-
 app.controller('getStartCont', function($scope, $location) {
-	return '';
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
 });
 app.factory('mapData', function(){
 

@@ -110,6 +110,9 @@ body {
 #gettingStartedDiv button:active {
   background-color: #00a896;
 }
+#gettingStartedContent {
+  margin-right: 0.75em;
+}
 /* Pop out window CSS */
 .modal {
   display: none;
@@ -142,7 +145,6 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
 /* FOOTER */
 footer {
   background-color: #f0f3bd;
