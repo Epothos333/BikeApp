@@ -120,13 +120,30 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 app.factory('mapData', function(){
 
+		var goldStar = {
+	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+	    fillColor: 'yellow',
+	    fillOpacity: 0.6,
+	    scale: .07,
+	    strokeColor: 'gold',
+	    strokeWeight: 2
+	    };
+
 function initMap() {
+	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
+		center: {
+			lat: 41.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11
+	});
+
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 		//Class for creating markers
@@ -143,23 +160,14 @@ function initMap() {
 			});
 		};
 
-		var goldStar = {
-	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'yellow',
-	    fillOpacity: 0.6,
-	    scale: .07,
-	    strokeColor: 'gold',
-	    strokeWeight: 2
-	    };
-
-	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House');
-	    var zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward');
-	    var zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby ');
-	    var zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress');
-	    var zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward');
-	    var zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown');
-	    var zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward');
-	    var zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
+	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
+	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward'),
+	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby '),
+	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress'),
+	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward'),
+	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown'),
+	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
