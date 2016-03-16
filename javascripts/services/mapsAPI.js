@@ -1,22 +1,24 @@
 app.factory('mapData', function(){
 
 		var goldStar = {
-	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'red',
-	    fillOpacity: 0.6,
-	    scale: .07,
-	    strokeColor: 'gold',
-	    strokeWeight: 2
-	    };
 
-function initMap() {
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 10
+
+	    };
+function map2() {
 	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
 		center: {
-			lat: 41.3404308730309, 
+			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRIAN
 	});
+}
+
+function map1() {
+
 
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {
@@ -171,7 +173,10 @@ function initMap() {
 		    
 		    lineThree.setMap(map); 
 		}
-		    return initMap
+		    return {
+		    	firstMap: map1,
+		    	secondMap: map2
+		    }
   });
 
 

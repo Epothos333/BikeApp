@@ -1,7 +1,7 @@
 app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
-	return mapData();
+	return mapData.firstMap();
 
 
 }]);
