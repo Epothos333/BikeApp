@@ -87,44 +87,39 @@ function initMap() {
 		    strokeWeight: 2
      });		    
 		    line.setMap(map);
+
 		var lineTwo = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
-		    		lat: 42.333066, 
-		    		lng: -83.043919
+		    		lat: 42.333181, 
+		    		lng: -83.044203
 		    	},
 		    	{
-		    		lat: 42.350456, 
-		    		lng: -83.003704
+		    		lat: 42.350501, 
+		    		lng: -83.004196
 		    	},
 		    	{
-		    		lat: 42.355661,
-		    	 	lng: -83.007582
+		    		lat: 42.355666,
+		    	 	lng: -83.007591
 		    	 },
 		    	 {
-		    	 	lat: 42.369199, 
-		    	 	lng: -83.971909
+		    	 	lat: 42.369439, 
+		    	 	lng: -82.972243		 
 		    	 },
 		    	 {
-		    	 	lat: 42.397077, 
-		    	 	lng: -83.990245
+		    	 	lat: 42.404987, 
+		    	 	lng: -82.997672		    			    	   	 
+		    	 },{
+		    	 	lat: 42.334904, 
+		    	 	lng: -83.045468	    			    	   	 
+		    	 },{
+		    	 	lat: 42.334608, 
+		    	 	lng: -83.045335		    			    	   	 
 		    	 },
 		    	 {
-		    	 	lat: 42.98095, 
-		    	 	lng: -83.990347
-		    	 },
-		    	 {
-		    	 	lat: 42.404954, 
-		    	 	lng: -83.997033
-		    	 },
-		    	 {
-		    	 	lat: 42.334459,
-		    	 	lng: -84.045552
-		    	 },
-		    	 {
-		    	 	lat: 42.333138,
-		    	 	lng: -84.043766
+		    	 	lat: 42.333329, 
+		    	 	lng: -83.044270	    			    	   	 
 		    	 }],
 		    geodesic: true,
 		    strokeColor: '#003366',
@@ -134,6 +129,56 @@ function initMap() {
      });
 		    
 		    lineTwo.setMap(map); 
+		
+		var lineThree = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.354928, 
+		    		lng: -82.992002
+		    	},
+		    	{
+		    		lat: 42.339090,
+		    	 	lng: -83.030374
+		    	},
+		    	{
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
+		    	 },
+		    	 {
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
+		    	 },
+		    	 {
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
+		    	 },
+		    	 {
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#ffd700',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		    
+		    lineThree.setMap(map); 
+
+
 		}
 		    return initMap
   });
@@ -147,6 +192,9 @@ function initMap() {
 	// 		map: map,
 	// 		title: 'Detroit Wheel House'
 	// });
+
+
+
 
 
 
