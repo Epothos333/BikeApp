@@ -57,6 +57,27 @@ function initMap() {
 		zoom: 11,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
+
+		var goldStar = {
+	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+	    fillColor: 'yellow',
+	    fillOpacity: 0.6,
+	    scale: .07,
+	    strokeColor: 'gold',
+	    strokeWeight: 2
+	    };
+
+		var marker = new google.maps.Marker({
+	 	position: {
+	 		lat: 42.330543, 
+	 		lng: -83.032071
+	 	},
+	 		icon:goldStar,
+	 		map: map,
+	 		title: 'Detroit Wheel House'
+	 });
+
+
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
 		  var line = new google.maps.Polyline({
@@ -184,16 +205,10 @@ function initMap() {
   });
 
 
-	// 	var marker = new google.maps.Marker({
-	// 	position: {
-	// 		lat: 42.330543, 
-	// 		lng: -83.032071
-	// 	},
-	// 		map: map,
-	// 		title: 'Detroit Wheel House'
-	// });
 
 
+
+		
 
 
 
