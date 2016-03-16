@@ -2,7 +2,7 @@ app.factory('mapData', function(){
 
 		var goldStar = {
 	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'yellow',
+	    fillColor: 'red',
 	    fillOpacity: 0.6,
 	    scale: .07,
 	    strokeColor: 'gold',
