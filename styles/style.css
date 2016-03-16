@@ -110,6 +110,9 @@ body {
 #gettingStartedDiv button:active {
   background-color: #00a896;
 }
+#gettingStartedContent {
+  margin-right: 0.75em;
+}
 /* Pop out window CSS */
 .modal {
   display: none;

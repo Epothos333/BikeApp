@@ -9,15 +9,10 @@
 	</div>		
 	<div id="routediff">		
 		<h1>Choose your route difficulty:</h1>
-			<div ng-click='changeView("beginner_Routes")' class='greenBack levelDiff'>
-				<img src="http://www.clker.com/cliparts/B/I/E/E/Y/s/olympic-road-cycling-logo-th.png">
-			</div>
-			<div ng-click='changeView("intermediate_Routes")' class='yellowBack levelDiff'>
-				<img src="http://www.clker.com/cliparts/B/I/E/E/Y/s/olympic-road-cycling-logo-th.png">
-			</div>
-			<div ng-click='changeView("advanced_Routes")' class='redBack levelDiff'>
-				<img src="http://www.clker.com/cliparts/B/I/E/E/Y/s/olympic-road-cycling-logo-th.png">
-			</div>
+
+		<diff-btn route='"beginner_Routes"' bgcolor='"green"'></diff-btn>
+		<diff-btn route='"intermediate_Routes"' bgcolor='"yellow"'></diff-btn>
+		<diff-btn route='"advanced_Routes"' bgcolor='"red"'></diff-btn>
 	</div>
 
 </div>

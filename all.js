@@ -1,9 +1,12 @@
-
 var app = angular.module('bikeApp', ['ngRoute']);
 	
 
 app.config(['$routeProvider',
   function($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
+        });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
         controller:'bikeRoutes'
@@ -44,10 +47,77 @@ window.onclick = function(event) {
 }
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
 
-app.controller('getStartCont', function($scope, $location) {
-	return '';
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
 });
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData();
+
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 app.factory('mapData', function(){
 
 function initMap() {
@@ -83,6 +153,13 @@ function initMap() {
 	    };
 
 	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House');
+	    var zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward');
+	    var zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby ');
+	    var zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress');
+	    var zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward');
+	    var zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown');
+	    var zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward');
+	    var zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
@@ -204,8 +281,6 @@ function initMap() {
      });
 		    
 		    lineThree.setMap(map); 
-
-
 		}
 		    return initMap
   });
@@ -219,48 +294,6 @@ function initMap() {
 
 
 
-app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData();
-
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data;
-			var sunset = list.sys.sunset;
-			var sunrise = list.sys.sunrise;
-			var sunsetdate = new Date(sunset * 1000).toLocaleTimeString();			
-			var sunrisedate = new Date(sunrise * 1000).toLocaleTimeString();						
-			var temps= list.main.temp.toFixed(1);
-			var weather= list.weather[0].description;
-			var icon = list.weather[0].icon;
-
-		$scope.changeView = function(view) {
-			$location.path(view);
-			}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/weatherview.html"
-	};
-});
 app.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
