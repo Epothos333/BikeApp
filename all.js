@@ -3,6 +3,10 @@ var app = angular.module('bikeApp', ['ngRoute']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'getStartCont'
+        });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
         controller:'bikeRoutes'
@@ -70,7 +74,9 @@ app.directive('diffBtn', function(){
 	};
 });
 app.controller('getStartCont', function($scope, $location) {
-	return '';
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
 });
 app.factory('mapData', function(){
 
@@ -107,6 +113,13 @@ function initMap() {
 	    };
 
 	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House');
+	    var zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward');
+	    var zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby ');
+	    var zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress');
+	    var zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward');
+	    var zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown');
+	    var zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward');
+	    var zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
@@ -228,8 +241,6 @@ function initMap() {
      });
 		    
 		    lineThree.setMap(map); 
-
-
 		}
 		    return initMap
   });
