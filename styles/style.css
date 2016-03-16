@@ -1,3 +1,24 @@
+.levelDiff {
+  display: inline-block;
+}
+.greenBack {
+  background-color: #008000;
+}
+.yellowBack {
+  background-color: #ff0;
+}
+.redBack {
+  background-color: #f00;
+}
+#routediff div {
+  border-radius: 15px;
+  padding: 10px;
+  border: 4px outset #000;
+  margin: 0 50px;
+}
+#routediff div:hover {
+  border: 4px inset White;
+}
 #map {
   height: 500px;
   width: 750px;
@@ -121,6 +142,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
 /* FOOTER */
 footer {
   background-color: #f0f3bd;
