@@ -43,7 +43,32 @@ window.onclick = function(event) {
 }
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
 
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
 app.controller('getStartCont', function($scope, $location) {
 	return '';
 });
@@ -228,18 +253,14 @@ app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) 
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
-			var list = response.data;
-			var sunset = list.sys.sunset;
-			var sunrise = list.sys.sunrise;
-			var sunsetdate = new Date(sunset * 1000).toLocaleTimeString();			
-			var sunrisedate = new Date(sunrise * 1000).toLocaleTimeString();						
-			var temps= list.main.temp.toFixed(1);
-			var weather= list.weather[0].description;
-			var icon = list.weather[0].icon;
-
-		$scope.changeView = function(view) {
-			$location.path(view);
-			}
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
 
 			return {
 				temp: temps,
@@ -260,6 +281,8 @@ app.directive('weatherDays', function(){
 		templateUrl: "Views/weatherview.html"
 	};
 });
+
+
 app.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
