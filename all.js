@@ -48,15 +48,100 @@ window.onclick = function(event) {
 }
 
 
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('mapControllerTwo', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.secondMap();
+
+
+}]);
+app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.firstMap();
+
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('googleMap', function() {
+	return {
+		restrict: 'E',
+		replace: 'false',
+		controller: function(mapData, $scope) {
+			return mapData();
+		},
+		transclude: true,
+		templateUrl: 'Views/templates/mapTemplate.html'
+	}
+})
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
 app.factory('mapData', function(){
 
 		var goldStar = {
-	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'yellow',
-	    fillOpacity: 0.6,
-	    scale: .07,
-	    strokeColor: 'gold',
-	    strokeWeight: 2
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 10
 	    };
 function map2() {
 	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
@@ -247,91 +332,3 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('googleMap', function() {
-	return {
-		restrict: 'E',
-		replace: 'false',
-		controller: function(mapData, $scope) {
-			return mapData();
-		},
-		transclude: true,
-		templateUrl: 'Views/templates/mapTemplate.html'
-	}
-})
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('mapControllerTwo', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.secondMap();
-
-
-}]);
-app.controller('mapController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.firstMap();
-
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-

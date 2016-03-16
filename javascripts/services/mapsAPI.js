@@ -1,12 +1,8 @@
 app.factory('mapData', function(){
 
 		var goldStar = {
-	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'yellow',
-	    fillOpacity: 0.6,
-	    scale: .07,
-	    strokeColor: 'gold',
-	    strokeWeight: 2
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 10
 	    };
 function map2() {
 	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
