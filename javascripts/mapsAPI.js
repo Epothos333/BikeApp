@@ -40,6 +40,9 @@ function initMap() {
 	    var zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown');
 	    var zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward');
 	    var zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
+	    var zagSter8 = new CreateMark(42.332261, -83.047722, 'Bike Rental at 1001 Woodward');
+	    var zagSter9 = new CreateMark(42.335242, -83.049936, 'Bike Rental at Henry Ford Health');
+	    var zagSter10 = new CreateMark(42.332401, -83.046649, 'Bike Rental at Compuware');
 
 		var bikeLayer = new google.maps.BicyclingLayer();
   		bikeLayer.setMap(map);	
