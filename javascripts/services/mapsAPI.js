@@ -225,7 +225,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_one);
@@ -235,7 +235,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_two);
@@ -245,7 +245,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_three);
@@ -382,7 +382,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_one);
@@ -392,7 +392,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 13,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_two);
@@ -402,7 +402,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
   	bikeLayer.setMap(eZ_three);	

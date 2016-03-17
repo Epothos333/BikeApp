@@ -34,6 +34,65 @@ app.config(['$routeProvider',
 
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('googleMap', function() {
+	return {
+		restrict: 'E',
+		replace: 'false',
+		controller: function(mapData, $scope) {
+			return mapData;
+		},
+		transclude: true,
+		templateUrl: 'Views/templates/mapTemplate.html'
+	}
+})
+app.directive('toggleClass', function() {
+	return {
+		template: "<button id='butts'>Easy Route One</button>",
+		link: function($scope, element, attr){
+			var fds = document.getElementById('EZmapOne');
+			var btn = document.getElementById('butts');
+			btn.addEventListener("click", hideClass);
+			function hideShowClass(){
+
+				fds.classList.add('hide');					
+			}				
+		}
+
+	}
+})
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -103,65 +162,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('googleMap', function() {
-	return {
-		restrict: 'E',
-		replace: 'false',
-		controller: function(mapData, $scope) {
-			return mapData;
-		},
-		transclude: true,
-		templateUrl: 'Views/templates/mapTemplate.html'
-	}
-})
-app.directive('toggleClass', function() {
-	return {
-		template: "<button id='butts'>Easy Route One</button>",
-		link: function($scope, element, attr){
-			var fds = document.getElementById('EZmapOne');
-			var btn = document.getElementById('butts');
-			btn.addEventListener("click", hideClass);
-			function hideShowClass(){
-
-				fds.classList.add('hide');					
-			}				
-		}
-
-	}
-})
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -389,7 +389,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_one);
@@ -399,7 +399,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_two);
@@ -409,7 +409,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_three);
@@ -546,7 +546,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_one);
@@ -556,7 +556,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 13,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_two);
@@ -566,7 +566,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
   	bikeLayer.setMap(eZ_three);	
