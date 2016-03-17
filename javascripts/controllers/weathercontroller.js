@@ -12,11 +12,10 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 			 	var modal = document.getElementById('rentalModal');
 				var btn = document.getElementById('toggleMe');
-				var span = document.getElementsByClassName('close')[0];
+				var span = document.getElementById('toggleOff');
 
 				btn.onclick = function() {
 				    modal.style.display = 'block';
-				    console.log('hello');
 				    return mapData.rentBike();
 				}
 				span.onclick = function() {
