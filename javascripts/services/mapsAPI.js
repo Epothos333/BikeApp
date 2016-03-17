@@ -3,7 +3,12 @@ app.factory('mapData', function(){
 		var goldStar = {
 
 				path: google.maps.SymbolPath.CIRCLE,
-				scale: 10
+				scale: 7,
+				strokeColor: '#FF0000',
+		      	strokeOpacity: 0.8,
+		      	strokeWeight: 2,
+		      	fillColor: '#FF0000',
+		      	fillOpacity: 0.35,
 
 	    };
 function map2() {
