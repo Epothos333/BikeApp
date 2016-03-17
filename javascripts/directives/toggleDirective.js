@@ -24,9 +24,8 @@ app.directive('toggleClass', function() {
 			function btn3Show(){
 				map2.classList.add('hide');	
 				map1.classList.add('hide');		
-				map3.classList.remove('hide');		
-			}				
-		}
-
+				map3.classList.remove('hide');	
+			}
 	}
+}
 })
