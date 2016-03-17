@@ -35,13 +35,37 @@
   background-color: #05668d;
   margin: 0 auto;
 }
+#rentalMap {
+  position: relative;
+  width: 70%;
+  height: 70%;
+}
 #banner {
   background-color: #05668d;
   text-align: center;
-  height: 150px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: bebas;
+  width: 100%;
+  height: 100px;
+}
+#banner img {
+  margin-bottom: 0.75em;
+  padding-top: 0.75em;
+  width: 100px;
+  height: auto;
+  display: block;
+}
+#banner a {
+  text-decoration: none;
+  margin: 1.5em 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+}
+.content:before {
+  clear: both;
 }
 body {
   margin: 0;
@@ -97,18 +121,6 @@ body {
   font-weight: bold;
   font-family: opensans;
 }
-#navBar {
-  position: relative;
-  bottom: -65px;
-}
-#navBar a {
-  text-decoration: none;
-  margin: 0 30px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
-}
 #gettingStartedDiv {
   background: url("../images/bikebackground.jpg") no-repeat fixed;
   height: 100%;
@@ -143,7 +155,7 @@ body {
   background-color: #00a896;
 }
 /* Pop out window CSS */
-.modal {
+#rentalModal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -155,21 +167,20 @@ body {
   background-color: #fff;
   background-color: rgba(0,0,0,0.4);
 }
-.modal-content {
+#contentModal {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
-.close {
+#toggleOff {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-.close:hover,
-.close:focus {
+#toggleOff:hover {
   color: #000;
   text-decoration: none;
   cursor: pointer;
