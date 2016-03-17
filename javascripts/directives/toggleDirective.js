@@ -6,7 +6,7 @@ app.directive('toggleClass', function() {
 			var btn = document.getElementById('butts');
 			btn.addEventListener("click", hideClass);
 			function hideShowClass(){
-				
+
 				fds.classList.add('hide');					
 			}				
 		}
