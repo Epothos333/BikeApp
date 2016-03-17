@@ -168,37 +168,142 @@ function easyRouteOne() {
 		zoom: 12,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-  		bikeLayer.setMap(eZ_one);	
-		  var line = new google.maps.Polyline({
+	bikeLayer.setMap(eZ_one);
+
+	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 12,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(eZ_two);
+
+	var eZ_three = new google.maps.Map(document.getElementById('EZmapThree'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 12,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+  	bikeLayer.setMap(eZ_three);	
+
+	var lineOne = new google.maps.Polyline({
 		    path: [
 		    {
-		    	lat: 42.32900,
-		     	lng: -83.050639
+		    	lat: 42.332210, 
+		     	lng: -83.046456
 		     },
 		     {
-		     	lat: 42.369977,
-		     	 lng: -83.075277
+		     	lat: 42.334082, 
+		     	 lng:  -83.044869
 		     },
 		     {
-		     	lat: 42.371626,
-		     	lng: -83.071844
+		     	lat: 42.334717, 
+		     	lng: -83.045341
 		     },
 		     {
-		     	lat: 42.340800,
-		     	lng: -83.050214
+		     	lat: 42.338428, 
+		     	lng: -83.042830 
 		     },
 		     {
-		     	lat: 42.338136, 
-		     	lng: -83.057252
+		     	lat: 42.341759, 
+		     	lng: -83.045534
+		     },
+		     {
+		     	lat: 42.340776, 
+		     	lng: -83.048023
+		     }, {
+		     	lat: 42.340030, 
+		     	lng: -83.049654
+		     }, {
+		     	lat: 42.340760, 
+		     	lng: -83.050212
+		     }, {
+		     	lat:42.337952, 
+		     	lng: -83.056370 
+		     }, {
+		     	lat: 42.331703,  
+		     	lng: -83.052679
+		     },
+		     {
+		     	lat: 42.332210,
+		     	lng: -83.046693
 		     }],
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
 		    strokeWeight: 2
      });		    
-	line.setMap(eZ_one);
+	lineOne.setMap(eZ_one);
+
+	var lineTwo = new google.maps.Polyline({
+		    path: [
+		    {
+		    	lat: 42.329595, 
+		     	lng: -83.044946
+		     },
+		     {
+		     	lat:42.338983, 
+		     	lng: -83.023099
+		     },
+		     {
+		     	lat:42.335256, 
+		     	lng: -83.020632 
+		     },
+		     {
+		     	lat:42.327753, 
+		     	lng: -83.040244
+		     },
+		     {
+		     	lat:42.330574, 
+		     	lng: -83.042552
+		     }
+		     ],
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+     });		    
+	lineTwo.setMap(eZ_two);
+
+	var lineThree = new google.maps.Polyline({
+		    path: [
+		    {
+		    	lat: 42.336499, 
+		     	lng: -83.059376 
+		     },
+		     {
+		     	lat:42.335071, 
+		     	lng: -83.055471
+		     },
+		     {
+		     	lat:42.338973,
+		     	lng:  -83.046716
+		     },
+		     {
+		     	lat:42.349409, 
+		     	lng: -83.053840
+		     },
+		     {
+		     	lat:42.341986, 
+		     	lng: -83.072637
+		     },
+		     {
+		     	lat: 42.336499,
+		     	lng: -83.059376 
+		     }
+		     ],
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+     });		    
+	lineThree.setMap(eZ_three);
 }
-	return {
+		    return {
 		    	easyMapOne: easyRouteOne,
 		    	intMapOne: intermediateRouteOne,
 		    	advMapOne: advancedRouteOne,
