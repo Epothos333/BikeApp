@@ -54,7 +54,7 @@ function advancedRouteOne() {
 		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(aDV_one);
+	new google.maps.BicyclingLayer().setMap(aDV_one);
 
 	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
 		center: {
@@ -64,7 +64,7 @@ function advancedRouteOne() {
 		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(aDV_two);
+	new google.maps.BicyclingLayer().setMap(aDV_two);
 
 	var aDV_three = new google.maps.Map(document.getElementById('ADVmapThree'), {
 		center: {
@@ -74,7 +74,7 @@ function advancedRouteOne() {
 		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(aDV_three);
+	new google.maps.BicyclingLayer().setMap(aDV_three);
 
 	var lineOne = new google.maps.Polyline(
 		{
@@ -205,7 +205,7 @@ function intermediateRouteOne() {
 		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(iNT_one);
+	new google.maps.BicyclingLayer().setMap(iNT_one);
 
 	var iNT_two = new google.maps.Map(document.getElementById('INTmapTwo'), {
 		center: {
@@ -215,7 +215,7 @@ function intermediateRouteOne() {
 		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(iNT_two);
+	new google.maps.BicyclingLayer().setMap(iNT_two);
 
 	var iNT_three = new google.maps.Map(document.getElementById('INTmapThree'), {
 		center: {
@@ -225,7 +225,7 @@ function intermediateRouteOne() {
 		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(iNT_three);
+	new google.maps.BicyclingLayer().setMap(iNT_three);
 
 	var lineOne = new google.maps.Polyline(
 		{
@@ -362,7 +362,7 @@ function easyRouteOne() {
 		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(eZ_one);
+	new google.maps.BicyclingLayer().setMap(eZ_one);
 
 	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
 		center: {
@@ -372,7 +372,7 @@ function easyRouteOne() {
 		zoom: 13,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-	bikeLayer.setMap(eZ_two);
+	new google.maps.BicyclingLayer().setMap(eZ_two);
 
 	var eZ_three = new google.maps.Map(document.getElementById('EZmapThree'), {
 		center: {
@@ -382,7 +382,7 @@ function easyRouteOne() {
 		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-  	bikeLayer.setMap(eZ_three);	
+  	new google.maps.BicyclingLayer().setMap(eZ_three);	
 
 	var lineOne = new google.maps.Polyline({
 		    path: [
