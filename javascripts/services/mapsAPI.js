@@ -1,129 +1,28 @@
 app.factory('mapData', function(){
 
 		var goldStar = {
-	    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-	    fillColor: 'yellow',
-	    fillOpacity: 0.6,
-	    scale: .07,
-	    strokeColor: 'gold',
-	    strokeWeight: 2
+
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 7,
+				strokeColor: '#FF0000',
+		      	strokeOpacity: 0.8,
+		      	strokeWeight: 2,
+		      	fillColor: '#FF0000',
+		      	fillOpacity: 0.35
 	    };
-
-function initMap() {
-	var mapTwo = new google.maps.Map(document.getElementById('themap'), {
-		center: {
-			lat: 41.3404308730309, 
-			lng: -83.05515061325411
-		},
-		zoom: 11
-	});
-
-	var map = new google.maps.Map(document.getElementById('map'), {
+	    var bikeLayer = new google.maps.BicyclingLayer();
+function advancedRouteOne() {
+	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
-		 mapTypeId: google.maps.MapTypeId.TERRAIN
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRIAN
 	});
-		//Class for creating markers
-		var CreateMark = function(latit, lngit, title) {
-			var vm = this;
-			vm.marker = new google.maps.Marker({
-				position: {
-					lat: latit,
-					lng: lngit
-				},
-				icon: goldStar,
-				map: map,
-				title: title
-			});
-		};
+	bikeLayer.setMap(aDV_one);
 
-	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
-	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward'),
-	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby '),
-	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress'),
-	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward'),
-	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown'),
-	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
-	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
-
-
-		var bikeLayer = new google.maps.BicyclingLayer();
-  		bikeLayer.setMap(map);	
-		  var line = new google.maps.Polyline({
-		    path: [
-		    {
-		    	lat: 42.32900,
-		     	lng: -83.050639
-		     },
-		     {
-		     	lat: 42.369977,
-		     	 lng: -83.075277
-		     },
-		     {
-		     	lat: 42.371626,
-		     	lng: -83.071844
-		     },
-		     {
-		     	lat: 42.340800,
-		     	lng: -83.050214
-		     },
-		     {
-		     	lat: 42.338136, 
-		     	lng: -83.057252
-		     }],
-		    geodesic: true,
-		    strokeColor: '#FF0000',
-		    strokeOpacity: 1.0,
-		    strokeWeight: 2
-     });		    
-		    line.setMap(map);
-
-		var lineTwo = new google.maps.Polyline(
-		{
-		    path: [
-		    	{
-		    		lat: 42.333181, 
-		    		lng: -83.044203
-		    	},
-		    	{
-		    		lat: 42.350501, 
-		    		lng: -83.004196
-		    	},
-		    	{
-		    		lat: 42.355666,
-		    	 	lng: -83.007591
-		    	 },
-		    	 {
-		    	 	lat: 42.369439, 
-		    	 	lng: -82.972243		 
-		    	 },
-		    	 {
-		    	 	lat: 42.404987, 
-		    	 	lng: -82.997672		    			    	   	 
-		    	 },{
-		    	 	lat: 42.334904, 
-		    	 	lng: -83.045468	    			    	   	 
-		    	 },{
-		    	 	lat: 42.334608, 
-		    	 	lng: -83.045335		    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.333329, 
-		    	 	lng: -83.044270	    			    	   	 
-		    	 }],
-		    geodesic: true,
-		    strokeColor: '#003366',
-		    strokeOpacity: 1.0,
-		    strokeWeight: 2
-   
-     });
-		    
-		    lineTwo.setMap(map); 
-		
-		var lineThree = new google.maps.Polyline(
+			var lineThree = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
@@ -169,9 +68,142 @@ function initMap() {
    
      });
 		    
-		    lineThree.setMap(map); 
+		    lineThree.setMap(aDV_one); 
+
+
+}
+
+
+function intermediateRouteOne() {
+	var iNT_one = new google.maps.Map(document.getElementById('INTmapOne'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRIAN
+	});
+	bikeLayer.setMap(iNT_one);
+
+		var lineTwo = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.333181, 
+		    		lng: -83.044203
+		    	},
+		    	{
+		    		lat: 42.350501, 
+		    		lng: -83.004196
+		    	},
+		    	{
+		    		lat: 42.355666,
+		    	 	lng: -83.007591
+		    	 },
+		    	 {
+		    	 	lat: 42.369439, 
+		    	 	lng: -82.972243		 
+		    	 },
+		    	 {
+		    	 	lat: 42.404987, 
+		    	 	lng: -82.997672		    			    	   	 
+		    	 },{
+		    	 	lat: 42.334904, 
+		    	 	lng: -83.045468	    			    	   	 
+		    	 },{
+		    	 	lat: 42.334608, 
+		    	 	lng: -83.045335		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.333329, 
+		    	 	lng: -83.044270	    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#003366',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		 lineTwo.setMap(iNT_one); 
+
+
+}
+
+function easyRouteOne() {
+
+
+
+	var eZ_one = new google.maps.Map(document.getElementById('EZmapOne'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 12,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+		//Class for creating markers
+		var CreateMark = function(latit, lngit, title) {
+		var vm = this;
+		vm.marker = new google.maps.Marker({
+			position: {
+					lat: latit,
+					lng: lngit
+				},
+			icon: goldStar,
+			map: eZ_one,
+			title: title
+		});
+	};
+
+		
+	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
+	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward'),
+	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby '),
+	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress'),
+	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward'),
+	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown'),
+	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
+
+
+
+  		bikeLayer.setMap(eZ_one);	
+		  var line = new google.maps.Polyline({
+		    path: [
+		    {
+		    	lat: 42.32900,
+		     	lng: -83.050639
+		     },
+		     {
+		     	lat: 42.369977,
+		     	 lng: -83.075277
+		     },
+		     {
+		     	lat: 42.371626,
+		     	lng: -83.071844
+		     },
+		     {
+		     	lat: 42.340800,
+		     	lng: -83.050214
+		     },
+		     {
+		     	lat: 42.338136, 
+		     	lng: -83.057252
+		     }],
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+     });		    
+		    line.setMap(eZ_one);
 		}
-		    return initMap
+
+
+		    return {
+		    	easyMapOne: easyRouteOne,
+		    	intMapOne: intermediateRouteOne,
+		    	advMapOne: advancedRouteOne
+		    }
   });
 
 
