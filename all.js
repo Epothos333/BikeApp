@@ -34,6 +34,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -53,13 +60,6 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
@@ -103,145 +103,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('googleMap', function() {
-	return {
-		restrict: 'E',
-		replace: 'false',
-		controller: function(mapData, $scope) {
-			return mapData;
-		},
-		transclude: true,
-		templateUrl: 'Views/templates/mapTemplate.html'
-	}
-})
-app.directive('advClass', function() {
-	return {
-		template: "<button id='btnadv1'>Advanced Route One</button><button id='btnadv2'>Advanced Route Two</button><button id='btnadv3'>Advanced Route Three</button>",
-		link: function(){
-			var map1 = document.getElementById('ADVmapOne');
-			var map2 = document.getElementById('ADVmapTwo');
-			var map3 = document.getElementById('ADVmapThree');						
-			var btn1 = document.getElementById('btnadv1');
-			var btn2 = document.getElementById('btnadv2');
-			var btn3 = document.getElementById('btnadv3');						
-			btnadv1.addEventListener("click", btn1Show);
-			btnadv2.addEventListener("click", btn2Show);
-			btnadv3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}				
-		}
-
-	}
-})
-app.directive('toggleClass', function() {
-	return {
-		template: "<button id='btn1'>Easy Route One</button><button id='btn2'>Easy Route Two</button><button id='btn3'>Easy Route 3</button>",
-		link: function(){
-			var map1 = document.getElementById('EZmapOne');
-			var map2 = document.getElementById('EZmapTwo');
-			var map3 = document.getElementById('EZmapThree');						
-			var btn1 = document.getElementById('btn1');
-			var btn2 = document.getElementById('btn2');
-			var btn3 = document.getElementById('btn3');						
-			btn1.addEventListener("click", btn1Show);
-			btn2.addEventListener("click", btn2Show);
-			btn3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}
-	}
-}
-})
-app.directive('intClass', function() {
-	return {
-		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
-		link: function(){
-			var map1 = document.getElementById('INTmapOne');
-			var map2 = document.getElementById('INTmapTwo');
-			var map3 = document.getElementById('INTmapThree');						
-			var btn1 = document.getElementById('btnint1');
-			var btn2 = document.getElementById('btnint2');
-			var btn3 = document.getElementById('btnint3');						
-			btnint1.addEventListener("click", btn1Show);
-			btnint2.addEventListener("click", btn2Show);
-			btnint3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}				
-		}
-
-	}
-})
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -371,40 +232,13 @@ function advancedRouteOne() {
 		{
 		    path: [
 		    	{
-		    		lat: 42.354928, 
-		    		lng: -82.992002
+		    		lat:42.328666,
+		    		lng: -83.044576
 		    	},
 		    	{
-		    		lat: 42.339090,
-		    	 	lng: -83.030374
-		    	},
-		    	{
-		    		lat: 42.347390,
-		    	 	lng: -83.035791
-		    	 },
-		    	 {
-		    	 	lat: 42.349377, 
-		    	 	lng: -83.034366		 
-		    	 },
-		    	 {
-		    	 	lat: 42.377727, 
-		    	 	lng: -83.053509		 
-		    	 },
-		    	 {
-		    	 	lat: 42.366935, 
-		    	 	lng: -83.082565	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.361124, 
-		    	 	lng: -83.083826	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.325903, 
-		    	 	lng: -83.062717		    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.354928, 
-		    		lng: -82.992002    			    	   	 
+		    		lat: 42.475901, 
+		    	 	lng: -83.149433 
+		    	  			    	   	 
 		    	 }],
 		    geodesic: true,
 		    strokeColor: '#ffd700',
@@ -418,40 +252,44 @@ function advancedRouteOne() {
 		{
 		    path: [
 		    	{
-		    		lat: 42.354928, 
-		    		lng: -82.992002
+		    		lat: 42.334768, 
+		    		lng: -82.995750
 		    	},
 		    	{
-		    		lat: 42.339090,
-		    	 	lng: -83.030374
+		    		lat:42.391148,
+		    	 	lng:  -82.893182
 		    	},
+		    	/*{
+		    		lat:42.371021,
+		    	 	lng:  -82.949260
+		    	},*/
 		    	{
-		    		lat: 42.347390,
-		    	 	lng: -83.035791
+		    		lat: 42.407058, 
+		    	 	lng: -82.886745
 		    	 },
 		    	 {
-		    	 	lat: 42.349377, 
-		    	 	lng: -83.034366		 
+		    	 	lat: 42.417260, 
+		    	 	lng: -82.911378 	 
 		    	 },
 		    	 {
-		    	 	lat: 42.377727, 
-		    	 	lng: -83.053509		 
+		    	 	lat: 42.412444, 
+		    	 	lng: -82.912923		 
 		    	 },
 		    	 {
-		    	 	lat: 42.366935, 
-		    	 	lng: -83.082565	    			    	   	 
+		    	 	lat: 42.389437, 
+		    	 	lng: -82.976181    			    	   	 
 		    	 },
 		    	 {
-		    	 	lat: 42.361124, 
-		    	 	lng: -83.083826	    			    	   	 
+		    	 	lat: 42.373079, 
+		    	 	lng: -83.018753    			    	   	 
 		    	 },
 		    	 {
-		    	 	lat: 42.325903, 
-		    	 	lng: -83.062717		    			    	   	 
+		    	 	lat: 42.345545, 
+		    	 	lng: -83.000750	    			    	   	 
 		    	 },
 		    	 {
-		    	 	lat: 42.354928, 
-		    		lng: -82.992002    			    	   	 
+		    	 	lat: 42.334768, 
+		    		lng: -82.995750    			    	   	 
 		    	 }],
 		    geodesic: true,
 		    strokeColor: '#ffd700',
@@ -469,7 +307,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_one);
@@ -479,7 +317,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_two);
@@ -489,7 +327,7 @@ function intermediateRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_three);
@@ -626,7 +464,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_one);
@@ -636,7 +474,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 13,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(eZ_two);
@@ -646,7 +484,7 @@ function easyRouteOne() {
 			lat: 42.3404308730309, 
 			lng: -83.05515061325411
 		},
-		zoom: 12,
+		zoom: 14,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
   	bikeLayer.setMap(eZ_three);	
@@ -788,3 +626,131 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('advClass', function() {
+	return {
+		template: "<button id='btnadv1'>Advanced Route One</button><button id='btnadv2'>Advanced Route Two</button><button id='btnadv3'>Advanced Route Three</button>",
+		link: function(){
+			var map1 = document.getElementById('ADVmapOne');
+			var map2 = document.getElementById('ADVmapTwo');
+			var map3 = document.getElementById('ADVmapThree');						
+			var btn1 = document.getElementById('btnadv1');
+			var btn2 = document.getElementById('btnadv2');
+			var btn3 = document.getElementById('btnadv3');						
+			btnadv1.addEventListener("click", btn1Show);
+			btnadv2.addEventListener("click", btn2Show);
+			btnadv3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}				
+		}
+
+	}
+})
+app.directive('toggleClass', function() {
+	return {
+		template: "<button id='btn1'>Easy Route One</button><button id='btn2'>Easy Route Two</button><button id='btn3'>Easy Route 3</button>",
+		link: function(){
+			var map1 = document.getElementById('EZmapOne');
+			var map2 = document.getElementById('EZmapTwo');
+			var map3 = document.getElementById('EZmapThree');						
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var btn3 = document.getElementById('btn3');						
+			btn1.addEventListener("click", btn1Show);
+			btn2.addEventListener("click", btn2Show);
+			btn3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}
+	}
+}
+})
+app.directive('intClass', function() {
+	return {
+		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
+		link: function(element){
+			var map1 = document.getElementById('INTmapOne');
+			var map2 = document.getElementById('INTmapTwo');
+			var map3 = document.getElementById('INTmapThree');						
+			var btn1 = document.getElementById('btnint1');
+			var btn2 = document.getElementById('btnint2');
+			var btn3 = document.getElementById('btnint3');						
+			btnint1.addEventListener("click", btn1Show);
+			btnint2.addEventListener("click", btn2Show);
+			btnint3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}				
+		}
+
+	}
+})
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});

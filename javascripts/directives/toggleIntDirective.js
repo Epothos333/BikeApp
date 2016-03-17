@@ -1,7 +1,7 @@
 app.directive('intClass', function() {
 	return {
 		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
-		link: function(){
+		link: function(element){
 			var map1 = document.getElementById('INTmapOne');
 			var map2 = document.getElementById('INTmapTwo');
 			var map3 = document.getElementById('INTmapThree');						
