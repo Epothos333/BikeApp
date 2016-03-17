@@ -12,19 +12,19 @@ app.directive('intClass', function() {
 			btnint2.addEventListener("click", btn2Show);
 			btnint3.addEventListener("click", btn3Show);						
 			function btn1Show(){
-				map2.classList.add('hide');	
-				map3.classList.add('hide');
-				map1.classList.remove('hide');				
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
 			}	
 			function btn2Show(){
-				map1.classList.add('hide');	
-				map3.classList.add('hide');	
-				map2.classList.remove('hide');			
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
 			}	
 			function btn3Show(){
-				map2.classList.add('hide');	
-				map1.classList.add('hide');		
-				map3.classList.remove('hide');		
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
 			}				
 		}
 
