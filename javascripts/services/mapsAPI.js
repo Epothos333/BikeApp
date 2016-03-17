@@ -45,8 +45,6 @@ app.factory('mapData', function(){
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Broadway');
 }
-
-
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
@@ -57,6 +55,120 @@ function advancedRouteOne() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(aDV_one);
+
+	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(aDV_two);
+
+	var aDV_three = new google.maps.Map(document.getElementById('ADVmapThree'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(aDV_three);
+
+	var lineOne = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.354928, 
+		    		lng: -82.992002
+		    	},
+		    	{
+		    		lat: 42.339090,
+		    	 	lng: -83.030374
+		    	},
+		    	{
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
+		    	 },
+		    	 {
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
+		    	 },
+		    	 {
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
+		    	 },
+		    	 {
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#ffd700',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		    lineOne.setMap(aDV_one);
+
+	var lineTwo = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.354928, 
+		    		lng: -82.992002
+		    	},
+		    	{
+		    		lat: 42.339090,
+		    	 	lng: -83.030374
+		    	},
+		    	{
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
+		    	 },
+		    	 {
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
+		    	 },
+		    	 {
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
+		    	 },
+		    	 {
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#ffd700',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		    lineTwo.setMap(aDV_two);
 
 	var lineThree = new google.maps.Polyline(
 		{
@@ -103,7 +215,7 @@ function advancedRouteOne() {
 		    strokeWeight: 2
    
      });
-		    lineThree.setMap(aDV_one);
+		    lineThree.setMap(aDV_three);
 }
 
 
@@ -117,7 +229,28 @@ function intermediateRouteOne() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_one);
-	var lineTwo = new google.maps.Polyline(
+
+	var iNT_two = new google.maps.Map(document.getElementById('INTmapTwo'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(iNT_two);
+
+	var iNT_three = new google.maps.Map(document.getElementById('INTmapThree'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(iNT_three);
+
+	var lineOne = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
@@ -139,10 +272,12 @@ function intermediateRouteOne() {
 		    	 {
 		    	 	lat: 42.404987, 
 		    	 	lng: -82.997672		    			    	   	 
-		    	 },{
+		    	 },
+		    	 {
 		    	 	lat: 42.334904, 
 		    	 	lng: -83.045468	    			    	   	 
-		    	 },{
+		    	 },
+		    	 {
 		    	 	lat: 42.334608, 
 		    	 	lng: -83.045335		    			    	   	 
 		    	 },
@@ -157,11 +292,9 @@ function intermediateRouteOne() {
    
      });
 
-		 lineTwo.setMap(iNT_one); 
+		 lineOne.setMap(iNT_one); 
 
-		  bikeLayer.setMap(iNT_one);
-
-		var lineThree = new google.maps.Polyline(
+		var lineTwo = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
@@ -200,11 +333,47 @@ function intermediateRouteOne() {
 		    strokeWeight: 2
    
      });
-		 lineThree.setMap(iNT_one); 
-
-
-
-
+		 lineTwo.setMap(iNT_two); 
+var lineThree = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.332201, 
+		    		lng: -83.046842
+		    	},
+		    	{
+		    		lat: 42.331213, 
+		    		lng: -83.111288
+		    	},
+		    	{
+		    		lat: 42.309829, 
+		    	 	lng: -83.096098
+		    	 },
+		    	 {
+		    	 	lat: 42.322469, 
+		    	 	lng: -83.066974	 
+		    	 },
+		    	 {
+		    	 	lat: 42.345196, 
+		    	 	lng: -83.080625	    			    	   	 
+		    	 },{
+		    	 	lat: 42.333698, 
+		    	 	lng: -83.052270    			    	   	 
+		    	 },{
+		    	 	lat: 42.334237,
+		    	 	lng:  -83.048665		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.332201, 
+		    	 	lng: -83.046842    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#003366',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		 lineThree.setMap(iNT_three); 
 }
 
 function easyRouteOne() {
