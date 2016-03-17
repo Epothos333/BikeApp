@@ -12,22 +12,23 @@ app.config(['$routeProvider',
         controller:'bikeRoutes'
         });
     $routeProvider.when('/bikeMap', {
-        templateUrl: '/Views/bikeMap.html',
-        controller: 'mapController'
+        templateUrl: '/Views/bikeMap.html'
         });
     $routeProvider.when('/home', {
         templateUrl: '/Views/gettingStarted.html',
         controller: 'getStartCont'
         });
     $routeProvider.when('/beginner_Routes', {
-        templateUrl: '/Views/easyRoute.html'
+        templateUrl: '/Views/easyRoute.html',
+        controller: 'easyController'
         });
     $routeProvider.when('/intermediate_Routes', {
-        templateUrl: '/Views/intRoutes.html'
+        templateUrl: '/Views/intRoutes.html',
+        controller: 'intermediateController'
         });
     $routeProvider.when('/advanced_Routes', {
         templateUrl: '/Views/advRoutes.html',
-        controller: 'mapControllerTwo'
+        controller: 'advancedController'
         });
   }]);
 
