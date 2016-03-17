@@ -4,9 +4,8 @@ app.directive('toggleClass', function() {
 		link: function($scope, element, attr){
 			var fds = document.getElementById('EZmapOne');
 			var btn = document.getElementById('butts');
-			btn.addEventListener("click", hideClass);
+			btn.bind("click", hideClass);
 			function hideShowClass(){
-				if()
 				fds.classList.add('hide');					
 			}				
 		}

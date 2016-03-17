@@ -34,13 +34,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -60,6 +53,13 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
@@ -138,6 +138,20 @@ app.directive('googleMap', function() {
 		},
 		transclude: true,
 		templateUrl: 'Views/templates/mapTemplate.html'
+	}
+})
+app.directive('toggleClass', function() {
+	return {
+		template: "<button id='butts'>Easy Route One</button>",
+		link: function($scope, element, attr){
+			var fds = document.getElementById('EZmapOne');
+			var btn = document.getElementById('butts');
+			btn.bind("click", hideClass);
+			function hideShowClass(){
+				fds.classList.add('hide');					
+			}				
+		}
+
 	}
 })
 app.directive('weatherDays', function(){
