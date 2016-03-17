@@ -29,7 +29,8 @@
 }
 #EZmapone,
 #INTmapOne,
-#ADVmapOne {
+#ADVmapOne,
+#rentalMap {
   height: 500px;
   width: 750px;
   background-color: #05668d;
@@ -143,7 +144,7 @@ body {
   background-color: #00a896;
 }
 /* Pop out window CSS */
-.modal {
+#rentalModal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -155,12 +156,12 @@ body {
   background-color: #fff;
   background-color: rgba(0,0,0,0.4);
 }
-.modal-content {
+#contentModal {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 .close {
   color: #aaa;

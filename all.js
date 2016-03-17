@@ -32,23 +32,15 @@ app.config(['$routeProvider',
         });
   }]);
 
-var modal = document.getElementById('myModal');
-var btn = document.getElementById('myBtn');
-var span = document.getElementsByClassName('close')[0];
-
-btn.onclick = function() {
-    modal.style.display = 'block';
-}
-span.onclick = function() {
-    modal.style.display = 'none';
-}
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -68,14 +60,7 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
 			var list = response.data,
@@ -86,6 +71,24 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 			 temps= list.main.temp.toFixed(1),
 			 weather= list.weather[0].description,
 			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementsByClassName('close')[0];
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    console.log('hello');
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
 
 			return {
 				temp: temps,
@@ -159,6 +162,47 @@ app.factory('mapData', function(){
 
 	    };
 	    var bikeLayer = new google.maps.BicyclingLayer();
+
+	    function rentBike() {
+	    	var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+			center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+			},
+			zoom: 15,
+			mapTypeId: google.maps.MapTypeId.TERRIAN
+	});
+
+		bikeLayer.setMap(bikeMap);
+
+				//Class for creating markers
+		var CreateMark = function(latit, lngit, title) {
+		var vm = this;
+		vm.marker = new google.maps.Marker({
+			position: {
+					lat: latit,
+					lng: lngit
+				},
+
+			icon: redCircle,
+			map: bikeMap,
+			title: title
+		});
+	};
+
+		
+	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
+	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
+	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
+	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
+	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
+	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
+	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Boradway');
+
+
+
+	    }
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
@@ -289,31 +333,6 @@ function easyRouteOne() {
 		zoom: 12,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-		//Class for creating markers
-		var CreateMark = function(latit, lngit, title) {
-		var vm = this;
-		vm.marker = new google.maps.Marker({
-			position: {
-					lat: latit,
-					lng: lngit
-				},
-
-			icon: redCircle,
-			map: eZ_one,
-			title: title
-		});
-	};
-
-		
-	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
-	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
-	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
-	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
-	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
-	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
-	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
-	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Boradway');
-
 
 
   		bikeLayer.setMap(eZ_one);	
@@ -351,7 +370,8 @@ function easyRouteOne() {
 		    return {
 		    	easyMapOne: easyRouteOne,
 		    	intMapOne: intermediateRouteOne,
-		    	advMapOne: advancedRouteOne
+		    	advMapOne: advancedRouteOne,
+		    	rentBike: rentBike
 		    }
   });
 

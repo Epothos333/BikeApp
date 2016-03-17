@@ -1,4 +1,4 @@
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', function($http, weatherService, $scope, $location){
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
 	weatherService.then(function success(response){
 		$scope.printWeather = function() {
 			var list = response.data,
@@ -9,6 +9,24 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 			 temps= list.main.temp.toFixed(1),
 			 weather= list.weather[0].description,
 			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementsByClassName('close')[0];
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    console.log('hello');
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
 
 			return {
 				temp: temps,
