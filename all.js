@@ -34,6 +34,75 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 // app.directive('diffBtn', function() {
 // 	return {
 // 			restrict: 'E',
@@ -79,6 +148,7 @@ app.directive('toggleClass', function() {
 			var btn = document.getElementById('butts');
 			btn.addEventListener("click", hideClass);
 			function hideShowClass(){
+
 				fds.classList.add('hide');					
 			}				
 		}
@@ -392,34 +462,34 @@ function intermediateRouteOne() {
 		{
 		    path: [
 		    	{
-		    		lat: 42.332201, 
-		    		lng: -83.046842
+		    		lat: 42.327492,  
+		    		lng: -83.044356
 		    	},
 		    	{
-		    		lat: 42.331213, 
-		    		lng: -83.111288
+		    		lat: 42.361963, 
+		    		lng: -83.065015
 		    	},
 		    	{
-		    		lat: 42.309829, 
-		    	 	lng: -83.096098
+		    		lat: 42.362978,  
+		    	 	lng: -83.062741
 		    	 },
 		    	 {
-		    	 	lat: 42.322469, 
-		    	 	lng: -83.066974	 
+		    	 	lat: 42.353844, 
+		    	 	lng: -83.056625	 
 		    	 },
 		    	 {
-		    	 	lat: 42.345196, 
-		    	 	lng: -83.080625	    			    	   	 
+		    	 	lat: 42.354685, 
+		    	 	lng: -83.053643     			    	   	 
 		    	 },{
-		    	 	lat: 42.333698, 
-		    	 	lng: -83.052270    			    	   	 
+		    	 	lat: 42.349582, 
+		    	 	lng: -83.052320   			    	   	 
 		    	 },{
-		    	 	lat: 42.334237,
-		    	 	lng:  -83.048665		    			    	   	 
+		    	 	lat: 42.347410, 
+		    	 	lng: -83.057899	    			    	   	 
 		    	 },
 		    	 {
-		    	 	lat: 42.332201, 
-		    	 	lng: -83.046842    			    	   	 
+		    	 	lat: 42.327492, 
+		    	 	lng: -83.044356   			    	   	 
 		    	 }],
 		    geodesic: true,
 		    strokeColor: '#003366',
@@ -638,71 +708,3 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
