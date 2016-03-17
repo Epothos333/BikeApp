@@ -1,7 +1,6 @@
 app.factory('mapData', function(){
 
-		var redCircle = {
-
+	var redCircle = {
 				path: google.maps.SymbolPath.CIRCLE,
 				scale: 7,
 				strokeColor: '#FF0000',
@@ -9,39 +8,35 @@ app.factory('mapData', function(){
 		      	strokeWeight: 2,
 		      	fillColor: '#FF0000',
 		      	fillOpacity: 0.35
+};
+	var bikeLayer = new google.maps.BicyclingLayer();
 
-	    };
-	    var bikeLayer = new google.maps.BicyclingLayer();
 
-	    function rentBike() {
-	    	var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+	// Rental Bikes Map
+	function rentBike() {
+		var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
 			lat: 42.330984, 
 			lng: -83.043208
-			},
+				},
 			zoom: 15,
-			mapTypeId: google.maps.MapTypeId.TERRIAN
-	});
-
+			mapTypeId: google.maps.MapTypeId.TERRAIN
+			});
 		bikeLayer.setMap(bikeMap);
-
-				//Class for creating markers
+		//Class for creating markers
 		var CreateMark = function(latit, lngit, title) {
 		var vm = this;
 		vm.marker = new google.maps.Marker({
 			position: {
-					lat: latit,
-					lng: lngit
-				},
-
+				lat: latit,
+				lng: lngit
+					},
 			icon: redCircle,
 			map: bikeMap,
 			title: title
-		});
-	};
-
-		
-	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
+				});
+			};
+		var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
 	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
 	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
 	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
@@ -49,10 +44,9 @@ app.factory('mapData', function(){
 	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Broadway');
+}
 
 
-
-	    }
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
@@ -60,11 +54,11 @@ function advancedRouteOne() {
 			lng: -83.05515061325411
 		},
 		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRIAN
+		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(aDV_one);
 
-			var lineThree = new google.maps.Polyline(
+	var lineThree = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
@@ -109,10 +103,7 @@ function advancedRouteOne() {
 		    strokeWeight: 2
    
      });
-		    
-		    lineThree.setMap(aDV_one); 
-
-
+		    lineThree.setMap(aDV_one);
 }
 
 
@@ -123,11 +114,10 @@ function intermediateRouteOne() {
 			lng: -83.05515061325411
 		},
 		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRIAN
+		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	bikeLayer.setMap(iNT_one);
-
-		var lineTwo = new google.maps.Polyline(
+	var lineTwo = new google.maps.Polyline(
 		{
 		    path: [
 		    	{
@@ -166,6 +156,7 @@ function intermediateRouteOne() {
 		    strokeWeight: 2
    
      });
+
 		 lineTwo.setMap(iNT_one); 
 
 		  bikeLayer.setMap(iNT_one);
@@ -213,6 +204,7 @@ function intermediateRouteOne() {
 
 
 
+
 }
 
 function easyRouteOne() {
@@ -224,8 +216,29 @@ function easyRouteOne() {
 		zoom: 12,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-  		bikeLayer.setMap(eZ_one);	
-		  var line = new google.maps.Polyline({
+	bikeLayer.setMap(eZ_one);
+
+	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 12,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	bikeLayer.setMap(eZ_two);
+
+	var eZ_three = new google.maps.Map(document.getElementById('EZmapThree'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 12,
+		 mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+  	bikeLayer.setMap(eZ_three);	
+
+	var lineOne = new google.maps.Polyline({
 		    path: [
 		    {
 		    	lat: 42.332210, 
@@ -272,11 +285,9 @@ function easyRouteOne() {
 		    strokeOpacity: 1.0,
 		    strokeWeight: 2
      });		    
-		    line.setMap(eZ_one);
+	lineOne.setMap(eZ_one);
 
-
-		bikeLayer.setMap(eZ_one);	
-		  var line2 = new google.maps.Polyline({
+	var lineTwo = new google.maps.Polyline({
 		    path: [
 		    {
 		    	lat: 42.329595, 
@@ -304,11 +315,9 @@ function easyRouteOne() {
 		    strokeOpacity: 1.0,
 		    strokeWeight: 2
      });		    
-		    line2.setMap(eZ_one);
+	lineTwo.setMap(eZ_two);
 
-
-		bikeLayer.setMap(eZ_one);	
-		  var line3 = new google.maps.Polyline({
+	var lineThree = new google.maps.Polyline({
 		    path: [
 		    {
 		    	lat: 42.336499, 
@@ -340,17 +349,15 @@ function easyRouteOne() {
 		    strokeOpacity: 1.0,
 		    strokeWeight: 2
      });		    
-		    line3.setMap(eZ_one);
-		}
-
-	
+	lineThree.setMap(eZ_three);
+}
 		    return {
 		    	easyMapOne: easyRouteOne,
 		    	intMapOne: intermediateRouteOne,
 		    	advMapOne: advancedRouteOne,
 		    	rentBike: rentBike
 		    }
-  });
+});
 
 
 
