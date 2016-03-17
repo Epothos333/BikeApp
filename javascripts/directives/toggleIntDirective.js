@@ -12,6 +12,7 @@ app.directive('intClass', function() {
 			btnint2.addEventListener("click", btn2Show);
 			btnint3.addEventListener("click", btn3Show);						
 			function btn1Show(){
+<<<<<<< HEAD
 				map1.style.display = '';
 				map2.style.display = 'none';
 				map3.style.display = 'none';
@@ -28,6 +29,21 @@ app.directive('intClass', function() {
 				map2.style.display = 'none';
 				map3.style.display = '';
 				console.log(element);	
+=======
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+>>>>>>> 97002d23653f1d5690fcb8713c65d8a52ecf2d23
 			}				
 		}
 
