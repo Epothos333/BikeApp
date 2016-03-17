@@ -1,6 +1,6 @@
 app.factory('mapData', function(){
 
-		var goldStar = {
+		var redCircle = {
 
 				path: google.maps.SymbolPath.CIRCLE,
 				scale: 7,
@@ -8,7 +8,7 @@ app.factory('mapData', function(){
 		      	strokeOpacity: 0.8,
 		      	strokeWeight: 2,
 		      	fillColor: '#FF0000',
-		      	fillOpacity: 0.35,
+		      	fillOpacity: 0.35
 
 	    };
 function map2() {
@@ -41,20 +41,20 @@ function map1() {
 					lat: latit,
 					lng: lngit
 				},
-				icon: goldStar,
+				icon: redCircle,
 				map: map,
 				title: title
 			});
 		};
 
 	    var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
-	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Bike Rental Station at 611 Woodward'),
-	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Bike Rental Station at 730 Shelby '),
-	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Bike Rental Station at 160 E Congress'),
-	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Bike Rental Station at 1 Woodward'),
-	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Bike Rental Station at Greektown'),
-	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Bike Rental at 1528 Woodward'),
-	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Bike Rental at 1555 Boradway');
+	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
+	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
+	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
+	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
+	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
+	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Boradway');
 
 
 		var bikeLayer = new google.maps.BicyclingLayer();
