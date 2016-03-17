@@ -156,7 +156,55 @@ function intermediateRouteOne() {
 		    strokeWeight: 2
    
      });
-	lineTwo.setMap(iNT_one);
+
+		 lineTwo.setMap(iNT_one); 
+
+		  bikeLayer.setMap(iNT_one);
+
+		var lineThree = new google.maps.Polyline(
+		{
+		    path: [
+		    	{
+		    		lat: 42.332201, 
+		    		lng: -83.046842
+		    	},
+		    	{
+		    		lat: 42.331213, 
+		    		lng: -83.111288
+		    	},
+		    	{
+		    		lat: 42.309829, 
+		    	 	lng: -83.096098
+		    	 },
+		    	 {
+		    	 	lat: 42.322469, 
+		    	 	lng: -83.066974	 
+		    	 },
+		    	 {
+		    	 	lat: 42.345196, 
+		    	 	lng: -83.080625	    			    	   	 
+		    	 },{
+		    	 	lat: 42.333698, 
+		    	 	lng: -83.052270    			    	   	 
+		    	 },{
+		    	 	lat: 42.334237,
+		    	 	lng:  -83.048665		    			    	   	 
+		    	 },
+		    	 {
+		    	 	lat: 42.332201, 
+		    	 	lng: -83.046842    			    	   	 
+		    	 }],
+		    geodesic: true,
+		    strokeColor: '#003366',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+   
+     });
+		 lineThree.setMap(iNT_one); 
+
+
+
+
 }
 
 function easyRouteOne() {
