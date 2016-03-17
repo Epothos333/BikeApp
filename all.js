@@ -74,11 +74,10 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 			 	var modal = document.getElementById('rentalModal');
 				var btn = document.getElementById('toggleMe');
-				var span = document.getElementsByClassName('close')[0];
+				var span = document.getElementById('toggleOff');
 
 				btn.onclick = function() {
 				    modal.style.display = 'block';
-				    console.log('hello');
 				    return mapData.rentBike();
 				}
 				span.onclick = function() {
@@ -166,8 +165,8 @@ app.factory('mapData', function(){
 	    function rentBike() {
 	    	var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.330984, 
+			lng: -83.043208
 			},
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.TERRIAN
@@ -198,7 +197,7 @@ app.factory('mapData', function(){
 	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
 	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
-	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Boradway');
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Broadway');
 
 
 
@@ -322,9 +321,6 @@ function intermediateRouteOne() {
 }
 
 function easyRouteOne() {
-
-
-
 	var eZ_one = new google.maps.Map(document.getElementById('EZmapOne'), {
 		center: {
 			lat: 42.3404308730309, 
@@ -333,8 +329,6 @@ function easyRouteOne() {
 		zoom: 12,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
-
-
   		bikeLayer.setMap(eZ_one);	
 		  var line = new google.maps.Polyline({
 		    path: [
@@ -365,8 +359,6 @@ function easyRouteOne() {
      });		    
 		    line.setMap(eZ_one);
 		}
-
-
 		    return {
 		    	easyMapOne: easyRouteOne,
 		    	intMapOne: intermediateRouteOne,
