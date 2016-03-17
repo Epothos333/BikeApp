@@ -43,14 +43,13 @@
   padding: 0;
   font-family: bebas;
   width: 100%;
-  height: 100px;
 }
 #banner img {
   margin-bottom: 0.75em;
   padding-top: 0.75em;
-  width: 100px;
-  height: auto;
   display: block;
+  width: 150px;
+  height: auto;
 }
 #banner a {
   text-decoration: none;
@@ -67,6 +66,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: opensans;
+  background-color: #028090;
 }
 .directive {
   background-color: #00a896;
@@ -170,6 +170,9 @@ body {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
+#EZmapOne {
+  margin-bottom: 0.75em;
+}
 .close {
   color: #aaa;
   float: right;
@@ -181,6 +184,9 @@ body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+.hide {
+  display: none;
 }
 /* FOOTER */
 footer {
