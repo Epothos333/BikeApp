@@ -3,7 +3,7 @@ app.directive('googleMap', function() {
 		restrict: 'E',
 		replace: 'false',
 		controller: function(mapData, $scope) {
-			return mapData();
+			return mapData;
 		},
 		transclude: true,
 		templateUrl: 'Views/templates/mapTemplate.html'
