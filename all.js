@@ -38,13 +38,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -64,6 +57,13 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 	return routingData();
 }]);
@@ -250,6 +250,8 @@ app.factory('mapData', function(){
 		      	fillOpacity: 0.35
 };
 
+var bikeLayer = new google.maps.BicyclingLayer();
+
 
 	// Rental Bikes Map
 	function rentBike() {
@@ -276,13 +278,34 @@ app.factory('mapData', function(){
 				});
 			};
 		var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
-	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
+	     // zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
 	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
 	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
 	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
 	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Broadway');
+	      
+	     var zagSter1 = new google.maps.Marker({
+	     	position: {
+	     		lat: 42.330543,
+	     		lng: -83.032071
+	     	},
+	     	icon: redCircle,
+	     	map: bikeMap,
+	     	title: 'Zagster Rental Station at 611 Woodward'
+	     });
+
+	     var contentString = "will this work";
+
+	    var infowindow = new google.maps.InfoWindow({
+   			content: contentString
+  		});
+		zagSter1.addListener('click', function() {
+	    	infowindow.open(bikeMap, zagSter1);
+	  	});
+
+
 }
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
