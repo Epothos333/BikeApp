@@ -9,7 +9,6 @@ app.factory('mapData', function(){
 		      	fillColor: '#FF0000',
 		      	fillOpacity: 0.35
 };
-	var bikeLayer = new google.maps.BicyclingLayer();
 
 
 	// Rental Bikes Map

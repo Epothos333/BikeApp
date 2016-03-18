@@ -30,6 +30,10 @@ app.config(['$routeProvider',
         templateUrl: '/Views/advRoutes.html',
         controller: 'advancedController'
         });
+    $routeProvider.when('/create_Your_Own', {
+        templateUrl: '/Views/createRouteView.html',
+        controller: 'routeGenController'
+        });
   }]);
 
 

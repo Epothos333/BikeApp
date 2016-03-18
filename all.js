@@ -30,10 +30,21 @@ app.config(['$routeProvider',
         templateUrl: '/Views/advRoutes.html',
         controller: 'advancedController'
         });
+    $routeProvider.when('/create_Your_Own', {
+        templateUrl: '/Views/createRouteView.html',
+        controller: 'routeGenController'
+        });
   }]);
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -53,12 +64,8 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+	return routingData();
 }]);
 app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
 	weatherService.then(function success(response){
@@ -242,7 +249,6 @@ app.factory('mapData', function(){
 		      	fillColor: '#FF0000',
 		      	fillOpacity: 0.35
 };
-	var bikeLayer = new google.maps.BicyclingLayer();
 
 
 	// Rental Bikes Map
@@ -739,6 +745,27 @@ function easyRouteOne() {
 });
 
 
+
+
+
+		
+
+
+
+
+app.factory('routingData', function() {
+	function genMap() {
+	var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
+		center: {
+			lat: 42.3404308730309, 
+			lng: -83.05515061325411
+		},
+		zoom: 11,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+		});
+	}
+	return genMap;
+});
 
 
 
