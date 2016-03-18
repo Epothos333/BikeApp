@@ -35,7 +35,8 @@
 #INTmapTwo,
 #INTmapThree,
 #ADVmapTwo,
-#ADVmapThree {
+#ADVmapThree,
+#routeHere {
   height: 500px;
   width: 750px;
   background-color: #05668d;
