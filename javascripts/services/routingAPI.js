@@ -1,4 +1,4 @@
-app.factory('routingData', function() {
+app.factory('routingData', function($http) {
 	function genMap() {
 	var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 		center: {
@@ -9,7 +9,8 @@ app.factory('routingData', function() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 		});
 	}
-	return genMap;
+
+	return $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Boston,MA&destination=Concord,MA&waypoints=Charlestown,MA|Lexington,MA&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA');
 });
 
 
