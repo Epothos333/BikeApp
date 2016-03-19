@@ -1,4 +1,5 @@
 app.factory('routingData', function($http) {
+
 	function genMap() {
 	var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 		center: {
@@ -6,11 +7,19 @@ app.factory('routingData', function($http) {
 			lng: -83.05515061325411
 		},
 		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
+		mapTypeId: google.maps.MapTypeId.TERRAIN,
 		});
+
+	routeMap.setOptions({disableDoubleClickZoom: true });
+	routeMap.addListener("dblclick", function (e) {
+    var latLng = e.latLng;
+    console.log(latLng.lat());
+    console.log(latLng.lng());
+
+    });
 	}
 
-	return $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Boston,MA&destination=Concord,MA&waypoints=Charlestown,MA|Lexington,MA&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA');
+	return genMap;
 });
 
 

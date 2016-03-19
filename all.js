@@ -38,6 +38,208 @@ app.config(['$routeProvider',
 
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('advClass', function() {
+	return {
+		template: "<button id='btnadv1'>Advanced Route One</button><button id='btnadv2'>Advanced Route Two</button><button id='btnadv3'>Advanced Route Three</button>",
+		link: function(){
+			var map1 = document.getElementById('ADVmapOne');
+			var map2 = document.getElementById('ADVmapTwo');
+			var map3 = document.getElementById('ADVmapThree');						
+			var btn1 = document.getElementById('btnadv1');
+			var btn2 = document.getElementById('btnadv2');
+			var btn3 = document.getElementById('btnadv3');						
+			btnadv1.addEventListener("click", btn1Show);
+			btnadv2.addEventListener("click", btn2Show);
+			btnadv3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}				
+		}
+
+	}
+})
+app.directive('toggleClass', function() {
+	return {
+		template: "<button id='btn1'>Easy Route One</button><button id='btn2'>Easy Route Two</button><button id='btn3'>Easy Route 3</button>",
+		link: function(){
+			var map1 = document.getElementById('EZmapOne');
+			var map2 = document.getElementById('EZmapTwo');
+			var map3 = document.getElementById('EZmapThree');						
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var btn3 = document.getElementById('btn3');						
+			btn1.addEventListener("click", btn1Show);
+			btn2.addEventListener("click", btn2Show);
+			btn3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}
+	}
+}
+})
+app.directive('intClass', function() {
+	return {
+		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
+		link: function(element){
+			var map1 = document.getElementById('INTmapOne');
+			var map2 = document.getElementById('INTmapTwo');
+			var map3 = document.getElementById('INTmapThree');						
+			var btn1 = document.getElementById('btnint1');
+			var btn2 = document.getElementById('btnint2');
+			var btn3 = document.getElementById('btnint3');						
+			btnint1.addEventListener("click", btn1Show);
+			btnint2.addEventListener("click", btn2Show);
+			btnint3.addEventListener("click", btn3Show);						
+			function btn1Show(){
+				map2.style.display="none";	
+				map3.style.display="none";
+				map1.style.display="";				
+			}	
+			function btn2Show(){
+				map1.style.display="none";	
+				map3.style.display="none";	
+				map2.style.display="";			
+			}	
+			function btn3Show(){
+				map2.style.display="none";	
+				map1.style.display="none";		
+				map3.style.display="";		
+			}				
+		}
+
+	}
+})
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+
+	return routingData();
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -50,6 +252,8 @@ app.factory('mapData', function(){
 		      	fillOpacity: 0.35
 };
 
+var bikeLayer = new google.maps.BicyclingLayer();
+
 
 	// Rental Bikes Map
 	function rentBike() {
@@ -58,12 +262,17 @@ app.factory('mapData', function(){
 			lat: 42.330984, 
 			lng: -83.043208
 				},
-			zoom: 15,
+			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 			});
 		bikeLayer.setMap(bikeMap);
+		
 		//Class for creating markers
-		var CreateMark = function(latit, lngit, title) {
+		var CreateMark = function(latit, lngit, title, message) {
+		var contentString = message || 'yo';
+		var infowindow = new google.maps.InfoWindow({
+   			content: contentString
+  		});
 		var vm = this;
 		vm.marker = new google.maps.Marker({
 			position: {
@@ -74,16 +283,21 @@ app.factory('mapData', function(){
 			map: bikeMap,
 			title: title
 				});
+		vm.marker.addListener('click', function() {
+			infowindow.open(bikeMap, vm.marker);
+		});
 			};
-		var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House'),
-	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station at 611 Woodward'),
-	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station at 730 Shelby '),
-	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station at 160 E Congress'),
-	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station at 1 Woodward'),
-	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station at Greektown'),
-	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental at 1528 Woodward'),
-	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental at 1555 Broadway');
+
+		var detroitWH = new CreateMark(42.330543, -83.032071, 'Detroit Wheel House', 'The wheelhouse yo'),
+	     zagSter1 = new CreateMark(42.330640, -83.046645, 'Zagster Rental Station', '611 Woodward'),
+	     zagSter2 = new CreateMark(42.331165, -83.048808, 'Zagster Rental Station', '730 Shelby '),
+	     zagSter3 = new CreateMark(42.330984, -83.043208, 'Zagster Rental Station', '160 E Congress'),
+	     zagSter4 = new CreateMark(42.328996, -83.045499, 'Zagster Rental Station', '1 Woodward'),
+	     zagSter5 = new CreateMark(42.334633, -83.041486, 'Zagster Rental Station', 'Greektown'),
+	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental Station', '1528 Woodward'),
+	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental Station', ' Broadway');
 }
+
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
@@ -554,6 +768,7 @@ function easyRouteOne() {
 
 
 app.factory('routingData', function($http) {
+
 	function genMap() {
 	var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 		center: {
@@ -561,11 +776,19 @@ app.factory('routingData', function($http) {
 			lng: -83.05515061325411
 		},
 		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
+		mapTypeId: google.maps.MapTypeId.TERRAIN,
 		});
+
+	routeMap.setOptions({disableDoubleClickZoom: true });
+	routeMap.addListener("dblclick", function (e) {
+    var latLng = e.latLng;
+    console.log(latLng.lat());
+    console.log(latLng.lng());
+
+    });
 	}
 
-	return $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Boston,MA&destination=Concord,MA&waypoints=Charlestown,MA|Lexington,MA&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA');
+	return genMap;
 });
 
 
@@ -582,204 +805,3 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('advClass', function() {
-	return {
-		template: "<button id='btnadv1'>Advanced Route One</button><button id='btnadv2'>Advanced Route Two</button><button id='btnadv3'>Advanced Route Three</button>",
-		link: function(){
-			var map1 = document.getElementById('ADVmapOne');
-			var map2 = document.getElementById('ADVmapTwo');
-			var map3 = document.getElementById('ADVmapThree');						
-			var btn1 = document.getElementById('btnadv1');
-			var btn2 = document.getElementById('btnadv2');
-			var btn3 = document.getElementById('btnadv3');						
-			btnadv1.addEventListener("click", btn1Show);
-			btnadv2.addEventListener("click", btn2Show);
-			btnadv3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}				
-		}
-
-	}
-})
-app.directive('toggleClass', function() {
-	return {
-		template: "<button id='btn1'>Easy Route One</button><button id='btn2'>Easy Route Two</button><button id='btn3'>Easy Route 3</button>",
-		link: function(){
-			var map1 = document.getElementById('EZmapOne');
-			var map2 = document.getElementById('EZmapTwo');
-			var map3 = document.getElementById('EZmapThree');						
-			var btn1 = document.getElementById('btn1');
-			var btn2 = document.getElementById('btn2');
-			var btn3 = document.getElementById('btn3');						
-			btn1.addEventListener("click", btn1Show);
-			btn2.addEventListener("click", btn2Show);
-			btn3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}
-	}
-}
-})
-app.directive('intClass', function() {
-	return {
-		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
-		link: function(element){
-			var map1 = document.getElementById('INTmapOne');
-			var map2 = document.getElementById('INTmapTwo');
-			var map3 = document.getElementById('INTmapThree');						
-			var btn1 = document.getElementById('btnint1');
-			var btn2 = document.getElementById('btnint2');
-			var btn3 = document.getElementById('btnint3');						
-			btnint1.addEventListener("click", btn1Show);
-			btnint2.addEventListener("click", btn2Show);
-			btnint3.addEventListener("click", btn3Show);						
-			function btn1Show(){
-				map2.style.display="none";	
-				map3.style.display="none";
-				map1.style.display="";				
-			}	
-			function btn2Show(){
-				map1.style.display="none";	
-				map3.style.display="none";	
-				map2.style.display="";			
-			}	
-			function btn3Show(){
-				map2.style.display="none";	
-				map1.style.display="none";		
-				map3.style.display="";		
-			}				
-		}
-
-	}
-})
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
-	return routingData.then(function(response) {
-		console.log(response.data.routes);
-	});
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
