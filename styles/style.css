@@ -79,6 +79,12 @@ body {
   font-family: opensans;
   background-color: #028090;
 }
+#maindesc {
+  background: rgba(255,255,255,0.5);
+}
+#maindesc p {
+  text-align: center;
+}
 .directive {
   background-color: #00a896;
   text-align: center;

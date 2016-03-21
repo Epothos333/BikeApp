@@ -281,11 +281,11 @@ app.factory('mapData', function(){
 	};
 
 var bikeLayer = new google.maps.BicyclingLayer();
-
+	var bikeMap;
 
 	// Rental Bikes Map
 	function rentBike() {
-		var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+		bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
 			lat: 42.330984, 
 			lng: -83.043208
@@ -329,11 +329,12 @@ var bikeLayer = new google.maps.BicyclingLayer();
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.349115, 
+			lng:  -83.038386
 		},
-		zoom: 11,
+		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
+		
 	});
 	new google.maps.BicyclingLayer().setMap(aDV_one);
 
@@ -397,9 +398,9 @@ function advancedRouteOne() {
 		    		lng: -82.992002    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineOne.setMap(aDV_one);
@@ -417,9 +418,9 @@ function advancedRouteOne() {
 		    	  			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineTwo.setMap(aDV_two);
@@ -468,9 +469,9 @@ function advancedRouteOne() {
 		    		lng: -82.995750    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineThree.setMap(aDV_three);
@@ -544,9 +545,9 @@ function intermediateRouteOne() {
 		    	 	lng: -83.044270	    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 
@@ -586,9 +587,9 @@ function intermediateRouteOne() {
 		    	 	lng: -83.044356   			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		 lineTwo.setMap(iNT_two); 
@@ -626,9 +627,9 @@ var lineThree = new google.maps.Polyline(
 		    	 	lng: -83.046842    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		 lineThree.setMap(iNT_three); 
@@ -710,7 +711,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineOne.setMap(eZ_one);
 
@@ -740,7 +741,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineTwo.setMap(eZ_two);
 
@@ -774,7 +775,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineThree.setMap(eZ_three);
 }
@@ -839,52 +840,12 @@ app.factory('routingData', function() {
 }
 
 
-
-	// function Route() {
-
-	// 	var start = new google.maps.LatLng(points[0].position.lat(), points[0].position.lng());
-	// 	var end = new google.maps.LatLng(points[1].position.lat(), points[1].position.lng());
-	// 	removeMarkers();
-	// 	var request = {
-	// 		origin: start,
-	// 		destination: end,
-	// 		travelMode: google.maps.TravelMode.WALKING
-	// 	};
-	// 	directionsService.route(request, function(result, status) {
-	// 		if (status === google.maps.DirectionsStatus.OK) {
-	// 			directionsDisplay.setDirections(result);
-	// 		} else {
-	// 			alert('couldnt do it' + status);
-	// 		}
-	// 	})
-	// }
-
 	
 return {
 	genMap: genMap,
 	points: points,
 	waypoints: waypoints
 }
-	// var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
-	// 	center: {
-	// 		lat: 42.3404308730309, 
-	// 		lng: -83.05515061325411
-	// 	},
-	// 	zoom: 11,
-	// 	mapTypeId: google.maps.MapTypeId.TERRAIN,
-	// 	});
-
-
-
-	// console.log('1')
-	// console.log($http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA').then(function(x) {
-	// 	return ''
-	// }));
-
-	// $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA').then(function(response){
-	// 	console.log(response.data);
-	// });
-	// console.log('2')
 });
 
 
