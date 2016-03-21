@@ -10,7 +10,10 @@ app.directive('toggleClass', function() {
 			var btn3 = document.getElementById('btn3');						
 			btn1.addEventListener("click", btn1Show);
 			btn2.addEventListener("click", btn2Show);
-			btn3.addEventListener("click", btn3Show);						
+			btn3.addEventListener("click", btn3Show);
+
+			map2.style.display="none";
+			map3.style.display="none";						
 			function btn1Show(){
 				map2.style.display="none";	
 				map3.style.display="none";

@@ -6,7 +6,9 @@ app.factory('routingData', function() {
 		var waypoints = [];
 
 	function genMap() {
-		directionsDisplay = new google.maps.DirectionsRenderer();
+		directionsDisplay = new google.maps.DirectionsRenderer({
+			draggable: true
+		});
 		var properties = {
 			center: Center,
 			zoom: 15,
