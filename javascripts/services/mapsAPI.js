@@ -11,11 +11,11 @@ app.factory('mapData', function(){
 };
 
 var bikeLayer = new google.maps.BicyclingLayer();
-
+	var bikeMap;
 
 	// Rental Bikes Map
 	function rentBike() {
-		var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+		bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
 			lat: 42.330984, 
 			lng: -83.043208
@@ -59,11 +59,12 @@ var bikeLayer = new google.maps.BicyclingLayer();
 function advancedRouteOne() {
 	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.349115, 
+			lng:  -83.038386
 		},
-		zoom: 11,
+		zoom: 15,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
+		
 	});
 	new google.maps.BicyclingLayer().setMap(aDV_one);
 

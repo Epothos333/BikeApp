@@ -46,6 +46,7 @@ app.factory('routingData', function() {
 		var start = new google.maps.LatLng(points[0].position.lat(), points[0].position.lng());
 		var end = new google.maps.LatLng(points[1].position.lat(), points[1].position.lng());
 		removeMarkers();
+
 		var request = {
 			origin: start,
 			destination: end,
