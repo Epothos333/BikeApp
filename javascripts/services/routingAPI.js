@@ -41,7 +41,8 @@ app.factory('routingData', function() {
 
 	function Route() {
 		var start = new google.maps.LatLng(points[0].lat(), points[0].lng());
-		var end = new google.maps.LatLng(points[1].lat(), points[1].lng());
+		var mid = new google.maps.LatLng(points[1]).lat(), points[1].lng());
+		var end = new google.maps.LatLng(points[2].lat(), points[2].lng());
 		var request = {
 			origin: start,
 			destination: end,
