@@ -10,6 +10,7 @@ app.factory('routingData', function() {
 		directionsDisplay = new google.maps.DirectionsRenderer({
 			draggable: true
 		});
+		directionsDisplay.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
 			zoom: 15,
