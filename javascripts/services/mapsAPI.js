@@ -127,9 +127,9 @@ function advancedRouteOne() {
 		    		lng: -82.992002    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineOne.setMap(aDV_one);
@@ -147,9 +147,9 @@ function advancedRouteOne() {
 		    	  			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineTwo.setMap(aDV_two);
@@ -198,9 +198,9 @@ function advancedRouteOne() {
 		    		lng: -82.995750    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#ffd700',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		    lineThree.setMap(aDV_three);
@@ -274,9 +274,9 @@ function intermediateRouteOne() {
 		    	 	lng: -83.044270	    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 
@@ -316,9 +316,9 @@ function intermediateRouteOne() {
 		    	 	lng: -83.044356   			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		 lineTwo.setMap(iNT_two); 
@@ -356,9 +356,9 @@ var lineThree = new google.maps.Polyline(
 		    	 	lng: -83.046842    			    	   	 
 		    	 }],
 		    geodesic: true,
-		    strokeColor: '#003366',
+		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
    
      });
 		 lineThree.setMap(iNT_three); 
@@ -440,7 +440,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineOne.setMap(eZ_one);
 
@@ -470,7 +470,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineTwo.setMap(eZ_two);
 
@@ -504,7 +504,7 @@ function easyRouteOne() {
 		    geodesic: true,
 		    strokeColor: '#FF0000',
 		    strokeOpacity: 1.0,
-		    strokeWeight: 2
+		    strokeWeight: 5
      });		    
 	lineThree.setMap(eZ_three);
 }
