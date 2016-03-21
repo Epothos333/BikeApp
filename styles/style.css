@@ -95,7 +95,7 @@ body {
   padding-bottom: 20px;
   width: 20%;
   box-shadow: 1px 1px 3px #000;
-  position: relative;
+  float: left;
 }
 #weatherview h1 {
   font-size: 42px;
