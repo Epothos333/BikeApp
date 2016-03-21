@@ -6,7 +6,6 @@ app.factory('routingData', function() {
 		var directionsService = new google.maps.DirectionsService();
 		var routeMap;
 		var points = [];
-		var count = 0;
 
 	function genMap() {
 
@@ -23,26 +22,31 @@ app.factory('routingData', function() {
 			disableDoubleClickZoom: true 
 		});
 		routeMap.addListener("dblclick", function (e) {
-    	var latLng = e.latLng;
-    	points.push(latLng);
-    	console.log(latLng.lat());
-    	console.log(latLng.lng());
-    	count++
-    	if (count === 2) {
+    	var point = new google.maps.Marker({
+    		position: e.latLng,
+    		map: routeMap,
+    		title: 'Pointy'
+    	});
+    	points.push(point);
+
+    	if (points.length === 2) {
     		Route();
     	}
 
     });
+}
 
-
-
-
+	function removeMarkers() {
+		points.forEach(function(element) {
+			element.setMap(null);
+		})
 	}
 
 	function Route() {
-		var start = new google.maps.LatLng(points[0].lat(), points[0].lng());
-		var mid = new google.maps.LatLng(points[1]).lat(), points[1].lng());
-		var end = new google.maps.LatLng(points[2].lat(), points[2].lng());
+		var start = new google.maps.LatLng(points[0].position.lat(), points[0].position.lng());
+		var end = new google.maps.LatLng(points[1].position.lat(), points[1].position.lng());
+		removeMarkers();
+
 		var request = {
 			origin: start,
 			destination: end,
