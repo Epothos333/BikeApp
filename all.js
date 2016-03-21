@@ -38,6 +38,80 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+
+	return routingData();
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 // app.directive('diffBtn', function() {
 // 	return {
 // 			restrict: 'E',
@@ -166,80 +240,6 @@ app.directive('weatherDays', function(){
 		templateUrl: "Views/templates/weatherTemplate.html"
 	};
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
-
-	return routingData();
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
-
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -773,40 +773,44 @@ app.factory('routingData', function() {
 		var Center = new google.maps.LatLng(42.34043, -83.055155);
 		var directionsDisplay;
 		var directionsService = new google.maps.DirectionsService();
-		var map;
+		var routeMap;
+		var points = [];
+		var count = 0;
 
-	function initialize() {
+	function genMap() {
 
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var properties = {
 			center: Center,
 			zoom: 15,
-			mapTypeId: google.maps.MapTypeId.SATELLITE
+			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 
-		map = new google.maps.Map(document.getElementById('routeHere'), properties);
-		directionsDisplay.setMap(map);
-		var marker = new google.maps.Marker({
-			position: Center,
-			animation: google.maps.Animation.BOUNCE
+		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
+		directionsDisplay.setMap(routeMap);
+		routeMap.setOptions({
+			disableDoubleClickZoom: true 
 		});
-	map.setOptions({disableDoubleClickZoom: true });
-	map.addListener("dblclick", function (e) {
-    var latLng = e.latLng;
-    console.log(latLng.lat());
-    console.log(latLng.lng());
+		routeMap.addListener("dblclick", function (e) {
+    	var latLng = e.latLng;
+    	points.push(latLng);
+    	console.log(latLng.lat());
+    	console.log(latLng.lng());
+    	count++
+    	if (count === 2) {
+    		Route();
+    	}
 
     });
-		marker.setMap(map);
-		Route();
+
 
 
 
 	}
 
 	function Route() {
-		var start = new google.maps.LatLng(18.210885, -67.140884);
-		var end = new google.maps.LatLng(18.210888, -67.123144);
+		var start = new google.maps.LatLng(points[0].lat(), points[0].lng());
+		var end = new google.maps.LatLng(points[1].lat(), points[1].lng());
 		var request = {
 			origin: start,
 			destination: end,
@@ -822,7 +826,7 @@ app.factory('routingData', function() {
 	}
 
 	
-return initialize;
+return genMap;
 	// var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 	// 	center: {
 	// 		lat: 42.3404308730309, 
