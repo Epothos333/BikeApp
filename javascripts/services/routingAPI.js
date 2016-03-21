@@ -21,7 +21,7 @@ app.factory('routingData', function() {
 			position: Center,
 			animation: google.maps.Animation.BOUNCE
 		});
-			map.setOptions({disableDoubleClickZoom: true });
+	map.setOptions({disableDoubleClickZoom: true });
 	map.addListener("dblclick", function (e) {
     var latLng = e.latLng;
     console.log(latLng.lat());
@@ -31,7 +31,7 @@ app.factory('routingData', function() {
 		marker.setMap(map);
 		Route();
 
-		
+
 
 	}
 
@@ -52,7 +52,7 @@ app.factory('routingData', function() {
 		})
 	}
 
-	}
+	
 return initialize;
 	// var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 	// 	center: {
