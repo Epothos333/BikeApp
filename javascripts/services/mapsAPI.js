@@ -62,7 +62,7 @@ function advancedRouteOne() {
 			lat: 42.349115, 
 			lng:  -83.038386
 		},
-		zoom: 15,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 		
 	});
@@ -70,8 +70,8 @@ function advancedRouteOne() {
 
 	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.410492, 
+			lng: -83.080348
 		},
 		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
@@ -80,10 +80,10 @@ function advancedRouteOne() {
 
 	var aDV_three = new google.maps.Map(document.getElementById('ADVmapThree'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.383040, 
+			lng: -82.953605
 		},
-		zoom: 11,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	new google.maps.BicyclingLayer().setMap(aDV_three);
@@ -211,8 +211,8 @@ function advancedRouteOne() {
 function intermediateRouteOne() {
 	var iNT_one = new google.maps.Map(document.getElementById('INTmapOne'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.357615, 
+			lng: -83.009135
 		},
 		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
@@ -221,20 +221,20 @@ function intermediateRouteOne() {
 
 	var iNT_two = new google.maps.Map(document.getElementById('INTmapTwo'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.343244, 
+			lng: -83.053627
 		},
-		zoom: 12,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	new google.maps.BicyclingLayer().setMap(iNT_two);
 
 	var iNT_three = new google.maps.Map(document.getElementById('INTmapThree'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.329296, 
+			lng: -83.076447
 		},
-		zoom: 12,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	new google.maps.BicyclingLayer().setMap(iNT_three);
@@ -368,20 +368,20 @@ var lineThree = new google.maps.Polyline(
 function easyRouteOne() {
 	var eZ_one = new google.maps.Map(document.getElementById('EZmapOne'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.336285, 
+			lng: -83.050367
 		},
-		zoom: 14,
+		zoom: 15,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	new google.maps.BicyclingLayer().setMap(eZ_one);
 
 	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
 		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
+			lat: 42.333937, 
+			lng: -83.030197
 		},
-		zoom: 13,
+		zoom: 15,
 		 mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 	new google.maps.BicyclingLayer().setMap(eZ_two);
