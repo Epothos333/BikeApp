@@ -38,80 +38,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
-
-	return routingData();
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
-
 // app.directive('diffBtn', function() {
 // 	return {
 // 			restrict: 'E',
@@ -240,6 +166,108 @@ app.directive('weatherDays', function(){
 		templateUrl: "Views/templates/weatherTemplate.html"
 	};
 });
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+
+	function removeMarkers() {
+		routingData.points.forEach(function(element) {
+			element.setMap(null);
+		})
+	}
+
+		$scope.Route = function() {
+		console.log('routing')
+		var start = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
+		var end = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
+		removeMarkers();
+		var request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.BICYCLING,
+			waypoints: routingData.waypoints
+		};
+		directionsService.route(request, function(result, status) {
+			if (status === google.maps.DirectionsStatus.OK) {
+				routingData.genMap().setDirections(result);
+			} else {
+				alert('couldnt do it' + status);
+			}
+		})
+	}
+	return routingData.genMap();
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -250,7 +278,7 @@ app.factory('mapData', function(){
 		      	strokeWeight: 2,
 		      	fillColor: '#FF0000',
 		      	fillOpacity: 0.35
-};
+	};
 
 var bikeLayer = new google.maps.BicyclingLayer();
 
@@ -769,15 +797,12 @@ function easyRouteOne() {
 
 app.factory('routingData', function() {
 
-	// function genMap() {
 		var Center = new google.maps.LatLng(42.34043, -83.055155);
-		var directionsDisplay;
-		var directionsService = new google.maps.DirectionsService();
 		var routeMap;
 		var points = [];
+		var waypoints = [];
 
 	function genMap() {
-
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var properties = {
 			center: Center,
@@ -791,46 +816,55 @@ app.factory('routingData', function() {
 			disableDoubleClickZoom: true 
 		});
 		routeMap.addListener("dblclick", function (e) {
+
     	var point = new google.maps.Marker({
     		position: e.latLng,
     		map: routeMap,
     		title: 'Pointy'
     	});
-    	points.push(point);
-
-    	if (points.length === 2) {
-    		Route();
+    	if (points.length === 0) {
+    		points.push(point);
+    	} else {
+    		waypoints.push({
+    			location: {
+    				lat: point.position.lat(),
+    				lng: point.position.lng()
+    			},
+    			stopover: true
+    		});
     	}
-
+    	
     });
+		return directionsDisplay;
 }
 
-	function removeMarkers() {
-		points.forEach(function(element) {
-			element.setMap(null);
-		})
-	}
 
-	function Route() {
-		var start = new google.maps.LatLng(points[0].position.lat(), points[0].position.lng());
-		var end = new google.maps.LatLng(points[1].position.lat(), points[1].position.lng());
-		removeMarkers();
-		var request = {
-			origin: start,
-			destination: end,
-			travelMode: google.maps.TravelMode.WALKING
-		};
-		directionsService.route(request, function(result, status) {
-			if (status === google.maps.DirectionsStatus.OK) {
-				directionsDisplay.setDirections(result);
-			} else {
-				alert('couldnt do it' + status);
-			}
-		})
-	}
+
+	// function Route() {
+
+	// 	var start = new google.maps.LatLng(points[0].position.lat(), points[0].position.lng());
+	// 	var end = new google.maps.LatLng(points[1].position.lat(), points[1].position.lng());
+	// 	removeMarkers();
+	// 	var request = {
+	// 		origin: start,
+	// 		destination: end,
+	// 		travelMode: google.maps.TravelMode.WALKING
+	// 	};
+	// 	directionsService.route(request, function(result, status) {
+	// 		if (status === google.maps.DirectionsStatus.OK) {
+	// 			directionsDisplay.setDirections(result);
+	// 		} else {
+	// 			alert('couldnt do it' + status);
+	// 		}
+	// 	})
+	// }
 
 	
-return genMap;
+return {
+	genMap: genMap,
+	points: points,
+	waypoints: waypoints
+}
 	// var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
 	// 	center: {
 	// 		lat: 42.3404308730309, 

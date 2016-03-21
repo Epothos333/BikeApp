@@ -8,7 +8,7 @@ app.factory('mapData', function(){
 		      	strokeWeight: 2,
 		      	fillColor: '#FF0000',
 		      	fillOpacity: 0.35
-};
+	};
 
 var bikeLayer = new google.maps.BicyclingLayer();
 
