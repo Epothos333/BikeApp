@@ -38,6 +38,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -57,13 +64,6 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplay;
