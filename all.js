@@ -38,6 +38,80 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+
+	return routingData();
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 // app.directive('diffBtn', function() {
 // 	return {
 // 			restrict: 'E',
@@ -166,80 +240,6 @@ app.directive('weatherDays', function(){
 		templateUrl: "Views/templates/weatherTemplate.html"
 	};
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
-
-	return routingData();
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
-
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -767,28 +767,78 @@ function easyRouteOne() {
 
 
 
-app.factory('routingData', function($http) {
+app.factory('routingData', function() {
 
-	function genMap() {
-	var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
-		center: {
-			lat: 42.3404308730309, 
-			lng: -83.05515061325411
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN,
+	// function genMap() {
+		var Center = new google.maps.LatLng(42.34043, -83.055155);
+		var directionsDisplay;
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+	function initialize() {
+
+		directionsDisplay = new google.maps.DirectionsRenderer();
+		var properties = {
+			center: Center,
+			zoom: 15,
+			mapTypeId: google.maps.MapTypeId.SATELLITE
+		};
+
+		map = new google.maps.Map(document.getElementById('routeHere'), properties);
+		directionsDisplay.setMap(map);
+		var marker = new google.maps.Marker({
+			position: Center,
+			animation: google.maps.Animation.BOUNCE
 		});
 
-	routeMap.setOptions({disableDoubleClickZoom: true });
-	routeMap.addListener("dblclick", function (e) {
-    var latLng = e.latLng;
-    console.log(latLng.lat());
-    console.log(latLng.lng());
-
-    });
+		marker.setMap(map);
+		Route();
 	}
 
-	return genMap;
+	function Route() {
+		var start = new google.maps.LatLng(18.210885, -67.140884);
+		var end = new google.maps.LatLng(18.210888, -67.123144);
+		var request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(result, status) {
+			if (status === google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(result);
+			} else {
+				alert('couldnt do it' + status);
+			}
+		})
+	}
+return initialize;
+	// var routeMap = new google.maps.Map(document.getElementById('routeHere'), {
+	// 	center: {
+	// 		lat: 42.3404308730309, 
+	// 		lng: -83.05515061325411
+	// 	},
+	// 	zoom: 11,
+	// 	mapTypeId: google.maps.MapTypeId.TERRAIN,
+	// 	});
+
+	// routeMap.setOptions({disableDoubleClickZoom: true });
+	// routeMap.addListener("dblclick", function (e) {
+ //    var latLng = e.latLng;
+ //    console.log(latLng.lat());
+ //    console.log(latLng.lng());
+
+ //    });
+	// }
+
+	// console.log('1')
+	// console.log($http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA').then(function(x) {
+	// 	return ''
+	// }));
+
+	// $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCAkVGVXTEcdcDGMEmFZoUia0Y19X6q3pA').then(function(response){
+	// 	console.log(response.data);
+	// });
+	// console.log('2')
 });
 
 
