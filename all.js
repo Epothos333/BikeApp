@@ -38,108 +38,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.intMapOne();
-
-
-}]);
-app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.advMapOne();
-
-
-}]);
-app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.easyMapOne();
-
-
-}]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
-app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
-
-	var directionsDisplay;
-	var directionsService = new google.maps.DirectionsService();
-
-	function removeMarkers() {
-		routingData.points.forEach(function(element) {
-			element.setMap(null);
-		})
-	}
-
-		$scope.Route = function() {
-		console.log('routing')
-		var start = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
-		var end = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
-		removeMarkers();
-		var request = {
-			origin: start,
-			destination: end,
-			travelMode: google.maps.TravelMode.BICYCLING,
-			waypoints: routingData.waypoints
-		};
-		directionsService.route(request, function(result, status) {
-			if (status === google.maps.DirectionsStatus.OK) {
-				routingData.genMap().setDirections(result);
-			} else {
-				alert('couldnt do it' + status);
-			}
-		})
-	}
-	return routingData.genMap();
-
-}]);
-app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
-	weatherService.then(function success(response){
-		$scope.printWeather = function() {
-			var list = response.data,
-			 sunset = list.sys.sunset,
-			 sunrise = list.sys.sunrise,
-			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
-			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
-			 temps= list.main.temp.toFixed(1),
-			 weather= list.weather[0].description,
-			 icon = list.weather[0].icon;
-
-			 	var modal = document.getElementById('rentalModal');
-				var btn = document.getElementById('toggleMe');
-				var span = document.getElementById('toggleOff');
-
-				btn.onclick = function() {
-				    modal.style.display = 'block';
-				    return mapData.rentBike();
-				}
-				span.onclick = function() {
-				    modal.style.display = 'none';
-				}
-				window.onclick = function(event) {
-				    if (event.target === modal) {
-				        modal.style.display = 'none';
-				    }
-				}
-
-			return {
-				temp: temps,
-				weather: weather,
-				icon: icon,
-				sunrise: sunrisedate,
-				sunset: sunsetdate,
-				list: list
-			}
-		};	
-	});
-}]);
-
-
-
 // app.directive('diffBtn', function() {
 // 	return {
 // 			restrict: 'E',
@@ -268,6 +166,108 @@ app.directive('weatherDays', function(){
 		templateUrl: "Views/templates/weatherTemplate.html"
 	};
 });
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.intMapOne();
+
+
+}]);
+app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.advMapOne();
+
+
+}]);
+app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.easyMapOne();
+
+
+}]);
+app.controller('getStartCont', function($scope, $location) {
+	$scope.changeView = function(view){
+		$location.path(view);
+	}
+});
+app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
+
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+
+	function removeMarkers() {
+		routingData.points.forEach(function(element) {
+			element.setMap(null);
+		})
+	}
+
+		$scope.Route = function() {
+		console.log('routing')
+		var start = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
+		var end = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
+		removeMarkers();
+		var request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.BICYCLING,
+			waypoints: routingData.waypoints
+		};
+		directionsService.route(request, function(result, status) {
+			if (status === google.maps.DirectionsStatus.OK) {
+				routingData.genMap().setDirections(result);
+			} else {
+				alert('couldnt do it' + status);
+			}
+		})
+	}
+	return routingData.genMap();
+
+}]);
+app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 'mapData', function($http, weatherService, $scope, $location, mapData){
+	weatherService.then(function success(response){
+		$scope.printWeather = function() {
+			var list = response.data,
+			 sunset = list.sys.sunset,
+			 sunrise = list.sys.sunrise,
+			 sunsetdate = new Date(sunset * 1000).toLocaleTimeString(),		
+			 sunrisedate = new Date(sunrise * 1000).toLocaleTimeString(),					
+			 temps= list.main.temp.toFixed(1),
+			 weather= list.weather[0].description,
+			 icon = list.weather[0].icon;
+
+			 	var modal = document.getElementById('rentalModal');
+				var btn = document.getElementById('toggleMe');
+				var span = document.getElementById('toggleOff');
+
+				btn.onclick = function() {
+				    modal.style.display = 'block';
+				    return mapData.rentBike();
+				}
+				span.onclick = function() {
+				    modal.style.display = 'none';
+				}
+				window.onclick = function(event) {
+				    if (event.target === modal) {
+				        modal.style.display = 'none';
+				    }
+				}
+
+			return {
+				temp: temps,
+				weather: weather,
+				icon: icon,
+				sunrise: sunrisedate,
+				sunset: sunsetdate,
+				list: list
+			}
+		};	
+	});
+}]);
+
+
+
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -281,11 +281,10 @@ app.factory('mapData', function(){
 	};
 
 var bikeLayer = new google.maps.BicyclingLayer();
-	var bikeMap;
-
+var directionsService = new google.maps.DirectionsService();
 	// Rental Bikes Map
 	function rentBike() {
-		bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+		var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
 			lat: 42.330984, 
 			lng: -83.043208
@@ -327,7 +326,7 @@ var bikeLayer = new google.maps.BicyclingLayer();
 }
 
 function advancedRouteOne() {
-	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
+		var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
 			lat: 42.349115, 
 			lng:  -83.038386
@@ -336,6 +335,83 @@ function advancedRouteOne() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 		
 	});
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay.setMap(aDV_one);
+	pathOne = [{
+    			location: {
+    				lat: 42.339090,
+    				lng: -83.030374
+    			},
+    			stopover: true
+    		},
+    		{
+			
+		    	 location: {
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location: {
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
+		    	 },
+		    	 stopover: true
+		    },
+		    {	 
+		    	 location:{
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+			{
+		    	 location:{
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 },
+		    	 stopover: true
+		    	}];
+		 (function route() {
+			var start = new google.maps.LatLng(42.354928, -82.992002);
+			var end = new google.maps.LatLng(42.354928, -82.992002);
+			var request = {
+				origin: start,
+				destination: end,
+				travelMode: google.maps.TravelMode.BICYCLING,
+				waypoints: pathOne
+			};
+			directionsService.route(request, function(result, status) {
+				if (status === google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(result);
+				} else {
+					alert('couldnt do it' + status);
+				}
+			})
+	})();
+
 	new google.maps.BicyclingLayer().setMap(aDV_one);
 
 	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
@@ -358,53 +434,9 @@ function advancedRouteOne() {
 	});
 	new google.maps.BicyclingLayer().setMap(aDV_three);
 
-	var lineOne = new google.maps.Polyline(
-		{
-		    path: [
-		    	{
-		    		lat: 42.354928, 
-		    		lng: -82.992002
-		    	},
-		    	{
-		    		lat: 42.339090,
-		    	 	lng: -83.030374
-		    	},
-		    	{
-		    		lat: 42.347390,
-		    	 	lng: -83.035791
-		    	 },
-		    	 {
-		    	 	lat: 42.349377, 
-		    	 	lng: -83.034366		 
-		    	 },
-		    	 {
-		    	 	lat: 42.377727, 
-		    	 	lng: -83.053509		 
-		    	 },
-		    	 {
-		    	 	lat: 42.366935, 
-		    	 	lng: -83.082565	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.361124, 
-		    	 	lng: -83.083826	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.325903, 
-		    	 	lng: -83.062717		    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.354928, 
-		    		lng: -82.992002    			    	   	 
-		    	 }],
-		    geodesic: true,
-		    strokeColor: '#FF0000',
-		    strokeOpacity: 1.0,
-		    strokeWeight: 5
-   
-     });
-		    lineOne.setMap(aDV_one);
 
+		    
+		   
 	var lineTwo = new google.maps.Polyline(
 		{
 		    path: [
@@ -802,6 +834,7 @@ app.factory('routingData', function() {
 		var routeMap;
 		var points = [];
 		var waypoints = [];
+		var bikeLayer = new google.maps.BicyclingLayer();
 
 	function genMap() {
 		directionsDisplay = new google.maps.DirectionsRenderer({
@@ -812,6 +845,8 @@ app.factory('routingData', function() {
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
+
+		bikeLayer.setMap(routeMap);
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
 		directionsDisplay.setMap(routeMap);

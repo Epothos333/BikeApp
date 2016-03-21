@@ -4,6 +4,7 @@ app.factory('routingData', function() {
 		var routeMap;
 		var points = [];
 		var waypoints = [];
+		var bikeLayer = new google.maps.BicyclingLayer();
 
 	function genMap() {
 		directionsDisplay = new google.maps.DirectionsRenderer({
@@ -14,6 +15,8 @@ app.factory('routingData', function() {
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
+
+		bikeLayer.setMap(routeMap);
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
 		directionsDisplay.setMap(routeMap);

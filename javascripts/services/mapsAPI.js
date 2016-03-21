@@ -11,11 +11,10 @@ app.factory('mapData', function(){
 	};
 
 var bikeLayer = new google.maps.BicyclingLayer();
-	var bikeMap;
-
+var directionsService = new google.maps.DirectionsService();
 	// Rental Bikes Map
 	function rentBike() {
-		bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
+		var bikeMap = new google.maps.Map(document.getElementById('rentalMap'), {
 			center: {
 			lat: 42.330984, 
 			lng: -83.043208
@@ -57,7 +56,7 @@ var bikeLayer = new google.maps.BicyclingLayer();
 }
 
 function advancedRouteOne() {
-	var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
+		var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
 		center: {
 			lat: 42.349115, 
 			lng:  -83.038386
@@ -66,6 +65,83 @@ function advancedRouteOne() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 		
 	});
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay.setMap(aDV_one);
+	pathOne = [{
+    			location: {
+    				lat: 42.339090,
+    				lng: -83.030374
+    			},
+    			stopover: true
+    		},
+    		{
+			
+		    	 location: {
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location: {
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
+		    	 },
+		    	 stopover: true
+		    },
+		    {	 
+		    	 location:{
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+		    {
+		    	 location:{
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
+		    	 },
+		    	 stopover: true
+		    },
+			{
+		    	 location:{
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 },
+		    	 stopover: true
+		    	}];
+		 (function route() {
+			var start = new google.maps.LatLng(42.354928, -82.992002);
+			var end = new google.maps.LatLng(42.354928, -82.992002);
+			var request = {
+				origin: start,
+				destination: end,
+				travelMode: google.maps.TravelMode.BICYCLING,
+				waypoints: pathOne
+			};
+			directionsService.route(request, function(result, status) {
+				if (status === google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(result);
+				} else {
+					alert('couldnt do it' + status);
+				}
+			})
+	})();
+
 	new google.maps.BicyclingLayer().setMap(aDV_one);
 
 	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
@@ -88,53 +164,9 @@ function advancedRouteOne() {
 	});
 	new google.maps.BicyclingLayer().setMap(aDV_three);
 
-	var lineOne = new google.maps.Polyline(
-		{
-		    path: [
-		    	{
-		    		lat: 42.354928, 
-		    		lng: -82.992002
-		    	},
-		    	{
-		    		lat: 42.339090,
-		    	 	lng: -83.030374
-		    	},
-		    	{
-		    		lat: 42.347390,
-		    	 	lng: -83.035791
-		    	 },
-		    	 {
-		    	 	lat: 42.349377, 
-		    	 	lng: -83.034366		 
-		    	 },
-		    	 {
-		    	 	lat: 42.377727, 
-		    	 	lng: -83.053509		 
-		    	 },
-		    	 {
-		    	 	lat: 42.366935, 
-		    	 	lng: -83.082565	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.361124, 
-		    	 	lng: -83.083826	    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.325903, 
-		    	 	lng: -83.062717		    			    	   	 
-		    	 },
-		    	 {
-		    	 	lat: 42.354928, 
-		    		lng: -82.992002    			    	   	 
-		    	 }],
-		    geodesic: true,
-		    strokeColor: '#FF0000',
-		    strokeOpacity: 1.0,
-		    strokeWeight: 5
-   
-     });
-		    lineOne.setMap(aDV_one);
 
+		    
+		   
 	var lineTwo = new google.maps.Polyline(
 		{
 		    path: [
