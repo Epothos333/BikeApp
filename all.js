@@ -38,64 +38,6 @@ app.config(['$routeProvider',
 
 
 
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			element.bind('click', function() {
-				if (scope.difficulty === 'easy') {
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -208,6 +150,64 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			element.bind('click', function() {
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -347,7 +347,8 @@ function advancedRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -380,7 +381,8 @@ function advancedRouteTwo() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -423,7 +425,8 @@ function advancedRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -502,7 +505,8 @@ function intermediateRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -577,7 +581,8 @@ function intermediateRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -647,7 +652,8 @@ function intermediateRouteOne() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -738,7 +744,8 @@ function easyRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -789,7 +796,8 @@ function easyRouteTwo() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -845,7 +853,8 @@ function easyRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
