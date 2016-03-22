@@ -57,7 +57,9 @@ var directionsService = new google.maps.DirectionsService();
 var advMapCanvas;
 
 function advMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 	advMapCanvas = new google.maps.Map(document.getElementById('advmaps'), {
 		center: {
 			lat: 42.336285,
@@ -231,7 +233,9 @@ function advancedRouteTwo() {
 var intMapCanvas;
 
 function intMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 	intMapCanvas = new google.maps.Map(document.getElementById('intmaps'), {
 		center: {
 			lat: 42.336285,
@@ -456,7 +460,9 @@ function intermediateRouteOne() {
 var easyMapCanvas;
 
 function easyMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 
 	easyMapCanvas = new google.maps.Map(document.getElementById('easymaps'), {
 		center: {
@@ -583,9 +589,9 @@ function easyRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathTwo
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathTwo,
+				unitSystem: google.maps.UnitSystem.IMPERIAL		
+			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -634,7 +640,6 @@ function easyRouteTwo() {
 		    }],
 		   
 		 (function route() {
-				directionsDisplay.setDirections({routes: []});
 			var start = new google.maps.LatLng(42.336499, -83.059376);
 			var end = new google.maps.LatLng(42.336499, -83.059376 );
 			var request = {
@@ -643,10 +648,9 @@ function easyRouteTwo() {
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathThree,
 				unitSystem: google.maps.UnitSystem.IMPERIAL
-			};
+			}
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections({routes: []});
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
