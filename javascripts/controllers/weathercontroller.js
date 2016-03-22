@@ -33,7 +33,7 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 				icon: icon,
 				sunrise: sunrisedate,
 				sunset: sunsetdate,
-				list: list
+				list: list,
 			}
 		};	
 	});
