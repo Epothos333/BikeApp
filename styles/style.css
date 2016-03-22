@@ -124,6 +124,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
+  height: 45vh;
 }
 #rentbike h1 {
   padding: 20px 0px;
@@ -195,6 +196,10 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+#contentModal ul li {
+  list-style-type: none;
+  text-align: center;
 }
 .mapbtns button {
   background-color: #ffa500;
