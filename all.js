@@ -62,11 +62,6 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 
 
 }]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplayOne;
@@ -150,64 +145,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			element.bind('click', function() {
-				if (scope.difficulty === 'easy') {
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -267,7 +204,9 @@ var directionsService = new google.maps.DirectionsService();
 var advMapCanvas;
 
 function advMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 	advMapCanvas = new google.maps.Map(document.getElementById('advmaps'), {
 		center: {
 			lat: 42.336285,
@@ -441,7 +380,9 @@ function advancedRouteTwo() {
 var intMapCanvas;
 
 function intMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 	intMapCanvas = new google.maps.Map(document.getElementById('intmaps'), {
 		center: {
 			lat: 42.336285,
@@ -666,7 +607,9 @@ function intermediateRouteOne() {
 var easyMapCanvas;
 
 function easyMap() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsDisplay = new google.maps.DirectionsRenderer({
+		draggable: true
+	});
 
 	easyMapCanvas = new google.maps.Map(document.getElementById('easymaps'), {
 		center: {
@@ -793,9 +736,9 @@ function easyRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathTwo
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathTwo,
+				unitSystem: google.maps.UnitSystem.IMPERIAL		
+			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -844,7 +787,6 @@ function easyRouteTwo() {
 		    }],
 		   
 		 (function route() {
-				directionsDisplay.setDirections({routes: []});
 			var start = new google.maps.LatLng(42.336499, -83.059376);
 			var end = new google.maps.LatLng(42.336499, -83.059376 );
 			var request = {
@@ -853,10 +795,9 @@ function easyRouteTwo() {
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathThree,
 				unitSystem: google.maps.UnitSystem.IMPERIAL
-			};
+			}
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections({routes: []});
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
@@ -890,7 +831,7 @@ app.factory('routingData', function() {
 		var routeMap;
 		var points = [];
 		var waypoints = [];
-		var bikeLayer = new google.maps.BicyclingLayer();
+		
 
 	function genMap() {
 		directionsDisplayOne = new google.maps.DirectionsRenderer({
@@ -903,18 +844,20 @@ app.factory('routingData', function() {
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 
-		bikeLayer.setMap(routeMap);
+		
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
 		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
+		new google.maps.BicyclingLayer().setMap(routeMap);
 		routeMap.addListener("dblclick", function (e) {
 
     	var point = new google.maps.Marker({
     		position: e.latLng,
     		map: routeMap,
+    		animation: google.maps.Animation.DROP,
     		title: 'Pointy'
     	});
     	if (points.length === 0) {
@@ -956,3 +899,61 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			element.bind('click', function() {
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
