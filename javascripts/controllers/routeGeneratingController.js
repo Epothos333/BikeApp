@@ -10,9 +10,11 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 		})
 	}
 		$scope.reload = function() {
-			location.reload();
 			console.log('reload');
+			location.reload();
+			
 		}
+
 		$scope.Route = function() {
 		console.log('routing')
 		var start = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
