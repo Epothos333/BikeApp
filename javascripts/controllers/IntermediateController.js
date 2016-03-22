@@ -1,7 +1,7 @@
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
-	return mapData.intMapOne();
+	return mapData.mainInt();
 
 
 }]);
