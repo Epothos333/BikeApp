@@ -1,8 +1,8 @@
 var app = angular.module('bikeApp', ['ngRoute']);
-	
 
-app.config(['$routeProvider',
-  function($routeProvider) {
+app.config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider.when('/', {
         templateUrl: '/Views/gettingStarted.html',
         controller: 'getStartCont'
