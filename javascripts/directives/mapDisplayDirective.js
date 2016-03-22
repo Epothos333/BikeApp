@@ -4,15 +4,20 @@ app.directive('mapGen', ['mapData', function(mapData){
 		replace: false,
 		scope: {
 			click: '=',
-			map: '='
+			map: '=',
+			difficulty: '='
 		},
 		template: '<button>{{click}}</button>',
 		link: function(scope, element, attrs) {
 			element.bind('click', function() {
-				console.log('button works');
-				var tests = document.getElementsByClassName('testing');
-				console.log(mapData.easyMap);
-				return mapData.easyMap[scope.map]();
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
 			})
 		}
 	}
