@@ -67,6 +67,7 @@ function advancedRouteOne() {
 	});
 	directionsDisplay = new google.maps.DirectionsRenderer();
 	directionsDisplay.setMap(aDV_one);
+	
 	pathOne = [{
     			location: {
     				lat: 42.339090,
@@ -133,8 +134,10 @@ function advancedRouteOne() {
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
 			};
+			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
+					
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
@@ -146,7 +149,8 @@ function advancedRouteOne() {
 }
 
     
-function advancedRouteTwo() {  var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
+function advancedRouteTwo() {  
+	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
 		center: {
 			lat: 42.349115, 
 			lng: -83.038386
@@ -700,9 +704,7 @@ function easyRouteTwo() {
              }
   
 		    return {
-		    	easyMapOne: easyRouteOne,
-		    	easyMapTwo: easyRouteTwo,
-		    	easyMapThree: easyRouteThree,
+		    	easyMap: [easyRouteOne, easyRouteTwo, easyRouteThree],
 		    	intMapOne: intermediateRouteOne,
 		    	intMapTwo: intermediateRouteTwo,
 		    	intMapThree: intermediateRouteThree,
