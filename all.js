@@ -38,64 +38,6 @@ app.config(['$routeProvider',
 
 
 
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			element.bind('click', function() {
-				if (scope.difficulty === 'easy') {
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -120,11 +62,6 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 
 
 }]);
-app.controller('getStartCont', function($scope, $location) {
-	$scope.changeView = function(view){
-		$location.path(view);
-	}
-});
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplayOne;
@@ -894,7 +831,7 @@ app.factory('routingData', function() {
 		var routeMap;
 		var points = [];
 		var waypoints = [];
-		var bikeLayer = new google.maps.BicyclingLayer();
+		
 
 	function genMap() {
 		directionsDisplayOne = new google.maps.DirectionsRenderer({
@@ -907,18 +844,20 @@ app.factory('routingData', function() {
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 
-		bikeLayer.setMap(routeMap);
+		
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
 		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
+		new google.maps.BicyclingLayer().setMap(routeMap);
 		routeMap.addListener("dblclick", function (e) {
 
     	var point = new google.maps.Marker({
     		position: e.latLng,
     		map: routeMap,
+    		animation: google.maps.Animation.DROP,
     		title: 'Pointy'
     	});
     	if (points.length === 0) {
@@ -960,3 +899,61 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			element.bind('click', function() {
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});

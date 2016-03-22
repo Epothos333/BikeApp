@@ -4,7 +4,7 @@ app.factory('routingData', function() {
 		var routeMap;
 		var points = [];
 		var waypoints = [];
-		var bikeLayer = new google.maps.BicyclingLayer();
+		
 
 	function genMap() {
 		directionsDisplayOne = new google.maps.DirectionsRenderer({
@@ -17,18 +17,20 @@ app.factory('routingData', function() {
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 
-		bikeLayer.setMap(routeMap);
+		
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
 		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
+		new google.maps.BicyclingLayer().setMap(routeMap);
 		routeMap.addListener("dblclick", function (e) {
 
     	var point = new google.maps.Marker({
     		position: e.latLng,
     		map: routeMap,
+    		animation: google.maps.Animation.DROP,
     		title: 'Pointy'
     	});
     	if (points.length === 0) {
