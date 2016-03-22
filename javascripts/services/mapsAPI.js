@@ -137,7 +137,8 @@ function advancedRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -170,7 +171,8 @@ function advancedRouteTwo() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -213,7 +215,8 @@ function advancedRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -292,7 +295,8 @@ function intermediateRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -367,7 +371,8 @@ function intermediateRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -437,7 +442,8 @@ function intermediateRouteOne() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
@@ -528,7 +534,8 @@ function easyRouteOne() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathOne
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -579,7 +586,8 @@ function easyRouteTwo() {
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
 				waypoints: pathTwo
-			};
+	,
+	unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -635,7 +643,8 @@ function easyRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
