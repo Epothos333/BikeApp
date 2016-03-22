@@ -42,237 +42,16 @@ app.controller('advancedController', ['mapData', '$scope', function(mapData, $sc
 	
 
 
-	return {
-		mapOne: mapData.advMapOne(),
-		mapTwo: mapData.advMapTwo(),
-		mapThree: mapData.advMapThree()()
-		}
+	return mapData.mainAdv();
 }]);
 
 
 
 app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
 
-	$scope.theEasyRoutes = [easyRouteOne, easyRouteTwo, easyRouteThree];
-
-
-function easyRouteOne() {
-		var eZ_one = new google.maps.Map(document.getElementById('EZmapOne'), {
-		center: {
-			lat: 42.336285, 
-			lng: -83.050367
-		},
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-		
-	});
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_one);
-	pathOne = [{
-    			location: {
-    				lat: 42.334082, 
-		     	 lng:  -83.044869
-    			},
-    			stopover: true
-    		},
-    		{
-			
-		    	 location: {
-		    		lat: 42.334717, 
-		     	    lng: -83.045341
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location: {
-		    	 	lat: 42.338428, 
-		     	    lng: -83.042830		 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat: 42.340776, 
-		     	    lng: -83.048023 
-		    	 },
-		    	 stopover: true
-		    },
-		    {	 
-		    	 location:{
-		    	 	lat: 42.340030, 
-		     	    lng: -83.049654    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat: 42.340760, 
-		     	    lng: -83.050212	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat:42.337952, 
-		     	    lng: -83.056370  	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    }],
-			
-		 (function route() {
-			var start = new google.maps.LatLng(42.332210, -83.046456);
-			var end = new google.maps.LatLng(42.332210, -83.046456);
-			var request = {
-				origin: start,
-				destination: end,
-				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathOne
-			};
-			directionsService.route(request, function(result, status) {
-				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(result);
-				} else {
-					alert('couldnt do it' + status);
-				}
-			})
-	})();
-
-	new google.maps.BicyclingLayer().setMap(eZ_one);
-}
-
-
-function easyRouteTwo() {  
-	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
-		center: {
-			lat: 42.349115, 
-			lng: -83.038386
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_two);
-	pathTwo = [{
-    			location: {
-    				lat:42.338983, 
-		     	    lng: -83.023099
-    			},
-    			stopover: true
-    		},
-    		{	 
-		    	 location:{
-		    	 	lat:42.335256, 
-		     	    lng: -83.020632    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat:42.327753, 
-		     	    lng: -83.040244 	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat:42.330574, 
-		     	    lng: -83.042552	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    }],
-		   
-		   
-		 (function route() {
-			var start = new google.maps.LatLng(42.329595, -83.044946);
-			var end = new google.maps.LatLng(42.329595, -83.044946);
-			var request = {
-				origin: start,
-				destination: end,
-				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathTwo
-			};
-			directionsService.route(request, function(result, status) {
-				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(result);
-				} else {
-					alert('couldnt do it' + status);
-				}
-			})
-	})();
-	new google.maps.BicyclingLayer().setMap(eZ_two);
-    }
-
-    function easyRouteThree() {
-	 var eZ_three = new google.maps.Map(document.getElementById('EZmapThree'), {
-		center: {
-			lat: 42.383040, 
-			lng: -82.953605
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_three);
-	pathThree = [{
-    			location: {
-    			    lat:42.335071, 
-		     	    lng: -83.055471
-    			},
-    			stopover: true
-    		},
-    		{
-		    	 location:{
-		    	 	lat:42.338973,
-		     	    lng:  -83.046716	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {	 
-		    	 location:{
-		    	 	lat:42.349409, 
-		     	    lng: -83.053840    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat:42.341986, 
-		     	    lng: -83.072637 	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    },
-		    {
-		    	 location:{
-		    	 	lat: 42.336499,
-		     	    lng: -83.059376 	    			    	   	 
-		    	 },
-		    	 stopover: true
-		    }],
-		   
-		 (function route() {
-			var start = new google.maps.LatLng(42.336499, -83.059376);
-			var end = new google.maps.LatLng(42.336499, -83.059376 );
-			var request = {
-				origin: start,
-				destination: end,
-				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree
-			};
-			directionsService.route(request, function(result, status) {
-				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(result);
-				} else {
-					alert('couldnt do it' + status);
-				}
-			})
-	})();
-	new google.maps.BicyclingLayer().setMap(eZ_three);
-             }
 	
 
-	// return mapData.easyMapOne();
+	 return mapData.mainEasy();
 
 
 }]);
@@ -284,7 +63,7 @@ app.controller('getStartCont', function($scope, $location) {
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
-	return mapData.intMapOne();
+	return mapData.mainInt();
 
 
 }]);
@@ -403,123 +182,27 @@ app.directive('mapGen', ['mapData', function(mapData){
 		replace: false,
 		scope: {
 			click: '=',
-			map: '='
+			map: '=',
+			difficulty: '='
 		},
 		template: '<button>{{click}}</button>',
 		link: function(scope, element, attrs) {
 			element.bind('click', function() {
-				console.log('button works');
-				var tests = document.getElementsByClassName('testing');
-				console.log(mapData.easyMap);
-				return mapData.easyMap[scope.map]();
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
 			})
 		}
 	}
 }]);
 
-// app.directive('advClass', function() {
-// 	return {
-// 		template: "<button id='btnadv1'>Advanced Route One</button><button id='btnadv2'>Advanced Route Two</button><button id='btnadv3'>Advanced Route Three</button>",
-// 		link: function(){
-// 			var map1 = document.getElementById('ADVmapOne');
-// 			var map2 = document.getElementById('ADVmapTwo');
-// 			var map3 = document.getElementById('ADVmapThree');						
-// 			var btn1 = document.getElementById('btnadv1');
-// 			var btn2 = document.getElementById('btnadv2');
-// 			var btn3 = document.getElementById('btnadv3');						
-// 			btnadv1.addEventListener("click", btn1Show);
-// 			btnadv2.addEventListener("click", btn2Show);
-// 			btnadv3.addEventListener("click", btn3Show);
-// 			map2.style.display="none";
-// 			map3.style.display="none";									
-// 			function btn1Show(){
-// 				map2.style.display="none";	
-// 				map3.style.display="none";
-// 				map1.style.display="";				
-// 			}	
-// 			function btn2Show(){
-// 				map1.style.display="none";	
-// 				map3.style.display="none";	
-// 				map2.style.display="";			
-// 			}	
-// 			function btn3Show(){
-// 				map2.style.display="none";	
-// 				map1.style.display="none";		
-// 				map3.style.display="";		
-// 			}				
-// 		}
-
-// 	}
-// })
-// app.directive('toggleClass', function() {
-// 	return {
-// 		template: "<button id='btn1'>Easy Route One</button><button id='btn2'>Easy Route Two</button><button id='btn3'>Easy Route 3</button>",
-// 		link: function(){
-// 			var map1 = document.getElementById('EZmapOne');
-// 			var map2 = document.getElementById('EZmapTwo');
-// 			var map3 = document.getElementById('EZmapThree');						
-// 			var btn1 = document.getElementById('btn1');
-// 			var btn2 = document.getElementById('btn2');
-// 			var btn3 = document.getElementById('btn3');						
-// 			btn1.addEventListener("click", btn1Show);
-// 			btn2.addEventListener("click", btn2Show);
-// 			btn3.addEventListener("click", btn3Show);
-
-// 			map2.style.display="none";
-// 			map3.style.display="none";						
-// 			function btn1Show(){
-// 				map2.style.display="none";	
-// 				map3.style.display="none";
-// 				map1.style.display="";				
-// 			}	
-// 			function btn2Show(){
-// 				map1.style.display="none";	
-// 				map3.style.display="none";	
-// 				map2.style.display="";			
-// 			}	
-// 			function btn3Show(){
-// 				map2.style.display="none";	
-// 				map1.style.display="none";		
-// 				map3.style.display="";		
-// 			}
-// 	}
-// }
-// })
-// app.directive('intClass', function() {
-// 	return {
-// 		template: "<button id='btnint1'>Intermediate Route One</button><button id='btnint2'>Intermediate Route Two</button><button id='btnint3'>Intermediate Route 3</button>",
-// 		link: function(element){
-// 			var map1 = document.getElementById('INTmapOne');
-// 			var map2 = document.getElementById('INTmapTwo');
-// 			var map3 = document.getElementById('INTmapThree');						
-// 			var btn1 = document.getElementById('btnint1');
-// 			var btn2 = document.getElementById('btnint2');
-// 			var btn3 = document.getElementById('btnint3');						
-// 			btnint1.addEventListener("click", btn1Show);
-// 			btnint2.addEventListener("click", btn2Show);
-// 			btnint3.addEventListener("click", btn3Show);
-// 			map2.style.display="none";
-// 			map3.style.display="none";									
-// 			function btn1Show(){
-// 				map2.style.display="none";	
-// 				map3.style.display="none";
-// 				map1.style.display="";				
-// 			}	
-// 			function btn2Show(){
-// 				map1.style.display="none";	
-// 				map3.style.display="none";	
-// 				map2.style.display="";			
-// 			}	
-// 			function btn3Show(){
-// 				map2.style.display="none";	
-// 				map1.style.display="none";		
-// 				map3.style.display="";		
-// 			}				
-// 		}
-
-// 	}
-// })
 app.directive('weatherDays', function(){
+
 	return {
 		restrict: 'E',
 		replace: false,
@@ -582,20 +265,24 @@ var directionsService = new google.maps.DirectionsService();
 	     zagSter6 = new CreateMark(42.335645, -83.049324, 'Zagster Rental Station', '1528 Woodward'),
 	     zagSter7 = new CreateMark(42.336298, -83.049400, 'Zagster Rental Station', ' Broadway');
 }
+var advMapCanvas;
 
-function advancedRouteOne() {
-		var aDV_one = new google.maps.Map(document.getElementById('ADVmapOne'), {
-		center: {
-			lat: 42.349115, 
-			lng:  -83.038386
-		},
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-		
-	});
+function advMap() {
 	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(aDV_one);
-	
+	advMapCanvas = new google.maps.Map(document.getElementById('advmaps'), {
+		center: {
+			lat: 42.336285,
+			lng:-83.050367
+		},
+		zoom: 12,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	new google.maps.BicyclingLayer().setMap(advMapCanvas);
+	directionsDisplay.setPanel(document.getElementById('directionAdv'));
+	directionsDisplay.setMap(advMapCanvas);
+	return directionsDisplay;
+}
+function advancedRouteOne() {	
 	pathOne = [{
     			location: {
     				lat: 42.339090,
@@ -673,22 +360,10 @@ function advancedRouteOne() {
 			})
 	})();
 
-	new google.maps.BicyclingLayer().setMap(aDV_one);
 }
 
     
 function advancedRouteTwo() {  
-	var aDV_two = new google.maps.Map(document.getElementById('ADVmapTwo'), {
-		center: {
-			lat: 42.349115, 
-			lng: -83.038386
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(aDV_two);
 	pathTwo= [{	 
 		    	 location:{
 		    	 	lat: 42.475901, 
@@ -715,21 +390,9 @@ function advancedRouteTwo() {
 				}
 			})
 	})();
-	new google.maps.BicyclingLayer().setMap(aDV_two);
     }
 
     function advancedRouteThree() {
-	 var aDV_three = new google.maps.Map(document.getElementById('ADVmapThree'), {
-		center: {
-			lat: 42.383040, 
-			lng: -82.953605
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(aDV_three);
 	pathThree = [{
     			location: {
     				lat: 42.334768, 
@@ -770,26 +433,31 @@ function advancedRouteTwo() {
 					alert('couldnt do it' + status);
 				}
 			})
-	})();
-	new google.maps.BicyclingLayer().setMap(aDV_three);
-             }
+	})(); 
+}
   
 
 
+var intMapCanvas;
 
+function intMap() {
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	intMapCanvas = new google.maps.Map(document.getElementById('intmaps'), {
+		center: {
+			lat: 42.336285,
+			lng:-83.050367
+		},
+		zoom: 12,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	new google.maps.BicyclingLayer().setMap(intMapCanvas);
+	directionsDisplay.setPanel(document.getElementById('directionInt'));
+	directionsDisplay.setMap(intMapCanvas);
+	return directionsDisplay;
+}
 
 function intermediateRouteOne() {
-		var iNT_one = new google.maps.Map(document.getElementById('INTmapOne'), {
-		center: {
-			lat: 42.349115, 
-			lng:  -83.038386
-		},
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-		
-	});
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(iNT_one);
+
 	pathOne = [{
     			location: {
     				lat: 42.350501, 
@@ -845,22 +513,11 @@ function intermediateRouteOne() {
 			})
 	})();
 
-	new google.maps.BicyclingLayer().setMap(iNT_one);
+
 }
 
 
 	function intermediateRouteTwo() {  
-	var iNT_two = new google.maps.Map(document.getElementById('INTmapTwo'), {
-		center: {
-			lat: 42.349115, 
-			lng: -83.038386
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(iNT_two);
 	pathTwo = [{
     			location: {
     				lat: 42.361963, 
@@ -930,21 +587,9 @@ function intermediateRouteOne() {
 				}
 			})
 	})();
-	new google.maps.BicyclingLayer().setMap(iNT_two);
     }
 
     function intermediateRouteThree() {
-	 var iNT_three = new google.maps.Map(document.getElementById('INTmapThree'), {
-		center: {
-			lat: 42.383040, 
-			lng: -82.953605
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(aDV_three);
 	pathThree = [{
     			location: {
     			    lat: 42.331213, 
@@ -1013,21 +658,28 @@ function intermediateRouteOne() {
 				}
 			})
 	})();
-	new google.maps.BicyclingLayer().setMap(iNT_three);
-             }
+}
 
-function easyRouteOne() {
-		var eZ_one = new google.maps.Map(document.getElementById('EZmapOne'), {
-		center: {
-			lat: 42.336285, 
-			lng: -83.050367
-		},
-		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-		
-	});
+var easyMapCanvas;
+
+function easyMap() {
 	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_one);
+
+	easyMapCanvas = new google.maps.Map(document.getElementById('easymaps'), {
+		center: {
+			lat: 42.336285,
+			lng:-83.050367
+		},
+		zoom: 12,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+	new google.maps.BicyclingLayer().setMap(easyMapCanvas);
+	directionsDisplay.setPanel(document.getElementById('directionEasy'));
+	directionsDisplay.setMap(easyMapCanvas);
+	return directionsDisplay;
+}
+function easyRouteOne() {
+	
 	pathOne = [{
     			location: {
     				lat: 42.334082, 
@@ -1096,23 +748,10 @@ function easyRouteOne() {
 				}
 			})
 	})();
-
-	new google.maps.BicyclingLayer().setMap(eZ_one);
 }
 
     
 function easyRouteTwo() {  
-	var eZ_two = new google.maps.Map(document.getElementById('EZmapTwo'), {
-		center: {
-			lat: 42.349115, 
-			lng: -83.038386
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_two);
 	pathTwo = [{
     			location: {
     				lat:42.338983, 
@@ -1160,21 +799,9 @@ function easyRouteTwo() {
 				}
 			})
 	})();
-	new google.maps.BicyclingLayer().setMap(eZ_two);
     }
 
     function easyRouteThree() {
-	 var eZ_three = new google.maps.Map(document.getElementById('EZmapThree'), {
-		center: {
-			lat: 42.383040, 
-			lng: -82.953605
-		},
-		zoom: 11,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
-	});
-
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	directionsDisplay.setMap(eZ_three);
 	pathThree = [{
     			location: {
     			    lat:42.335071, 
@@ -1212,6 +839,7 @@ function easyRouteTwo() {
 		    }],
 		   
 		 (function route() {
+				directionsDisplay.setDirections({routes: []});
 			var start = new google.maps.LatLng(42.336499, -83.059376);
 			var end = new google.maps.LatLng(42.336499, -83.059376 );
 			var request = {
@@ -1222,23 +850,22 @@ function easyRouteTwo() {
 			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections({routes: []});
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
 				}
 			})
 	})();
-	new google.maps.BicyclingLayer().setMap(eZ_three);
-             }
+}
   
 		    return {
+		    	mainEasy: easyMap,
+		    	mainInt: intMap,
+		    	mainAdv: advMap,
 		    	easyMap: [easyRouteOne, easyRouteTwo, easyRouteThree],
-		    	intMapOne: intermediateRouteOne,
-		    	intMapTwo: intermediateRouteTwo,
-		    	intMapThree: intermediateRouteThree,
-		    	advMapOne: advancedRouteOne,
-		    	advMapTwo: advancedRouteTwo,
-		    	advMapThree: advancedRouteThree,
+		    	intMap: [intermediateRouteOne, intermediateRouteTwo, intermediateRouteThree],
+		    	advMap: [advancedRouteOne, advancedRouteTwo, advancedRouteThree],
 		    	rentBike: rentBike
 		    }
 });

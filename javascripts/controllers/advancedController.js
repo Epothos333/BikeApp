@@ -2,11 +2,7 @@ app.controller('advancedController', ['mapData', '$scope', function(mapData, $sc
 	
 
 
-	return {
-		mapOne: mapData.advMapOne(),
-		mapTwo: mapData.advMapTwo(),
-		mapThree: mapData.advMapThree()()
-		}
+	return mapData.mainAdv();
 }]);
 
 
