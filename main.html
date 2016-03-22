@@ -6,38 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<meta property="og:title" content="Create Your Own Route"/>
 </head>
-<body ng-app="bikeApp">
-
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '596078860549516',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-	
+<body ng-app="bikeApp">	
 	<div id='banner'>	
 		<img src="images/bikeapplogo.png"/>		
 		<a href="#/home">Home</a>
 		<a href="#/bikeRoutes">Routes</a>		
 		<a href="#/create_Your_Own">Make Your Own</a>		
-	</div>
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div class="fb-share-button" 
-		data-href="http://localhost:3000/main.html#/create_Your_Own" 
-		data-layout="button_count">
 	</div>
 
 
