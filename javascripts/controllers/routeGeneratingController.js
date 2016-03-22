@@ -19,13 +19,15 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 			origin: start,
 			destination: end,
 			travelMode: google.maps.TravelMode.BICYCLING,
-			waypoints: routingData.waypoints
+			waypoints: routingData.waypoints,
+			unitSystem: google.maps.UnitSystem.IMPERIAL
 		};
 		directionsService.route(request, function(result, status) {
 			instructions.innerHTML = '';
 			routingData.genMap().setPanel(instructions);
 			if (status === google.maps.DirectionsStatus.OK) {
 				routingData.genMap().setDirections(result);
+				
 			} else {
 				alert('couldnt do it' + status);
 			}

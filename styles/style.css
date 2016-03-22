@@ -36,12 +36,17 @@
 #INTmapThree,
 #ADVmapTwo,
 #ADVmapThree,
-#routeHere,
-#directions {
+#routeHere {
   height: 500px;
   width: 750px;
   background-color: #05668d;
   margin: 0 auto 0.75em;
+}
+#directions {
+  height: 500px;
+  width: 500px;
+  overflow: scroll;
+  background-color: #d3d3d3;
 }
 #rentalMap {
   position: relative;
