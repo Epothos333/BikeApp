@@ -136,13 +136,11 @@ function advancedRouteOne() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathOne
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathOne,
+			unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
@@ -656,7 +654,6 @@ function easyRouteTwo() {
 			})
 	})();
 }
-  
 		    return {
 		    	mainEasy: easyMap,
 		    	mainInt: intMap,

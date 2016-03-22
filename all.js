@@ -38,6 +38,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.mainInt();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -60,17 +67,10 @@ app.controller('getStartCont', function($scope, $location) {
 		$location.path(view);
 	}
 });
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.mainInt();
-
-
-}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
-	var directionsDisplay;
-	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplayOne;
+	var directionsServiceOne = new google.maps.DirectionsService();
 	var instructions = document.getElementById('directions');
 
 	function removeMarkers() {
@@ -91,7 +91,7 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 			waypoints: routingData.waypoints,
 			unitSystem: google.maps.UnitSystem.IMPERIAL
 		};
-		directionsService.route(request, function(result, status) {
+		directionsServiceOne.route(request, function(result, status) {
 			instructions.innerHTML = '';
 			routingData.genMap().setPanel(instructions);
 			if (status === google.maps.DirectionsStatus.OK) {
@@ -202,7 +202,6 @@ app.directive('mapGen', ['mapData', function(mapData){
 }]);
 
 app.directive('weatherDays', function(){
-
 	return {
 		restrict: 'E',
 		replace: false,
@@ -347,13 +346,11 @@ function advancedRouteOne() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathOne
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathOne,
+			unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
@@ -867,7 +864,6 @@ function easyRouteTwo() {
 			})
 	})();
 }
-  
 		    return {
 		    	mainEasy: easyMap,
 		    	mainInt: intMap,
@@ -897,10 +893,10 @@ app.factory('routingData', function() {
 		var bikeLayer = new google.maps.BicyclingLayer();
 
 	function genMap() {
-		directionsDisplay = new google.maps.DirectionsRenderer({
+		directionsDisplayOne = new google.maps.DirectionsRenderer({
 			draggable: true
 		});
-		directionsDisplay.setPanel(document.getElementById("directions"))
+		directionsDisplayOne.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
 			zoom: 15,
@@ -910,7 +906,7 @@ app.factory('routingData', function() {
 		bikeLayer.setMap(routeMap);
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
-		directionsDisplay.setMap(routeMap);
+		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
@@ -934,7 +930,7 @@ app.factory('routingData', function() {
     	}
     	
     });
-		return directionsDisplay;
+		return directionsDisplayOne;
 }
 
 
