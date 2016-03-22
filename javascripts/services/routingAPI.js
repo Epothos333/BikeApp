@@ -7,10 +7,10 @@ app.factory('routingData', function() {
 		var bikeLayer = new google.maps.BicyclingLayer();
 
 	function genMap() {
-		directionsDisplay = new google.maps.DirectionsRenderer({
+		directionsDisplayOne = new google.maps.DirectionsRenderer({
 			draggable: true
 		});
-		directionsDisplay.setPanel(document.getElementById("directions"))
+		directionsDisplayOne.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
 			zoom: 15,
@@ -20,7 +20,7 @@ app.factory('routingData', function() {
 		bikeLayer.setMap(routeMap);
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
-		directionsDisplay.setMap(routeMap);
+		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
@@ -44,7 +44,7 @@ app.factory('routingData', function() {
     	}
     	
     });
-		return directionsDisplay;
+		return directionsDisplayOne;
 }
 
 

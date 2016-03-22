@@ -69,8 +69,8 @@ app.controller('getStartCont', function($scope, $location) {
 });
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
-	var directionsDisplay;
-	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplayOne;
+	var directionsServiceOne = new google.maps.DirectionsService();
 	var instructions = document.getElementById('directions');
 
 	function removeMarkers() {
@@ -91,7 +91,7 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 			waypoints: routingData.waypoints,
 			unitSystem: google.maps.UnitSystem.IMPERIAL
 		};
-		directionsService.route(request, function(result, status) {
+		directionsServiceOne.route(request, function(result, status) {
 			instructions.innerHTML = '';
 			routingData.genMap().setPanel(instructions);
 			if (status === google.maps.DirectionsStatus.OK) {
@@ -142,7 +142,7 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 				icon: icon,
 				sunrise: sunrisedate,
 				sunset: sunsetdate,
-				list: list
+				list: list,
 			}
 		};	
 	});
@@ -346,13 +346,11 @@ function advancedRouteOne() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathOne
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathOne,
+			unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsDisplay.setPanel(document.getElementById('directionAdv'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					
 					directionsDisplay.setDirections(result);
 				} else {
 					alert('couldnt do it' + status);
@@ -866,7 +864,6 @@ function easyRouteTwo() {
 			})
 	})();
 }
-  
 		    return {
 		    	mainEasy: easyMap,
 		    	mainInt: intMap,
@@ -896,10 +893,10 @@ app.factory('routingData', function() {
 		var bikeLayer = new google.maps.BicyclingLayer();
 
 	function genMap() {
-		directionsDisplay = new google.maps.DirectionsRenderer({
+		directionsDisplayOne = new google.maps.DirectionsRenderer({
 			draggable: true
 		});
-		directionsDisplay.setPanel(document.getElementById("directions"))
+		directionsDisplayOne.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
 			zoom: 15,
@@ -909,7 +906,7 @@ app.factory('routingData', function() {
 		bikeLayer.setMap(routeMap);
 
 		routeMap = new google.maps.Map(document.getElementById('routeHere'), properties);
-		directionsDisplay.setMap(routeMap);
+		directionsDisplayOne.setMap(routeMap);
 		routeMap.setOptions({
 			disableDoubleClickZoom: true 
 		});
@@ -933,7 +930,7 @@ app.factory('routingData', function() {
     	}
     	
     });
-		return directionsDisplay;
+		return directionsDisplayOne;
 }
 
 
@@ -955,7 +952,7 @@ return {
 app.factory('weatherService', ['$http', function($http){
 		return $http({
 			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/weather?lat=42.331429&lon=-83.045753&units=imperial&APPID=c4e648130458b76564cd4aa311c5a3d3'
+			url: 'http://api.openweathermap.org/data/2.5/weather?zip=48216,us&units=imperial&APPID=c4e648130458b76564cd4aa311c5a3d3'
 		})
 
 	}]);

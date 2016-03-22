@@ -1,7 +1,7 @@
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
-	var directionsDisplay;
-	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplayOne;
+	var directionsServiceOne = new google.maps.DirectionsService();
 	var instructions = document.getElementById('directions');
 
 	function removeMarkers() {
@@ -22,7 +22,7 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 			waypoints: routingData.waypoints,
 			unitSystem: google.maps.UnitSystem.IMPERIAL
 		};
-		directionsService.route(request, function(result, status) {
+		directionsServiceOne.route(request, function(result, status) {
 			instructions.innerHTML = '';
 			routingData.genMap().setPanel(instructions);
 			if (status === google.maps.DirectionsStatus.OK) {
