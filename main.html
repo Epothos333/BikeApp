@@ -1,44 +1,20 @@
 <html>
 <head>
 	<title></title>
-	<meta name="google-signin-client_id" content="130019087121-95klp65qspo2i9od6853l4f1s4nca6r1.apps.googleusercontent.com">	
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/stylesheet.css">	
 	<meta property="og:title" content="Create Your Own Route"/>
 </head>
-<body ng-app="bikeApp">
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '596078860549516',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
+<body ng-app="bikeApp">	
+	<div id='banner'>	
+		<img src="images/bikeapplogo.png"/>		
+		<a href="#/home">Home</a>
+		<a href="#/bikeRoutes">Routes</a>		
+		<a href="#/create_Your_Own">Make Your Own</a>		
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-	
-	<div id='banner'>
-		<ul>	
-			<li><img src="images/bikeapplogo.png"/></li>
-			<li><a href="#/home">Home</a></li>
-			<li><a href="#/bikeRoutes">Routes</a></li>		
-			<li><a href="#/create_Your_Own">Make Your Own</a></li>
-		</ul>		
-	</div>
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div class="fb-share-button" 
-		data-href="http://localhost:3000/main.html#/create_Your_Own" 
-		data-layout="button_count">
 	</div>
 
 

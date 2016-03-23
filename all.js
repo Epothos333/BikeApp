@@ -5,7 +5,6 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/Views/gettingStarted.html',
-        controller: 'getStartCont'
         });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
@@ -15,8 +14,7 @@ app.config(['$routeProvider',
         templateUrl: '/Views/bikeMap.html'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html',
-        controller: 'getStartCont'
+        templateUrl: '/Views/gettingStarted.html'
         });
     $routeProvider.when('/beginner_Routes', {
         templateUrl: '/Views/easyRoute.html',
@@ -38,13 +36,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.mainInt();
-
-
-}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -62,6 +53,13 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 
 
 }]);
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.mainInt();
+
+
+}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplayOne;
@@ -73,6 +71,11 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 			element.setMap(null);
 		})
 	}
+		$scope.reload = function() {
+			console.log('reload');
+			location.reload();
+			
+		}
 
 		$scope.Route = function() {
 		console.log('routing')
@@ -145,6 +148,64 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
+// app.directive('diffBtn', function() {
+// 	return {
+// 			restrict: 'E',
+// 			templateURL: "Views/difficultyTemplate.html",
+// 			replace: false
+// 		}
+// 	});
+
+
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			element.bind('click', function() {
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -899,61 +960,3 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		}
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			element.bind('click', function() {
-				if (scope.difficulty === 'easy') {
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});

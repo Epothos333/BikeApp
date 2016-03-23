@@ -1,15 +1,49 @@
 <html>
 <head>
 	<title></title>
-	<meta name="google-signin-client_id" content="130019087121-95klp65qspo2i9od6853l4f1s4nca6r1.apps.googleusercontent.com">	
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	
 </head>
+    <script>
+    function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+    window.location.href="/main.html";
+  }
 
-<div id='gettingStartedDiv'>
-		<h1>LET'S GET STARTED.</h1>
-		<a href="/main.html">Let's go!</a>
-</div>
+//   var auth2;
+//   var initClient = function() {
+//     gapi.load('auth2', function(){
+//         /**
+//          * Retrieve the singleton for the GoogleAuth library and set up the
+//          * client.
+//          */
+//         auth2 = gapi.auth2.init({
+//             client_id: 'CLIENT_ID.694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.googleusercontent.com'
+//         });
+
+//         // Attach the click handler to the sign-in button
+//         auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+//     });
+// };
+//   var onSuccess = function(user) {
+//     console.log('Hello');
+//  };
+
+//  var onFailure = function(error) {
+//     console.log(error);
+// };
+    </script>
+  <div id='gettingStartedDiv'>
+  		<h1>LET'S GET STARTED.</h1>
+<!--   		<a href="/main.html">Let's go!</a> -->
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoqMBTB6hWPjQJTZrJn2lOuc7-2tDtW3E"></script>
