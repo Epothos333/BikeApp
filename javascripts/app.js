@@ -5,6 +5,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
@@ -14,7 +15,8 @@ app.config(['$routeProvider',
         templateUrl: '/Views/bikeMap.html'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/beginner_Routes', {
         templateUrl: '/Views/easyRoute.html',

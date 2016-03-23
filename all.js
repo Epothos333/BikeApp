@@ -5,6 +5,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
@@ -14,7 +15,8 @@ app.config(['$routeProvider',
         templateUrl: '/Views/bikeMap.html'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/beginner_Routes', {
         templateUrl: '/Views/easyRoute.html',
@@ -36,13 +38,6 @@ app.config(['$routeProvider',
 
 
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.mainInt();
-
-
-}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -57,6 +52,24 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 	
 
 	 return mapData.mainEasy();
+
+
+}]);
+app.controller('gettingStartedController', ['$scope', '$location', function($scope, $location) {
+    
+    $scope.changeViewToRoutes = function(){
+            $location.path('/bikeRoutes');
+        };
+   	$scope.changeViewToMYO = function(){
+            $location.path('/create_Your_Own');
+        };           
+
+}]);
+
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.mainInt();
 
 
 }]);
