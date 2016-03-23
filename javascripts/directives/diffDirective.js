@@ -1,12 +1,3 @@
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
-
-
 app.directive('diffBtn', function(){
 	return {
 		restrict: 'E',
