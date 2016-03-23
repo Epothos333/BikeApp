@@ -1,3 +1,7 @@
+.blockMe {
+  display: block;
+  margin: 20px;
+}
 .Arial {
   font-family: Arial;
 }
