@@ -1,11 +1,18 @@
-<h1>Create Your Own Route!</h1>
-<p>Here you can generate a route of your own. Double click on the spot you would like to begin and on the rest of the spots you would like to go. Once you are done, press the "Route Me" button and see your generated route with directions!</p>
+<div class='marginMe'>
+
+		<h1>Create Your Own Route!</h1>
+		<p class='Arial'>Here you can generate a route of your own. The green lines on the map represent bike-friendly routes you can take. To start making your own route, <strong>double-click on the map</strong> to drop pins where you'd like to go. When you are finished press the <strong> "Generate Route!" </strong> button on the bottom of the page. Routes are made based on the <strong> order in which you drop your pins. </strong> You can only drop up to <strong> 10 pins per route. </strong> If you want to make small adjustments to the route you created, it's no problem. The pins are <strong>draggable after you generate the route. </strong> If you want to start all over. Just hit the <strong> "Start New Route" <strong> button below. Enjoy!</p>
+
+</div>
 
 
 <div id='routeHere'></div>
+<div id='directions'></div>
 
+<section class='mapbtns'>
 <button id="routebutton" ng-click='Route()'>Generate Route!</button>
 <button id="routebutton" ng-click='reload()'>Start New Route!</button>
+</section>
+<a href="www.youtube.com" target='_blank'>Print Friendly Version</a>
 
 
-<div id='directions'></div>

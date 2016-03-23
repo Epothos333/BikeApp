@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title></title>
+	<title>PeDal Detroit</title>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-client_id" content="694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -8,36 +8,23 @@
 </head>
     <script>
     function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-    window.location.href="/main.html";
-  }
+      var profile = googleUser.getBasicProfile();
+      window.location.href="/main.html";
+    };
 
-//   var auth2;
-//   var initClient = function() {
-//     gapi.load('auth2', function(){
-//         /**
-//          * Retrieve the singleton for the GoogleAuth library and set up the
-//          * client.
-//          */
-//         auth2 = gapi.auth2.init({
-//             client_id: 'CLIENT_ID.694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.googleusercontent.com'
-//         });
+    function onSuccess(googleUser){
+      console.log('logged in as:' + googleUser.getBasicProfile().getName());
+    };
 
-//         // Attach the click handler to the sign-in button
-//         auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
-//     });
-// };
-//   var onSuccess = function(user) {
-//     console.log('Hello');
-//  };
-
-//  var onFailure = function(error) {
-//     console.log(error);
-// };
+    function renderButton(){
+      gapi.signin2.render('g-signin2', {
+        "scope": 'profile email',
+        'width' : 240,
+        'height': 50,
+        'longtitle': true,
+        'onSuccess': onSuccess
+      });
+    }
     </script>
   <div id='gettingStartedDiv'>
   		<h1>LET'S GET STARTED.</h1>

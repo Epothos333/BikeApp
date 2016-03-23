@@ -5,6 +5,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/bikeRoutes', {
         templateUrl: '/Views/bikeRoutes.html',
@@ -14,7 +15,8 @@ app.config(['$routeProvider',
         templateUrl: '/Views/bikeMap.html'
         });
     $routeProvider.when('/home', {
-        templateUrl: '/Views/gettingStarted.html'
+        templateUrl: '/Views/gettingStarted.html',
+        controller: 'gettingStartedController'
         });
     $routeProvider.when('/beginner_Routes', {
         templateUrl: '/Views/easyRoute.html',
@@ -53,6 +55,17 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 
 
 }]);
+app.controller('gettingStartedController', ['$scope', '$location', function($scope, $location) {
+    
+    $scope.changeViewToRoutes = function(){
+            $location.path('/bikeRoutes');
+        };
+   	$scope.changeViewToMYO = function(){
+            $location.path('/create_Your_Own');
+        };           
+
+}]);
+
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -146,15 +159,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 	});
 }]);
 
-
-
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
 
 
 app.directive('diffBtn', function(){
@@ -901,7 +905,7 @@ app.factory('routingData', function() {
 		directionsDisplayOne.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
-			zoom: 15,
+			zoom: 13,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 

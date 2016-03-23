@@ -1,3 +1,13 @@
+.Arial {
+  font-family: Arial;
+}
+.marginMe {
+  margin: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  text-align: center;
+  margin-top: 20px;
+}
 @font-face {
   font-family: bebas;
   src: url("../fonts/BEBAS.ttf");
@@ -5,6 +15,11 @@
 @font-face {
   font-family: opensans;
   src: url("../fonts/OpenSans-Regular.ttf");
+}
+.underline {
+  text-decoration: underline;
+  position: relative;
+  bottom: 5px;
 }
 .levelDiff {
   display: inline-block;
@@ -32,24 +47,32 @@
 #intmaps,
 #advmaps {
   height: 500px;
-  width: 750px;
+  width: 60%;
   background-color: #05668d;
-  margin: 0 auto 0.75em;
+  margin-left: 50px;
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 #directions,
 #directionEasy,
 #directionInt,
 #directionAdv {
   height: 500px;
-  width: 500px;
+  width: 30%;
   overflow: scroll;
   background-color: #d3d3d3;
+  display: inline-block;
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 #rentalMap {
   position: relative;
   width: 70%;
   height: 70%;
 }
+/* NAVIGATION */
 #banner {
   background-color: #05668d;
   text-align: center;
@@ -57,6 +80,8 @@
   padding: 0;
   font-family: bebas;
   width: 100%;
+  box-shadow: 0px 5px 3px rgba(0,0,0,0.5);
+  z-index: 100;
 }
 #banner img {
   margin-bottom: 0.75em;
@@ -96,6 +121,7 @@ body {
   width: 20%;
   box-shadow: 1px 1px 3px #000;
   float: left;
+  position: absolute;
 }
 #weatherview h1 {
   font-size: 42px;
@@ -106,8 +132,9 @@ body {
 #routediff {
   text-align: center;
   background-color: #028090;
-  padding-top: 20px;
+  padding-top: 60px;
   padding-bottom: 20px;
+  height: 40%;
 }
 #routediff h1 {
   padding: 20px 0px;
@@ -221,7 +248,6 @@ body {
 /* FOOTER */
 footer {
   background-color: #f0f3bd;
-  box-shadow: 0px 500px 0px 500px #f0f3bd;
 }
 li {
   list-style: none;
@@ -250,15 +276,6 @@ li {
     font-weight: bold;
     font-size: 20px;
   }
-  #EZmapOne,
-  #INTmapOne,
-  #ADVmapOne,
-  #EZmapTwo,
-  #EZmapThree,
-  #INTmapTwo,
-  #INTmapThree,
-  #ADVmapTwo,
-  #ADVmapThree,
   #routeHere,
   #easymaps,
   #intmaps,
