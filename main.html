@@ -7,14 +7,19 @@
 	<link rel="stylesheet" type="text/css" href="styles/stylesheet.css">	
 	<meta property="og:title" content="Create Your Own Route"/>
 </head>
-<body ng-app="bikeApp">	
-	<div id='banner'>	
-		<img src="images/bikeapplogo.png"/>		
-		<a href="#/home">Home</a>
-		<a href="#/bikeRoutes">Routes</a>		
-		<a href="#/create_Your_Own">Make Your Own</a>		
-	</div>
 
+<body ng-app="bikeApp">	
+	<nav>
+		<div id='banner'>
+		<img src="images/bikeapplogo.png"/>	
+		  <ul>
+		   	<li><a href="#/home">Home</a></li>
+			<li><a href="#/bikeRoutes">Routes</a></li>	
+			<li><a href="#/create_Your_Own">Make Your Own</a></li>
+		  </ul>
+		</div>
+	</nav>
+		<div class= "handle"> Menu </div>
 
 		<div ng-view=''></div>
 <!-- <div id='myModal' class='modal'>

@@ -4,7 +4,9 @@ aqua = #00A896
 lightaqua = #02C39A
 beige = #F0F3BD
 
-
+.blockMe
+	display block
+	margin 20px 
 .Arial
 	font-family Arial
 	
@@ -103,6 +105,9 @@ beige = #F0F3BD
 	text-transform uppercase
 	font-weight bold
 	font-size 20px
+	
+#banner ul li a
+	display inline-block
 	
 body
 	margin 0
@@ -253,11 +258,17 @@ body
 	cursor pointer	
 
 /* FOOTER */
-footer
-	background-color beige
+
 	
+
+
 @media only screen and (max-width: 768px) 
 
+ #banner ul li
+ 	
+ 	 display inline-block
+ 	 width 100%
+ 	 
 	#banner
 		background-color darkblue
 		text-align center
@@ -287,4 +298,11 @@ footer
 		background-color darkblue
 		margin 0 auto .75em
 
+@media only screen and (max-width: 489px) 
 
+ #banner 
+ 	
+ 	 display inline-block
+ 	 width 100%
+ 	 box-sizing border-box
+ 	

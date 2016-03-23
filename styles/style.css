@@ -1,3 +1,7 @@
+.blockMe {
+  display: block;
+  margin: 20px;
+}
 .Arial {
   font-family: Arial;
 }
@@ -249,6 +253,9 @@ body {
 /* FOOTER */
 footer {
   background-color: #f0f3bd;
+}
+li {
+  list-style: none;
 }
 @media only screen and (max-width: 768px) {
   #banner {
