@@ -167,7 +167,8 @@ app.directive('diffBtn', function(){
 		templateUrl: "Views/templates/difficultyTemplate.html",
 		scope: {
 			bgcolor: '=',
-			route: '='
+			route: '=',
+			diff: '='
 		},
 		controller: function($scope, $location) {
 			$scope.changeView = function() {
