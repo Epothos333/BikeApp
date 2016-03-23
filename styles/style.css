@@ -1,3 +1,17 @@
+section {
+  display: inline-block;
+}
+.italMe {
+  font-style: italic;
+  position: relative;
+  bottom: 15px;
+  text-shadow: 0 0 1px #808080;
+}
+.inlineMe {
+  display: block;
+  margin-top: 10px;
+  text-shadow: 0 0 1px #808080;
+}
 .blockMe {
   display: block;
   margin: 20px;

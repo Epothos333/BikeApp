@@ -12,7 +12,8 @@ app.directive('diffBtn', function(){
 			$scope.changeView = function() {
 				$location.path($scope.route);
 			}
-		}
+		},
+		transclude: true
 
 	};
 });
