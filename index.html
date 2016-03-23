@@ -13,31 +13,45 @@
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-    window.location.href="/main.html";
+    // window.location.href="/main.html";
+/**
+ * The Sign-In client object.
+ */
+var auth2;
+
+/**
+ * Initializes the Sign-In client.
+ */
+var initClient = function() {
+    gapi.load('auth2', function(){
+        /**
+         * Retrieve the singleton for the GoogleAuth library and set up the
+         * client.
+         */
+        auth2 = gapi.auth2.init({
+            client_id: '694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com'
+        });
+
+        // Attach the click handler to the sign-in button
+        auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+    });
+};
+
+/**
+ * Handle successful sign-ins.
+ */
+var onSuccess = function(user) {
+    console.log('Signed in as ' + user.getBasicProfile().getName());
+ };
+
+/**
+ * Handle sign-in failures.
+ */
+var onFailure = function(error) {
+    console.log(error);
+};
+
   }
-
-//   var auth2;
-//   var initClient = function() {
-//     gapi.load('auth2', function(){
-//         /**
-//          * Retrieve the singleton for the GoogleAuth library and set up the
-//          * client.
-//          */
-//         auth2 = gapi.auth2.init({
-//             client_id: 'CLIENT_ID.694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.googleusercontent.com'
-//         });
-
-//         // Attach the click handler to the sign-in button
-//         auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
-//     });
-// };
-//   var onSuccess = function(user) {
-//     console.log('Hello');
-//  };
-
-//  var onFailure = function(error) {
-//     console.log(error);
-// };
     </script>
   <div id='gettingStartedDiv'>
   		<h1>LET'S GET STARTED.</h1>
