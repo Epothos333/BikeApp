@@ -102,6 +102,9 @@
   font-weight: bold;
   font-size: 20px;
 }
+#banner ul li a {
+  display: inline-block;
+}
 body {
   margin: 0;
   padding: 0;
@@ -250,43 +253,3 @@ body {
   cursor: pointer;
 }
 /* FOOTER */
-footer {
-  background-color: #f0f3bd;
-}
-li {
-  list-style: none;
-}
-@media only screen and (max-width: 768px) {
-  #banner {
-    background-color: #05668d;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0;
-    font-family: bebas;
-    width: 100%;
-  }
-  #banner img {
-    margin-bottom: 0.75em;
-    padding-top: 0.75em;
-    display: block;
-    width: 150px;
-    height: auto;
-  }
-  #banner a {
-    text-decoration: none;
-    margin: 1.5em 2em;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  #routeHere,
-  #easymaps,
-  #intmaps,
-  #advmaps {
-    height: 500px;
-    width: 750px;
-    background-color: #05668d;
-    margin: 0 auto 0.75em;
-  }
-}
