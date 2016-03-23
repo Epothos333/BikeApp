@@ -102,6 +102,12 @@
   font-weight: bold;
   font-size: 20px;
 }
+#banner ul li {
+  display: inline;
+}
+#banner ul {
+  list-style-type: none;
+}
 body {
   margin: 0;
   padding: 0;
@@ -251,13 +257,10 @@ body {
   cursor: pointer;
 }
 /* FOOTER */
-footer {
-  background-color: #f0f3bd;
-}
-li {
-  list-style: none;
-}
 @media only screen and (max-width: 768px) {
+  #banner ul li,
+  display inline-block,
+  width 100%,
   #banner {
     background-color: #05668d;
     text-align: center;
@@ -289,5 +292,12 @@ li {
     width: 750px;
     background-color: #05668d;
     margin: 0 auto 0.75em;
+  }
+}
+@media only screen and (max-width: 489px) {
+  #banner {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
