@@ -253,6 +253,9 @@ body {
 footer {
   background-color: #f0f3bd;
 }
+li {
+  list-style: none;
+}
 @media only screen and (max-width: 768px) {
   #banner {
     background-color: #05668d;
