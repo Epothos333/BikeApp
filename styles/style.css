@@ -32,18 +32,21 @@
 #intmaps,
 #advmaps {
   height: 500px;
-  width: 750px;
+  width: 60%;
   background-color: #05668d;
-  margin: 0 auto 0.75em;
+  margin-left: 50px;
+  display: inline-block;
 }
 #directions,
 #directionEasy,
 #directionInt,
 #directionAdv {
   height: 500px;
-  width: 500px;
+  width: 30%;
   overflow: scroll;
   background-color: #d3d3d3;
+  display: inline-block;
+  float: right;
 }
 #rentalMap {
   position: relative;
@@ -248,15 +251,6 @@ footer {
     font-weight: bold;
     font-size: 20px;
   }
-  #EZmapOne,
-  #INTmapOne,
-  #ADVmapOne,
-  #EZmapTwo,
-  #EZmapThree,
-  #INTmapTwo,
-  #INTmapThree,
-  #ADVmapTwo,
-  #ADVmapThree,
   #routeHere,
   #easymaps,
   #intmaps,

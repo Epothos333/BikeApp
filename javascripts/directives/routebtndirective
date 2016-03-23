@@ -1,10 +1,9 @@
-app.directive('diffBtn', function(){
+app.directive('routesBtn', function(){
 	return {
 		restrict: 'E',
 		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
+		templateUrl: "Views/bikeRoutes.html",
 		scope: {
-			bgcolor: '=',
 			route: '='
 		},
 		controller: function($scope, $location) {

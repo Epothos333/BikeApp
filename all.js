@@ -36,6 +36,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.mainInt();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -50,13 +57,6 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 	
 
 	 return mapData.mainEasy();
-
-
-}]);
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.mainInt();
 
 
 }]);
@@ -146,15 +146,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 	});
 }]);
 
-
-
-// app.directive('diffBtn', function() {
-// 	return {
-// 			restrict: 'E',
-// 			templateURL: "Views/difficultyTemplate.html",
-// 			replace: false
-// 		}
-// 	});
 
 
 app.directive('diffBtn', function(){
