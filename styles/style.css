@@ -9,10 +9,16 @@ section {
   text-shadow: 0 0 1px #000;
 }
 .inlineMe {
-  display: block;
+  display: inline-block;
   margin-top: 10px;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
+}
+.inlineMe p {
+  color: #000;
+  position: relative;
+  left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-style: italic;
 }
 .blockMe {
   display: block;

@@ -157,57 +157,6 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '=',
-			diff: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		},
-		transclude: true
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			element.bind('click', function() {
-				if (scope.difficulty === 'easy') {
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -284,73 +233,68 @@ function advMap() {
 	return directionsDisplay;
 }
 function advancedRouteOne() {	
-	pathOne = [{
+
+	pathThree = [{
     			location: {
-    				lat: 42.339090,
-    				lng: -83.030374
+    			    lat: 42.331213, 
+		    		lng: -83.111288
     			},
     			stopover: true
     		},
     		{
 			
 		    	 location: {
-		    		lat: 42.347390,
-		    	 	lng: -83.035791
+		    		lat: 42.309829, 
+		    	 	lng: -83.096098
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location: {
-		    	 	lat: 42.349377, 
-		    	 	lng: -83.034366		 
+		    	 	lat: 42.322469, 
+		    	 	lng: -83.066974		 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.377727, 
-		    	 	lng: -83.053509		 
+		    	 	lat: 42.345196, 
+		    	 	lng: -83.080625		 
 		    	 },
 		    	 stopover: true
 		    },
 		    {	 
 		    	 location:{
-		    	 	lat: 42.366935, 
-		    	 	lng: -83.082565	    			    	   	 
+		    	 	lat: 42.333698, 
+		    	 	lng: -83.052270	    			    	   	 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.361124, 
-		    	 	lng: -83.083826	    			    	   	 
+		    	 	lat: 42.334237,
+		    	 	lng:  -83.048665 	    			    	   	 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.325903, 
-		    	 	lng: -83.062717		    			    	   	 
+		    	 	lat: 42.332201, 
+		    	 	lng: -83.046842 	    			    	   	 
 		    	 },
 		    	 stopover: true
-		    },
-			{
-		    	 location:{
-		    	 	lat: 42.354928, 
-		    		lng: -82.992002    			    	   	 
-		    	 },
-		    	 stopover: true
-		    	}];
+		    }],
+		   
 		 (function route() {
-			var start = new google.maps.LatLng(42.354928, -82.992002);
-			var end = new google.maps.LatLng(42.354928, -82.992002);
+			var start = new google.maps.LatLng(42.334768, -82.995750);
+			var end = new google.maps.LatLng(42.334768, -82.995750 );
 			var request = {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathOne,
-			unitSystem: google.maps.UnitSystem.IMPERIAL		};
-			directionsDisplay.setPanel(document.getElementById('directionAdv'));
+				waypoints: pathThree,
+				unitSystem: google.maps.UnitSystem.IMPERIAL
+			};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -359,6 +303,7 @@ function advancedRouteOne() {
 				}
 			})
 	})();
+
 
 }
 
@@ -380,9 +325,8 @@ function advancedRouteTwo() {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathTwo
-	,
-	unitSystem: google.maps.UnitSystem.IMPERIAL		};
+				waypoints: pathTwo,
+				unitSystem: google.maps.UnitSystem.IMPERIAL		};
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -596,67 +540,74 @@ function intermediateRouteOne() {
     }
 
     function intermediateRouteThree() {
-	pathThree = [{
+    	pathOne = [{
     			location: {
-    			    lat: 42.331213, 
-		    		lng: -83.111288
+    				lat: 42.339090,
+    				lng: -83.030374
     			},
     			stopover: true
     		},
     		{
 			
 		    	 location: {
-		    		lat: 42.309829, 
-		    	 	lng: -83.096098
+		    		lat: 42.347390,
+		    	 	lng: -83.035791
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location: {
-		    	 	lat: 42.322469, 
-		    	 	lng: -83.066974		 
+		    	 	lat: 42.349377, 
+		    	 	lng: -83.034366		 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.345196, 
-		    	 	lng: -83.080625		 
+		    	 	lat: 42.377727, 
+		    	 	lng: -83.053509		 
 		    	 },
 		    	 stopover: true
 		    },
 		    {	 
 		    	 location:{
-		    	 	lat: 42.333698, 
-		    	 	lng: -83.052270	    			    	   	 
+		    	 	lat: 42.366935, 
+		    	 	lng: -83.082565	    			    	   	 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.334237,
-		    	 	lng:  -83.048665 	    			    	   	 
+		    	 	lat: 42.361124, 
+		    	 	lng: -83.083826	    			    	   	 
 		    	 },
 		    	 stopover: true
 		    },
 		    {
 		    	 location:{
-		    	 	lat: 42.332201, 
-		    	 	lng: -83.046842 	    			    	   	 
+		    	 	lat: 42.325903, 
+		    	 	lng: -83.062717		    			    	   	 
 		    	 },
 		    	 stopover: true
-		    }],
-		   
+		    },
+			{
+		    	 location:{
+		    	 	lat: 42.354928, 
+		    		lng: -82.992002    			    	   	 
+		    	 },
+		    	 stopover: true
+		    	}];
 		 (function route() {
-			var start = new google.maps.LatLng(42.334768, -82.995750);
-			var end = new google.maps.LatLng(42.334768, -82.995750 );
+			var start = new google.maps.LatLng(42.354928, -82.992002);
+			var end = new google.maps.LatLng(42.354928, -82.992002);
 			var request = {
 				origin: start,
 				destination: end,
 				travelMode: google.maps.TravelMode.BICYCLING,
-				waypoints: pathThree,
-				unitSystem: google.maps.UnitSystem.IMPERIAL
-			};
+				waypoints: pathOne,
+				unitSystem: google.maps.UnitSystem.IMPERIAL	
+					};
+			directionsDisplay.setPanel(document.getElementById('directionInt'));
 			directionsService.route(request, function(result, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
 					directionsDisplay.setDirections(result);
@@ -962,3 +913,54 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '=',
+			diff: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		},
+		transclude: true
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			element.bind('click', function() {
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
