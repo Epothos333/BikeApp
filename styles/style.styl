@@ -11,7 +11,11 @@ beige = #F0F3BD
 @font-face
 	font-family opensans
 	src url('../fonts/OpenSans-Regular.ttf')	
-
+.underline
+	text-decoration underline
+	position relative
+	bottom 5px
+	
 .levelDiff
 	display inline-block
 
@@ -30,6 +34,7 @@ beige = #F0F3BD
 	border 4px outset black
 	margin 0 50px
 	
+	
 #routediff div:hover
 	border 4px inset White
 
@@ -39,6 +44,8 @@ beige = #F0F3BD
 	background-color darkblue
 	margin-left 50px
 	display inline-block
+	margin-top 30px
+	margin-bottom 30px
 	
 
 #directions, #directionEasy, #directionInt, #directionAdv
@@ -48,6 +55,8 @@ beige = #F0F3BD
 	background-color lightgray
 	display inline-block
 	float right
+	margin-top 30px
+	margin-bottom 30px
 		
 #rentalMap
 	position relative
@@ -104,6 +113,7 @@ body
 	width 20%
 	box-shadow 1px 1px 3px #000
 	float left
+	position absolute
 
 
 
@@ -116,8 +126,9 @@ body
 #routediff
 	text-align center
 	background-color midblue
-	padding-top 20px
+	padding-top 60px
 	padding-bottom 20px	
+	height 40%
 
 #routediff h1
 	padding 20px 0px
