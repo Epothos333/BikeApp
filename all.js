@@ -38,6 +38,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+	return mapData.mainInt();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -57,20 +64,9 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 }]);
 app.controller('gettingStartedController', ['$scope', '$location', function($scope, $location) {
     
-    $scope.changeViewToRoutes = function(){
-            $location.path('/bikeRoutes');
-        };
-   	$scope.changeViewToMYO = function(){
-            $location.path('/create_Your_Own');
-        };           
-
-}]);
-
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-	return mapData.mainInt();
-
+    $scope.changeViewToRoutes = function(view){
+            $location.path('view');
+        };  
 
 }]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
@@ -168,7 +164,8 @@ app.directive('diffBtn', function(){
 		templateUrl: "Views/templates/difficultyTemplate.html",
 		scope: {
 			bgcolor: '=',
-			route: '='
+			route: '=',
+			diff: '='
 		},
 		controller: function($scope, $location) {
 			$scope.changeView = function() {
