@@ -1,3 +1,13 @@
+.Arial {
+  font-family: Arial;
+}
+.marginMe {
+  margin: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  text-align: center;
+  margin-top: 20px;
+}
 @font-face {
   font-family: bebas;
   src: url("../fonts/BEBAS.ttf");
