@@ -4,9 +4,30 @@ aqua = #00A896
 lightaqua = #02C39A
 beige = #F0F3BD
 
+section
+	display inline-block
+
+.italMe
+	font-style italic
+	position relative
+	bottom 15px	
+	color white
+	text-shadow 0 0 1px black
+
+
+.inlineMe
+	display block
+	margin-top 10px
+	color white
+	text-shadow 0 0 1px black
+
 .blockMe
 	display block
 	margin 20px 
+	color white
+	text-shadow 0 0 1px black
+
+	
 .Arial
 	font-family Arial
 	
@@ -49,6 +70,7 @@ beige = #F0F3BD
 	padding 10px
 	border 4px outset black
 	margin 0 50px
+	
 	
 	
 #routediff div:hover
@@ -114,8 +136,9 @@ beige = #F0F3BD
 body
 	margin 0
 	padding 0	
-	font-family 'Roboto'
+	font-family 'Roboto', sans-serif
 	background-color midblue
+
 
 
 #maindesc
@@ -155,6 +178,9 @@ body
 	padding-top 60px
 	padding-bottom 20px	
 	height 40%
+	color white
+	text-shadow 0 0 1px black
+
 
 #routediff h1
 	padding 20px 0px
@@ -168,12 +194,19 @@ body
 	padding-bottom: 20px
 	text-align center	
 	height 45vh
+	
 #rentbike h1
 	padding 20px 0px
 	font-family bebas
 	margin-bottom .75em
+	color white
+	text-shadow 0 0 1px black
+
 #rentbike h3
-	margin-bottom .75em	
+	margin-bottom .75em
+	color white
+	text-shadow 0 0 1px black
+	
 #rentbike button
 	background-color orange
 	border none
@@ -264,39 +297,8 @@ body
 
 /* FOOTER */
 
-@media only screen and (max-width: 768px) 
+@media (max-width: 489px )
 	#banner ul li
-	 	display inline-block
-	 	width 100%
-	#banner
-		background-color darkblue
-		text-align center
-		margin 0 auto
-		padding 0
-		font-family bebas
 		width 100%
-	#banner img
-		margin-bottom .75em	
-		padding-top .75em
-		display block
-		width 150px
-		height auto	
-	#banner a 
-		text-decoration none
-		margin 1.5em 2em
-		color white
-		text-transform uppercase
-		font-weight bold
-		font-size 20px
-	 #routeHere, #easymaps, #intmaps, #advmaps
-		height 500px
-		width 750px
-		background-color darkblue
-		margin 0 auto .75em
-
-@media only screen and (max-width: 489px) 
-	#banner 
-		display inline-block
-		width 100%
-		box-sizing border-box
- 	
+		box-sizing border box
+		

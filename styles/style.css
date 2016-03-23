@@ -1,6 +1,24 @@
+section {
+  display: inline-block;
+}
+.italMe {
+  font-style: italic;
+  position: relative;
+  bottom: 15px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
+}
+.inlineMe {
+  display: block;
+  margin-top: 10px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
+}
 .blockMe {
   display: block;
   margin: 20px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 .Arial {
   font-family: Arial;
@@ -149,6 +167,8 @@ body {
   padding-top: 60px;
   padding-bottom: 20px;
   height: 40%;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #routediff h1 {
   padding: 20px 0px;
@@ -166,9 +186,13 @@ body {
   padding: 20px 0px;
   font-family: bebas;
   margin-bottom: 0.75em;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #rentbike h3 {
   margin-bottom: 0.75em;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #rentbike button {
   background-color: #ffa500;
@@ -260,47 +284,9 @@ body {
   cursor: pointer;
 }
 /* FOOTER */
-@media only screen and (max-width: 768px) {
-  #banner ul li,
-  display inline-block,
-  width 100%,
-  #banner {
-    background-color: #05668d;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0;
-    font-family: bebas;
+@media (max-width: 489px) {
+  #banner ul li {
     width: 100%;
-  }
-  #banner img {
-    margin-bottom: 0.75em;
-    padding-top: 0.75em;
-    display: block;
-    width: 150px;
-    height: auto;
-  }
-  #banner a {
-    text-decoration: none;
-    margin: 1.5em 2em;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  #routeHere,
-  #easymaps,
-  #intmaps,
-  #advmaps {
-    height: 500px;
-    width: 750px;
-    background-color: #05668d;
-    margin: 0 auto 0.75em;
-  }
-}
-@media only screen and (max-width: 489px) {
-  #banner {
-    display: inline-block;
-    width: 100%;
-    box-sizing: border-box;
+    box-sizing: border box;
   }
 }
