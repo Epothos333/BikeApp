@@ -25,11 +25,13 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 	
-	<div id='banner'>	
-		<img src="images/bikeapplogo.png"/>		
-		<a href="#/home">Home</a>
-		<a href="#/bikeRoutes">Routes</a>		
-		<a href="#/create_Your_Own">Make Your Own</a>		
+	<div id='banner'>
+		<ul>	
+			<li><img src="images/bikeapplogo.png"/></li>
+			<li><a href="#/home">Home</a></li>
+			<li><a href="#/bikeRoutes">Routes</a></li>		
+			<li><a href="#/create_Your_Own">Make Your Own</a></li>
+		</ul>		
 	</div>
 	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
