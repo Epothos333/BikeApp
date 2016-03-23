@@ -106,27 +106,34 @@ beige = #F0F3BD
 	font-weight bold
 	font-size 20px
 	
-#banner ul li a
-	display inline-block
+#banner ul li
+	display inline
+#banner ul
+	list-style-type none	
 	
 body
 	margin 0
 	padding 0	
-	font-family opensans
+	font-family 'Source Sans Pro'
 	background-color midblue
+
 
 #maindesc
 	background rgba(255,255,255,0.7)
 	width 60%
+	top 50px
+	position relative
 
 #maindesc p
-	text-align center	
+	text-align center
+	text-shadow 0 0 5px white	
+	font-size 15px
 
 .directive
 	background-color aqua
 	color white
 	text-align center
-	font-family opensans
+	font-family 'Source Sans Pro', sans-serif
 	padding-top 20px
 	padding-bottom 20px
 	width 20%
@@ -175,7 +182,7 @@ body
 	padding 15px 32px
 	border-radius 5px
 	font-weight bold
-	font-family opensans		
+	font-family 'Source Sans Pro'		
 	
 #gettingStartedDiv
 	background url('../images/bikebackground.jpg') no-repeat fixed
@@ -202,7 +209,7 @@ body
 	padding 15px 32px
 	border-radius 5px
 	font-weight bold
-	font-family opensans
+	font-family 'Source Sans Pro'
 	width: 80px
 	text-decoration none
 	text-align center
@@ -257,46 +264,39 @@ body
 
 /* FOOTER */
 
-	
+@media only screen and (max-width: 768px) 
+	#banner ul li
+	 	display inline-block
+	 	width 100%
+	#banner
+		background-color darkblue
+		text-align center
+		margin 0 auto
+		padding 0
+		font-family bebas
+		width 100%
+	#banner img
+		margin-bottom .75em	
+		padding-top .75em
+		display block
+		width 150px
+		height auto	
+	#banner a 
+		text-decoration none
+		margin 1.5em 2em
+		color white
+		text-transform uppercase
+		font-weight bold
+		font-size 20px
+	 #routeHere, #easymaps, #intmaps, #advmaps
+		height 500px
+		width 750px
+		background-color darkblue
+		margin 0 auto .75em
 
-
-// @media only screen and (max-width: 768px) 
-//  	#banner ul li
-//  	 	display inline-block
-//  	 	width 100%
- 	 
-// 	#banner
-// 		background-color darkblue
-// 		text-align center
-// 		margin 0 auto
-// 		padding 0
-// 		font-family bebas
-// 		width 100%
-
-// 	#banner img
-// 		margin-bottom .75em	
-// 		padding-top .75em
-// 		display block
-// 		width 150px
-// 		height auto	
-
-// 	#banner a 
-// 		text-decoration none
-// 		margin 1.5em 2em
-// 		color white
-// 		text-transform uppercase
-// 		font-weight bold
-// 		font-size 20px
-	
-// 	 #routeHere, #easymaps, #intmaps, #advmaps
-// 		height 500px
-// 		width 750px
-// 		background-color darkblue
-// 		margin 0 auto .75em
-
-// @media only screen and (max-width: 489px) 
-// 	#banner 
-// 	 	display inline-block
-// 	 	width 100%
-// 	 	box-sizing border-box
-	 	
+@media only screen and (max-width: 489px) 
+	#banner 
+		display inline-block
+		width 100%
+		box-sizing border-box
+ 	
