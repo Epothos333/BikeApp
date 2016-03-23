@@ -905,7 +905,7 @@ app.factory('routingData', function() {
 		directionsDisplayOne.setPanel(document.getElementById("directions"))
 		var properties = {
 			center: Center,
-			zoom: 15,
+			zoom: 13,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 
