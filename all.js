@@ -36,13 +36,8 @@ app.config(['$routeProvider',
         });
   }]);
 
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-			return mapData.mainInt();
 
 
-}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -74,7 +69,13 @@ app.controller('gettingStartedController', ['$scope', '$location', function($sco
         };          
 
 }]);
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
 
+			return mapData.mainInt();
+
+
+}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplayOne;
