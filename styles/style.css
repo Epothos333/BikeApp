@@ -5,16 +5,20 @@ section {
   font-style: italic;
   position: relative;
   bottom: 15px;
-  text-shadow: 0 0 1px #808080;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 .inlineMe {
   display: block;
   margin-top: 10px;
-  text-shadow: 0 0 1px #808080;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 .blockMe {
   display: block;
   margin: 20px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 .Arial {
   font-family: Arial;
@@ -163,6 +167,8 @@ body {
   padding-top: 60px;
   padding-bottom: 20px;
   height: 40%;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #routediff h1 {
   padding: 20px 0px;
@@ -180,9 +186,13 @@ body {
   padding: 20px 0px;
   font-family: bebas;
   margin-bottom: 0.75em;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #rentbike h3 {
   margin-bottom: 0.75em;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }
 #rentbike button {
   background-color: #ffa500;
