@@ -41,24 +41,28 @@ app.config(['$routeProvider',
 app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
-	return mapData.mainInt();
+			return mapData.mainInt();
 
 
 }]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
+			return mapData.mainAdv();
 
-	return mapData.mainAdv();
+
 }]);
 
 
 
 app.controller('easyController', ['mapData', '$scope', function(mapData, $scope) {
 
-	
 
-	 return mapData.mainEasy();
+
+
+	return mapData.mainEasy();
+
+		
 
 
 }]);
@@ -215,7 +219,7 @@ app.factory('mapData', function(){
 
 	var redCircle = {
 				path: google.maps.SymbolPath.CIRCLE,
-				scale: 7,
+				scale: 10,
 				strokeColor: '#FF0000',
 		      	strokeOpacity: 0.8,
 		      	strokeWeight: 2,
@@ -232,7 +236,7 @@ var directionsService = new google.maps.DirectionsService();
 			lat: 42.330984, 
 			lng: -83.043208
 				},
-			zoom: 14,
+			zoom: 16,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 			});
 		bikeLayer.setMap(bikeMap);
@@ -284,6 +288,7 @@ function advMap() {
 	new google.maps.BicyclingLayer().setMap(advMapCanvas);
 	directionsDisplay.setPanel(document.getElementById('directionAdv'));
 	directionsDisplay.setMap(advMapCanvas);
+	advancedRouteOne()
 	return directionsDisplay;
 }
 function advancedRouteOne() {	
@@ -455,6 +460,7 @@ function intMap() {
 	new google.maps.BicyclingLayer().setMap(intMapCanvas);
 	directionsDisplay.setPanel(document.getElementById('directionInt'));
 	directionsDisplay.setMap(intMapCanvas);
+	intermediateRouteOne()
 	return directionsDisplay;
 }
 
@@ -690,7 +696,9 @@ function easyMap() {
 	new google.maps.BicyclingLayer().setMap(easyMapCanvas);
 	directionsDisplay.setPanel(document.getElementById('directionEasy'));
 	directionsDisplay.setMap(easyMapCanvas);
+	easyRouteOne();
 	return directionsDisplay;
+
 }
 function easyRouteOne() {
 	
