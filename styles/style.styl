@@ -30,6 +30,7 @@ beige = #F0F3BD
 	border 4px outset black
 	margin 0 50px
 	
+	
 #routediff div:hover
 	border 4px inset White
 
@@ -72,6 +73,9 @@ beige = #F0F3BD
 	text-transform uppercase
 	font-weight bold
 	font-size 20px
+	
+#banner ul li a
+	display inline-block
 	
 body
 	margin 0
@@ -221,40 +225,23 @@ body
 footer
 	background-color beige
 	box-shadow 0px 500px 0px 500px beige
-	
-
-li 
-	list-style-type none
+a 
+	display inline-block	
 	
 
 @media only screen and (max-width: 768px) 
 
-	#banner
-		background-color darkblue
-		text-align center
-		margin 0 auto
-		padding 0
-		font-family bebas
-		width 100%
+ #banner ul li
+ 	
+ 	 display inline-block
+ 	 width 100%
+ 	 
 
-	#banner img
-		margin-bottom .75em	
-		padding-top .75em
-		display block
-		width 150px
-		height auto	
+@media only screen and (max-width: 489px) 
 
-	#banner a 
-		text-decoration none
-		margin 1.5em 2em
-		color white
-		text-transform uppercase
-		font-weight bold
-		font-size 20px
-	
-
-	#EZmapOne, #INTmapOne, #ADVmapOne, #EZmapTwo, #EZmapThree, #INTmapTwo, #INTmapThree, #ADVmapTwo, #ADVmapThree, #routeHere, #easymaps, #intmaps, #advmaps
-		height 500px
-		width 750px
-		background-color darkblue
-		margin 0 auto .75em
+ #banner 
+ 	
+ 	 display inline-block
+ 	 width 100%
+ 	 box-sizing border-box
+ 	
