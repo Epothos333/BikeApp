@@ -1,0 +1,16 @@
+app.directive('routesBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/bikeRoutes.html",
+		scope: {
+			route: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		}
+
+	};
+});
