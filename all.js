@@ -38,6 +38,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+			return mapData.mainInt();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -61,20 +68,9 @@ app.controller('easyController', ['mapData', '$scope', function(mapData, $scope)
 }]);
 app.controller('gettingStartedController', ['$scope', '$location', function($scope, $location) {
     
-    $scope.changeViewToRoutes = function(){
-            $location.path('/bikeRoutes');
+    $scope.changeView = function(view){
+            $location.path(view);
         }; 
-    $scope.changeViewToMYO = function(){
-            $location.path('/create_Your_Own');
-        };          
-
-}]);
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-			return mapData.mainInt();
-
-
 }]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
