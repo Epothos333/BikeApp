@@ -107,6 +107,9 @@
     margin-bottom: 30px;
     text-align: center;
   }
+  #directions p {
+    z-index: -1;
+  }
   #rentalMap {
     position: relative;
     width: 70%;
