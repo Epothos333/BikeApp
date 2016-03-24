@@ -336,21 +336,6 @@ beige = #F0F3BD
 		font-family robotocondensed, sans-serif
 		margin-bottom .75em
 		font-size 40px	
-	
-@media print	
-	#directions, #directionEasy, #directionInt, #directionAdv
-		height 500px
-		width 100%
-		overflow visible
-		background-color white
-		display block
-		float none
-		margin-top 30px
-		margin-bottom 30px
-		text-align center
-	.marginMe p
-		display none	
-	
 
 @media (max-width: 1024px)
 	#banner ul li
@@ -365,34 +350,49 @@ beige = #F0F3BD
 		display-block
 	#routeHere, #easymaps, #intmaps, #advmaps
 		width 100%
+		
 @media (max-width: 830px )
 	#banner ul li
 		width 100%
 		inline-block
 		margin 0 auto
 	#directions, #directionEasy, #directionInt, #directionAdv
-		float bottom
+		display block
 		width 100%
 	.inlineMe
 		width 100%
 		display-block
 	#routeHere, #easymaps, #intmaps, #advmaps
 		width 100%
-		
+		display block
 
 @media (max-width: 480px)
 	#banner ul li
 		width 100%
 		inline-block
 		margin 0 auto
-	#directionEasy,#directionInt,directionAdv
-		float bottom
+	#directions, #directionEasy, #directionInt, #directionAdv
+		display block
 		width 100%
 	.inlineMe
 		width 100%
 		display-block
-	#routeHere, #easymaps, #intmaps, #advmaps
+		#routeHere, #easymaps, #intmaps, #advmaps
+			width 100%
+@media print	
+	#directions, #directionEasy, #directionInt, #directionAdv
+		height 500px
 		width 100%
+		overflow visible
+		background-color white
+		display block
+		float none
+		margin-top 30px
+		margin-bottom 30px
+		text-align center
+	.marginMe p
+		display none	
+
 		
 		
 		

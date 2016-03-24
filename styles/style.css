@@ -326,25 +326,6 @@ footer p a:hover {
   margin-bottom: 0.75em;
   font-size: 40px;
 }
-@media print {
-  #directions,
-  #directionEasy,
-  #directionInt,
-  #directionAdv {
-    height: 500px;
-    width: 100%;
-    overflow: visible;
-    background-color: #fff;
-    display: block;
-    float: none;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  .marginMe p {
-    display: none;
-  }
-}
 @media (max-width: 1024px) {
   #banner ul li {
     width: 100%;
@@ -379,7 +360,7 @@ inline-block
   #directionEasy,
   #directionInt,
   #directionAdv {
-    float: bottom;
+    display: block;
     width: 100%;
   }
   .inlineMe {
@@ -391,6 +372,7 @@ display-block
   #intmaps,
   #advmaps {
     width: 100%;
+    display: block;
   }
 }
 @media (max-width: 480px) {
@@ -399,20 +381,40 @@ display-block
 inline-block
     margin: 0 auto;
   }
+  #directions,
   #directionEasy,
   #directionInt,
-  directionAdv {
-    float: bottom;
+  #directionAdv {
+    display: block;
     width: 100%;
   }
   .inlineMe {
     width: 100%;
-display-block
   }
-  #routeHere,
-  #easymaps,
-  #intmaps,
-  #advmaps {
+  .inlineMe display-block,
+  .inlineMe #routeHere,
+  .inlineMe #easymaps,
+  .inlineMe #intmaps,
+  .inlineMe #advmaps {
     width: 100%;
+  }
+}
+@media print {
+  #directions,
+  #directionEasy,
+  #directionInt,
+  #directionAdv {
+    height: 500px;
+    width: 100%;
+    overflow: visible;
+    background-color: #fff;
+    display: block;
+    float: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .marginMe p {
+    display: none;
   }
 }
