@@ -258,64 +258,73 @@
   .gettingStartedDiv a:active {
     background-color: #00a896;
   }
-  footer {
-    background-color: #05668d;
-    margin-bottom: 0;
-    height: 40px;
-    color: #fff;
-  }
-  #rentalModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #fff;
-    background-color: rgba(0,0,0,0.4);
-  }
-  #contentModal {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  #contentModal ul li {
-    list-style-type: none;
-    text-align: center;
-  }
-  .mapbtns button {
-    background-color: #ffa500;
-    color: #fff;
-    font-size: 20px;
-    padding: 15px 32px;
-    border-radius: 5px;
-    margin: 0 0px 0.75em 20px;
-  }
-  .mapbtns {
-    margin: 0 auto;
-    text-align: center;
-  }
-  #toggleOff {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  #toggleOff:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  #routediff h1 {
-    padding: 20px 0px;
-    font-family: robotocondensed, sans-serif;
-    margin-bottom: 0.75em;
-    font-size: 40px;
-  }
+}
+/*FOOTER */
+footer {
+  background-color: #05668d;
+  margin-bottom: 0;
+  height: 40px;
+  color: #fff;
+}
+footer p a {
+  color: #fff;
+  text-decoration: none;
+}
+footer p a:hover {
+  color: #02c39a;
+}
+/* Pop out window CSS */
+#rentalModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+  background-color: rgba(0,0,0,0.4);
+}
+#contentModal {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+#contentModal ul li {
+  list-style-type: none;
+  text-align: center;
+}
+.mapbtns button {
+  background-color: #ffa500;
+  color: #fff;
+  font-size: 20px;
+  padding: 15px 32px;
+  border-radius: 5px;
+  margin: 0 0px 0.75em 20px;
+}
+.mapbtns {
+  margin: 0 auto;
+  text-align: center;
+}
+#toggleOff {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#toggleOff:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#routediff h1 {
+  padding: 20px 0px;
+  font-family: robotocondensed, sans-serif;
+  margin-bottom: 0.75em;
+  font-size: 40px;
 }
 @media print {
   #directions,
