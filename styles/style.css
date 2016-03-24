@@ -218,7 +218,6 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
-  height: 45vh;
 }
 #rentbike h1 {
   padding: 20px 0px;
@@ -371,6 +370,22 @@ display-block
   #intmaps,
   #advmaps {
     width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .marginMe {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  #routebutton {
+    margin: 0 auto;
+  }
+  #maindesc {
+    width: 70%;
+  }
+  #maindesc p {
+    font-size: 24px;
   }
 }
 @media (max-width: 830px) {
@@ -378,6 +393,20 @@ display-block
     width: 100%;
 inline-block
     margin: 0 auto;
+  }
+  .marginMe {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
   }
   #directions,
   #directionEasy,
@@ -404,12 +433,23 @@ display-block
     background-image: none;
   }
   #banner a {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0px 0.5em;
   }
   #maindesc {
     width: 100%;
     background: transparent;
+  }
+  .gettingStartedDiv h1 {
+    font-size: 32px;
+  }
+  #maindesc p {
+    font-size: 16px;
+  }
+  .mapbtns button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0px 0px 0.75em 10px;
   }
   #banner ul li {
     width: 100%;
@@ -423,15 +463,22 @@ inline-block
     display: block;
     width: 100%;
   }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 325px;
+    display: block;
+    margin: 0 auto;
+  }
+  .marginMe {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+  }
   .inlineMe {
     width: 100%;
-  }
-  .inlineMe display-block,
-  .inlineMe #routeHere,
-  .inlineMe #easymaps,
-  .inlineMe #intmaps,
-  .inlineMe #advmaps {
-    width: 100%;
+display-block
   }
 }
 @media print {
@@ -460,6 +507,7 @@ inline-block
   #intmaps,
   #advmaps {
     width: 100%;
+    display: block;
   }
   #routebutton {
     display: none;
