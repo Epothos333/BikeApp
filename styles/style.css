@@ -1,297 +1,304 @@
-section {
-  display: inline-block;
-}
-.italMe {
-  font-style: italic;
-  position: relative;
-  bottom: 15px;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
-}
-.inlineMe {
-  display: inline-block;
-  margin-top: 10px;
-}
-.inlineMe p {
-  color: #000;
-  position: relative;
-  left: 20px;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-style: italic;
-}
-.blockMe {
-  display: block;
-  margin: 20px;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
-}
-.Arial {
-  font-family: Arial;
-}
-.marginMe {
-  margin: auto;
-  padding-left: 80px;
-  padding-right: 80px;
-  text-align: center;
-  margin-top: 20px;
+@font-face {
+  font-family: roboto;
+  src: url("../fonts/Roboto-Regular.ttf");
 }
 @font-face {
-  font-family: bebas;
-  src: url("../fonts/BEBAS.ttf");
+  font-family: robotocondensed;
+  src: url("../fonts/RobotoCondensed-Regular.ttf");
 }
-@font-face {
-  font-family: opensans;
-  src: url("../fonts/OpenSans-Regular.ttf");
+@media screen {
+  section {
+    display: inline-block;
+  }
+  .italMe {
+    font-style: italic;
+    position: relative;
+    bottom: 15px;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+  }
+  .inlineMe {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .inlineMe p {
+    color: #000;
+    position: relative;
+    left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: italic;
+  }
+  .blockMe {
+    display: block;
+    margin: 20px;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+  }
+  .Arial {
+    font-family: Arial;
+  }
+  .marginMe {
+    margin: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    text-align: center;
+    margin-top: 20px;
+    width: 60%;
+  }
+  .underline {
+    text-decoration: underline;
+    position: relative;
+    bottom: 5px;
+  }
+  .levelDiff {
+    display: inline-block;
+  }
+  .greenBack {
+    background-color: #008000;
+  }
+  .yellowBack {
+    background-color: #ff0;
+  }
+  .redBack {
+    background-color: #f00;
+  }
+  #routediff div {
+    border-radius: 15px;
+    padding: 10px;
+    border: 4px outset #000;
+    margin: 0 50px;
+  }
+  #routediff div:hover {
+    border: 4px inset White;
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    height: 500px;
+    width: 60%;
+    background-color: #05668d;
+    margin-left: 50px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    float: left;
+    margin-right: 50px;
+  }
+  #directions,
+  #directionEasy,
+  #directionInt,
+  #directionAdv {
+    height: 500px;
+    width: 30%;
+    overflow: scroll;
+    background-color: #fff;
+    display: inline-block;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  #rentalMap {
+    position: relative;
+    width: 70%;
+    height: 70%;
+  }
+  #banner {
+    background-color: #05668d;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    font-family: robotocondensed, sans-serif;
+    width: 100%;
+    box-shadow: 0px 5px 3px rgba(0,0,0,0.5);
+  }
+  #banner img {
+    margin-bottom: 0.75em;
+    padding-top: 0.75em;
+    display: block;
+    height: auto;
+  }
+  #banner a {
+    text-decoration: none;
+    margin: 0em 2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #banner ul li {
+    display: inline;
+  }
+  #banner ul {
+    list-style-type: none;
+    margin-bottom: 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: roboto, sans-serif;
+    background-color: #028090;
+  }
+  #maindesc {
+    background: rgba(255,255,255,0.8);
+    width: 60%;
+    top: 50px;
+    position: relative;
+  }
+  #maindesc p {
+    text-align: center;
+    text-shadow: 0 0 5px #fff;
+    font-size: 32px;
+  }
+  .directive {
+    background-color: #00a896;
+    color: #fff;
+    text-align: center;
+    font-family: roboto, sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    box-shadow: 1px 1px 3px #000;
+  }
+  #weatherview h1 {
+    font-size: 42px;
+  }
+  #sun {
+    padding-top: 20px;
+  }
+  #routediff {
+    text-align: center;
+    background-color: #028090;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+  }
+  #routediff h1 {
+    padding: 20px 0px;
+    font-family: robotocondensed, sans-serif;
+    margin-bottom: 0.75em;
+    font-size: 40px;
+  }
+  #rentbike {
+    background-color: #02c39a;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    height: 45vh;
+  }
+  #rentbike h1 {
+    padding: 20px 0px;
+    font-family: robotocondensed, sans-serif;
+    margin-bottom: 0.75em;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+    font-size: 60px;
+  }
+  #rentbike h3 {
+    margin-bottom: 0.75em;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+  }
+  #rentbike button {
+    background-color: #ffa500;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px 32px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: roboto;
+  }
+  .gettingstartedbtn {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gettingStartedDiv {
+    background: url("../images/bikebackground.jpg") no-repeat fixed;
+    width: 100%;
+    box-shadow: 1px 1px 2px #000;
+    background-size: cover;
+  }
+  .gettingStartedDiv h1 {
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    color: #fff;
+    font-size: 100px;
+    margin-bottom: 0.25em;
+    font-family: robotocondensed, sans-serif;
+  }
+  .gettingStartedDiv a {
+    display: block;
+    margin: 0 auto;
+    background-color: #ffa500;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 32px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: roboto, sans-serif;
+    width: 80px;
+    text-decoration: none;
+    text-align: center;
+  }
+  .gettingStartedDiv a:active {
+    background-color: #00a896;
+  }
+  #rentalModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #fff;
+    background-color: rgba(0,0,0,0.4);
+  }
+  #contentModal {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  #contentModal ul li {
+    list-style-type: none;
+    text-align: center;
+  }
+  .mapbtns button {
+    background-color: #ffa500;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px 32px;
+    border-radius: 5px;
+    margin: 0 0px 0.75em 20px;
+  }
+  .mapbtns {
+    margin: 0 auto;
+    text-align: center;
+  }
+  #toggleOff {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  #toggleOff:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .handle {
+    width: 100%;
+  }
 }
-.underline {
-  text-decoration: underline;
-  position: relative;
-  bottom: 5px;
-}
-.levelDiff {
-  display: inline-block;
-}
-.greenBack {
-  background-color: #008000;
-}
-.yellowBack {
-  background-color: #ff0;
-}
-.redBack {
-  background-color: #f00;
-}
-#routediff div {
-  border-radius: 15px;
-  padding: 10px;
-  border: 4px outset #000;
-  margin: 0 50px;
-}
-#routediff div:hover {
-  border: 4px inset White;
-}
-#routeHere,
-#easymaps,
-#intmaps,
-#advmaps {
-  height: 500px;
-  width: 60%;
-  background-color: #05668d;
-  margin-left: 50px;
-  display: inline-block;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-#directions,
-#directionEasy,
-#directionInt,
-#directionAdv {
-  height: 500px;
-  width: 30%;
-  overflow: scroll;
-  background-color: #fff;
-  display: inline-block;
-  float: right;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-#rentalMap {
-  position: relative;
-  width: 70%;
-  height: 70%;
-}
-/* NAVIGATION */
-#banner {
-  background-color: #05668d;
-  text-align: center;
-  margin: 0 auto;
-  padding: 0;
-  font-family: 'Open Sans Condensed', bebas, sans-serif;
-  width: 100%;
-  box-shadow: 0px 5px 3px rgba(0,0,0,0.5);
-}
-#banner img {
-  margin-bottom: 0.75em;
-  padding-top: 0.75em;
-  display: block;
-  height: auto;
-}
-#banner a {
-  text-decoration: none;
-  margin: 0em 2em;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
-}
-#banner ul li {
-  display: inline;
-}
-#banner ul {
-  list-style-type: none;
-  margin-bottom: 0;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #028090;
-}
-#maindesc {
-  background: rgba(255,255,255,0.8);
-  width: 60%;
-  top: 50px;
-  position: relative;
-}
-#maindesc p {
-  text-align: center;
-  text-shadow: 0 0 5px #fff;
-  font-size: 32px;
-}
-.directive {
-  background-color: #00a896;
-  color: #fff;
-  text-align: center;
-  font-family: opensans, sans-serif;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  width: 100%;
-  box-shadow: 1px 1px 3px #000;
-}
-#weatherview h1 {
-  font-size: 42px;
-}
-#sun {
-  padding-top: 20px;
-}
-#routediff {
-  text-align: center;
-  background-color: #028090;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
-}
-#routediff h1 {
-  padding: 20px 0px;
-  font-family: 'Open Sans Condensed', bebas;
-  margin-bottom: 0.75em;
-  font-size: 40px;
-}
-#rentbike {
-  background-color: #02c39a;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  height: 45vh;
-}
-#rentbike h1 {
-  padding: 20px 0px;
-  font-family: bebas;
-  margin-bottom: 0.75em;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
-  font-size: 60px;
-}
-#rentbike h3 {
-  margin-bottom: 0.75em;
-  color: #fff;
-  text-shadow: 0 0 1px #000;
-}
-#rentbike button {
-  background-color: #ffa500;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  padding: 15px 32px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-family: 'Roboto';
-}
-.gettingStartedDiv {
-  background: url("../images/bikebackground.jpg") no-repeat fixed;
-  height: 100%;
-  width: 100%;
-  box-shadow: 1px 1px 2px #000;
-  background-size: cover;
-}
-.gettingStartedDiv h1 {
-  text-shadow: 1px 1px 2px #000;
-  text-align: center;
-  color: #fff;
-  font-size: 100px;
-  margin-bottom: 0.25em;
-  font-family: bebas;
-}
-.gettingStartedDiv a {
-  display: block;
-  margin: 0 auto;
-  background-color: #ffa500;
-  color: #fff;
-  font-size: 16px;
-  padding: 15px 32px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-family: opensans;
-  width: 80px;
-  text-decoration: none;
-  text-align: center;
-}
-.gettingStartedDiv a:active {
-  background-color: #00a896;
-}
-/* Pop out window CSS */
-#rentalModal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #fff;
-  background-color: rgba(0,0,0,0.4);
-}
-#contentModal {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-#contentModal ul li {
-  list-style-type: none;
-  text-align: center;
-}
-.mapbtns button {
-  background-color: #ffa500;
-  color: #fff;
-  font-size: 20px;
-  padding: 15px 32px;
-  border-radius: 5px;
-  margin: 0 2px 0.75em;
-}
-.mapbtns {
-  margin: 0 auto;
-  text-align: center;
-}
-#toggleOff {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-#toggleOff:hover {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-.handle {
-  width: 100%;
-}
-@media (max-width: 530px) {
+@media screen and (max-width: 530px) {
   #banner ul li {
     width: 100%;
 inline-block
@@ -302,5 +309,24 @@ inline-block
   #directionInt,
   #directionAdv {
     float: none;
+  }
+}
+@media print {
+  #directions,
+  #directionEasy,
+  #directionInt,
+  #directionAdv {
+    height: 500px;
+    width: 100%;
+    overflow: visible;
+    background-color: #fff;
+    display: block;
+    float: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .marginMe p {
+    display: none;
   }
 }
