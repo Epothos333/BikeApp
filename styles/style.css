@@ -160,7 +160,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: roboto, sans-serif;
-  background: url("../images/bikebackground.jpg") no-repeat;
+  background: url("../images/bikebackground.jpg") no-repeat fixed;
   background-size: cover;
 }
 .container {
@@ -450,6 +450,21 @@ inline-block
     text-align: center;
   }
   .marginMe p {
+    display: none;
+  }
+  .mapbtns {
+    display: none;
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 100%;
+  }
+  #routebutton {
+    display: none;
+  }
+  footer {
     display: none;
   }
 }
