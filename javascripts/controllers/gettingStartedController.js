@@ -1,10 +1,6 @@
 app.controller('gettingStartedController', ['$scope', '$location', function($scope, $location) {
     
-    $scope.changeViewToRoutes = function(){
-            $location.path('/bikeRoutes');
+    $scope.changeView = function(view){
+            $location.path(view);
         }; 
-    $scope.changeViewToMYO = function(){
-            $location.path('/create_Your_Own');
-        };          
-
 }]);
