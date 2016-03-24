@@ -81,6 +81,7 @@ section {
   display: inline-block;
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 0px;
 }
 #directions,
 #directionEasy,
@@ -95,6 +96,7 @@ section {
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+  margin-right: 0px;
 }
 #rentalMap {
   position: relative;
@@ -291,7 +293,7 @@ body {
 .handle {
   width: 100%;
 }
-@media (max-width: 530px) {
+@media (max-width: 1024px) {
   #banner ul li {
     width: 100%;
 inline-block
@@ -301,6 +303,64 @@ inline-block
   #directionEasy,
   #directionInt,
   #directionAdv {
-    float: none;
+    float: bottom;
+    width: 100%;
+  }
+  .inlineMe {
+    width: 100%;
+display-block
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 100%;
+  }
+}
+@media (max-width: 830px) {
+  #banner ul li {
+    width: 100%;
+inline-block
+    margin: 0 auto;
+  }
+  #directions,
+  #directionEasy,
+  #directionInt,
+  #directionAdv {
+    float: bottom;
+    width: 100%;
+  }
+  .inlineMe {
+    width: 100%;
+display-block
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  #banner ul li {
+    width: 100%;
+inline-block
+    margin: 0 auto;
+  }
+  #directionEasy,
+  #directionInt,
+  directionAdv {
+    float: bottom;
+    width: 100%;
+  }
+  .inlineMe {
+    width: 100%;
+display-block
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 100%;
   }
 }
