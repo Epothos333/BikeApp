@@ -50,7 +50,12 @@ beige = #F0F3BD
 		padding-right 80px
 		text-align center
 		margin-top 20px
-		width 60%		
+		width 60%	
+		color black
+	.marginMe h1
+		color lightaqua
+	.marginMe p strong
+		color lightaqua			
 
 	.underline
 		text-decoration underline
@@ -100,7 +105,7 @@ beige = #F0F3BD
 		height 500px
 		width 30%
 		overflow scroll
-		background-color white
+		background-color transparent
 		display inline-block
 		float left
 		margin-top 30px
@@ -124,7 +129,7 @@ beige = #F0F3BD
 		padding 0
 		font-family robotocondensed, sans-serif
 		width 100%
-		box-shadow 0px 5px 3px rgba(0,0,0,.5)
+		z-index 100
 
 	#banner img
 		margin-bottom .75em	
@@ -151,7 +156,6 @@ beige = #F0F3BD
 		margin 0
 		padding 0	
 		font-family roboto, sans-serif
-		background-color midblue
 
 
 
@@ -191,7 +195,6 @@ beige = #F0F3BD
 		color white
 		text-shadow 0 0 1px black
 
-
 	#routediff h1
 		padding 20px 0px
 		font-family robotocondensed, sans-serif
@@ -235,7 +238,7 @@ beige = #F0F3BD
 		text-align center
 
 	.gettingStartedDiv
-		background url('../images/bikebackground.jpg') no-repeat fixed
+		background url('../images/bikebackground.jpg') no-repeat
 		width 100%
 		height 100%
 		box-shadow 1px 1px 2px #000000
@@ -267,6 +270,19 @@ beige = #F0F3BD
 	.gettingStartedDiv a:active
 		background-color aqua	
 
+/*FOOTER */
+	footer
+		background-color darkblue
+		margin-bottom 0
+		height 40px
+		color white
+	footer p a
+		color white
+		text-decoration none
+
+	footer p a:hover
+		color lightaqua		
+
 	/* Pop out window CSS */
 
 	#rentalModal
@@ -287,9 +303,11 @@ beige = #F0F3BD
 		padding 20px
 		border 1px solid #888
 		width 80%
+		
 	#contentModal ul li
 		list-style-type none
 		text-align center	
+		
 	.mapbtns button
 		background-color orange
 		color white	
@@ -317,126 +335,7 @@ beige = #F0F3BD
 		padding 20px 0px
 		font-family robotocondensed, sans-serif
 		margin-bottom .75em
-		font-size 40px
-			
-
-	#rentbike
-		background-color lightaqua
-		padding-top: 20px
-		padding-bottom: 20px
-		text-align center	
-		height 45vh
-		
-	#rentbike h1
-		padding 20px 0px
-		font-family robotocondensed, sans-serif
-		margin-bottom .75em
-		color white
-		text-shadow 0 0 1px black
-		font-size 60px
-
-	#rentbike h3
-		margin-bottom .75em
-		color white
-		text-shadow 0 0 1px black
-		
-	#rentbike button
-		background-color orange
-		border none
-		color white
-		font-size 20px
-		padding 15px 32px
-		border-radius 5px
-		font-weight bold
-		font-family roboto		
-	
-	.gettingstartedbtn
-		width 100px
-		margin 0 auto
-		text-align center
-
-	.gettingStartedDiv
-		background url('../images/bikebackground.jpg') no-repeat fixed
-		width 100%
-		height 100%
-		box-shadow 1px 1px 2px #000000
-		background-size cover
-
-
-	.gettingStartedDiv h1
-		text-shadow 1px 1px 2px #000000
-		text-align center	
-		color: white
-		font-size 100px	
-		margin-bottom .25em
-		font-family robotocondensed, sans-serif
-
-	.gettingStartedDiv a
-		display block
-		margin 0 auto
-		background-color orange
-		color white
-		font-size 16px
-		padding 15px 32px
-		border-radius 5px
-		font-weight bold
-		font-family roboto, sans-serif
-		width: 80px
-		text-decoration none
-		text-align center
-
-	.gettingStartedDiv a:active
-		background-color aqua	
-
-	/* Pop out window CSS */
-
-	#rentalModal
-		display none
-		position fixed
-		z-index 1
-		left 0
-		top 0
-		width 100%
-		height 100%
-		overflow auto
-		background-color white
-		background-color rgba(0,0,0,0.4)
-		
-	#contentModal
-		background-color #fefefe
-		margin 15% auto
-		padding 20px
-		border 1px solid #888
-		width 80%
-		
-	#contentModal ul li
-		list-style-type none
-		text-align center	
-		
-	.mapbtns button
-		background-color orange
-		color white	
-		font-size 20px
-		padding 15px 32px
-		border-radius 5px
-		margin 0 0px .75em 20px
-
-	.mapbtns
-		margin 0 auto
-		text-align center
-		
-
-	#toggleOff
-		color #aaa
-		float right
-		font-size 28px
-		font-weight bold
-		
-	#toggleOff:hover, $toggleOff:focus
-		color black
-		text-decoration none
-		cursor pointer	
-
+		font-size 40px	
 	
 @media print	
 	#directions, #directionEasy, #directionInt, #directionAdv

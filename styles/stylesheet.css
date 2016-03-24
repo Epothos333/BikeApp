@@ -1,7 +1,6 @@
 /* Css Reset*/
 
-html, body, div, span, a, h1, h2, h3, em, img, strong, header, nav, section, aside{
-background:  transparent;
+html, body, div, span, a, h1, h2, h3, em, img, strong, header, nav, section, aside, footer, footer p{
 border: 0;
 margin:0 auto;
 padding:0;
