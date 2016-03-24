@@ -159,7 +159,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: roboto, sans-serif;
-  background: url("../images/bikebackground.jpg") no-repeat;
+  background: url("../images/bikebackground.jpg") no-repeat fixed;
   background-size: cover;
 }
 .container {
@@ -400,13 +400,11 @@ display-block
 @media (max-width: 480px) {
   body {
     background-color: #00a896;
+    background-image: none;
   }
   #banner a {
     font-size: 14px;
     margin: 0px 0.5em;
-  }
-  .gettingStartedDiv {
-    background-image: none;
   }
   #maindesc {
     width: 100%;
@@ -451,6 +449,21 @@ inline-block
     text-align: center;
   }
   .marginMe p {
+    display: none;
+  }
+  .mapbtns {
+    display: none;
+  }
+  #routeHere,
+  #easymaps,
+  #intmaps,
+  #advmaps {
+    width: 100%;
+  }
+  #routebutton {
+    display: none;
+  }
+  footer {
     display: none;
   }
 }
