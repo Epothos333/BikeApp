@@ -49,9 +49,15 @@ section {
 }
 .marginMe h1 {
   color: #02c39a;
+  position: relative;
+  top: 10px;
 }
 .marginMe p strong {
   color: #02c39a;
+}
+#maindesc p {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 .underline {
   text-decoration: underline;
@@ -161,7 +167,7 @@ body {
   width: 90%;
   margin-bottom: 60px;
 }
-.forty {
+.view {
   margin-bottom: 40px;
 }
 #maindesc {
