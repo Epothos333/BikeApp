@@ -2,32 +2,14 @@
 <head>
 	<title>PeDal Detroit</title>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="index.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <meta name="google-signin-client_id" content="694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	
 </head>
-    <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      window.location.href="/main.html";
-    };
 
-    function onSuccess(googleUser){
-      console.log('logged in as:' + googleUser.getBasicProfile().getName());
-    };
-
-    function renderButton(){
-      gapi.signin2.render('g-signin2', {
-        "scope": 'profile email',
-        'width' : 240,
-        'height': 50,
-        'longtitle': true,
-        'onSuccess': onSuccess
-      });
-    }
-    </script>
   <div class='gettingStartedDiv'>
   		<h1>LET'S GET STARTED.</h1>
 <!--   		<a href="/main.html">Let's go!</a> -->
