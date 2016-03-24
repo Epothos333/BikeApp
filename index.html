@@ -1,26 +1,34 @@
 <html>
 <head>
-	<title>PeDal Detroit</title>
+  <title></title>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="index.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <meta name="google-signin-client_id" content="694810853348-bi1aoel25oc8gu64na91rc73vv1oeg96.apps.googleusercontent.com">
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-	
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">  
 </head>
 
-  <div class='gettingStartedDiv'>
-  		<h1>LET'S GET STARTED.</h1>
-<!--   		<a href="/main.html">Let's go!</a> -->
-      <div class="g-signin2 gettingstartedbtn" data-onsuccess="onSignIn"></div>
-  </div>
+<body ng-app="bikeApp"> 
+  <nav>
+    <div id='banner'>
+    <img src="images/bikeapplogo.png"/> 
+      <ul>
+        <li><a href="#/home">Home</a></li>
+      <li><a href="#/bikeRoutes">Routes</a></li>  
+      <li><a href="#/create_Your_Own">Make Your Own</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div class ="view" ng-view=''></div>
 
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoqMBTB6hWPjQJTZrJn2lOuc7-2tDtW3E"></script>
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
-	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js'></script>
-	<script type="text/javascript" src='all.js'></script>
+  <footer>
+    <p>Contact Us: <a href="https://www.linkedin.com/in/edwinaoraha">Edwin Aoraha</a>, <a href="https://www.linkedin.com/in/nidrasmith">Nidra Smith</a> and <a href="https://www.linkedin.com/in/amandavanhuis">Amanda Van Huis</a></p>
+  </footer>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoqMBTB6hWPjQJTZrJn2lOuc7-2tDtW3E"></script>
+  <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
+  <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js'></script>
+  <script type="text/javascript" src='all.js'></script>
 
 </body>
 </html>
