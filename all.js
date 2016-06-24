@@ -38,6 +38,13 @@ app.config(['$routeProvider',
 
 
 
+app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
+	
+
+			return mapData.mainInt();
+
+
+}]);
 app.controller('advancedController', ['mapData', '$scope', function(mapData, $scope) {
 	
 
@@ -65,13 +72,6 @@ app.controller('gettingStartedController', ['$scope', '$location', function($sco
             $location.path(view);
         }; 
 }]);
-app.controller('intermediateController', ['mapData', '$scope', function(mapData, $scope) {
-	
-
-			return mapData.mainInt();
-
-
-}]);
 app.controller('routeGenController', ['routingData', '$scope', function(routingData, $scope) {
 
 	var directionsDisplayOne;
@@ -84,13 +84,11 @@ app.controller('routeGenController', ['routingData', '$scope', function(routingD
 		})
 	}
 		$scope.reload = function() {
-			console.log('reload');
 			location.reload();
 			
 		}
 
 		$scope.Route = function() {
-		console.log('routing')
 		var start = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
 		var end = new google.maps.LatLng(routingData.points[0].position.lat(), routingData.points[0].position.lng());
 		removeMarkers();
@@ -160,6 +158,67 @@ app.controller('bikeRoutes', ['$http', 'weatherService', '$scope', '$location', 
 
 
 
+app.directive('diffBtn', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/difficultyTemplate.html",
+		scope: {
+			bgcolor: '=',
+			route: '=',
+			diff: '='
+		},
+		controller: function($scope, $location) {
+			$scope.changeView = function() {
+				$location.path($scope.route);
+			}
+		},
+		transclude: true
+
+	};
+});
+app.directive('mapGen', ['mapData', function(mapData){
+	return {
+		restrict: 'E',
+		replace: false,
+		scope: {
+			click: '=',
+			map: '=',
+			difficulty: '='
+		},
+		template: '<button>{{click}}</button>',
+		link: function(scope, element, attrs) {
+			buttons = document.getElementsByTagName('map-gen');
+			changeColor(0, '#028090')
+			element.bind('click', function() {
+				for (var i = 0; i < buttons.length; i++) {
+					changeColor(i, 'orange')
+				}
+				changeColor(scope.map, '#028090');
+				if (scope.difficulty === 'easy') {
+					return mapData.easyMap[scope.map]();
+				} else if (scope.difficulty ==='int') {
+					return mapData.intMap[scope.map]();
+				} else {
+					return mapData.advMap[scope.map]();
+				}
+				
+			})
+		}
+	}
+}]);
+var buttons;
+function changeColor(index, newColor) {
+	buttons[index].firstChild.style.backgroundColor = newColor;
+}
+
+app.directive('weatherDays', function(){
+	return {
+		restrict: 'E',
+		replace: false,
+		templateUrl: "Views/templates/weatherTemplate.html"
+	};
+});
 app.factory('mapData', function(){
 
 	var redCircle = {
@@ -920,66 +979,3 @@ app.factory('weatherService', ['$http', function($http){
 		})
 
 	}]);
-app.directive('diffBtn', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/difficultyTemplate.html",
-		scope: {
-			bgcolor: '=',
-			route: '=',
-			diff: '='
-		},
-		controller: function($scope, $location) {
-			$scope.changeView = function() {
-				$location.path($scope.route);
-			}
-		},
-		transclude: true
-
-	};
-});
-app.directive('mapGen', ['mapData', function(mapData){
-	return {
-		restrict: 'E',
-		replace: false,
-		scope: {
-			click: '=',
-			map: '=',
-			difficulty: '='
-		},
-		template: '<button>{{click}}</button>',
-		link: function(scope, element, attrs) {
-			buttons = document.getElementsByTagName('map-gen');
-			changeColor(0, '#028090')
-			element.bind('click', function() {
-				for (var i = 0; i < buttons.length; i++) {
-					changeColor(i, 'orange')
-				}
-				changeColor(scope.map, '#028090');
-				if (scope.difficulty === 'easy') {
-					console.log(buttons)
-
-					return mapData.easyMap[scope.map]();
-				} else if (scope.difficulty ==='int') {
-					return mapData.intMap[scope.map]();
-				} else {
-					return mapData.advMap[scope.map]();
-				}
-				
-			})
-		}
-	}
-}]);
-var buttons;
-function changeColor(index, newColor) {
-	buttons[index].firstChild.style.backgroundColor = newColor;
-}
-
-app.directive('weatherDays', function(){
-	return {
-		restrict: 'E',
-		replace: false,
-		templateUrl: "Views/templates/weatherTemplate.html"
-	};
-});

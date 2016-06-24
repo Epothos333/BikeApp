@@ -17,8 +17,6 @@ app.directive('mapGen', ['mapData', function(mapData){
 				}
 				changeColor(scope.map, '#028090');
 				if (scope.difficulty === 'easy') {
-					console.log(buttons)
-
 					return mapData.easyMap[scope.map]();
 				} else if (scope.difficulty ==='int') {
 					return mapData.intMap[scope.map]();
